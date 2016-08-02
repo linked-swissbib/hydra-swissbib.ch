@@ -1,0 +1,10 @@
+app:
+    resource: '@AppBundle/Action/'
+    type:     'annotation'
+
+api:
+    resource: '.'
+    type:     'api_platform'
+
+doc:
+    resource: '@ApiPlatformBundle/Resources/config/routing/swagger-ui.xml'
