@@ -10,9 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A book.
- * 
+ *
  * @see http://schema.org/Book Documentation on Schema.org
- * 
+ *
  * @ORM\Entity
  * @ApiResource(iri="http://schema.org/Book")
  */
@@ -20,7 +20,7 @@ class Book
 {
     /**
      * @var int
-     * 
+     *
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,7 +28,7 @@ class Book
     private $id;
     /**
      * @var ArrayCollection<Person> The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="book_author")
      * @ApiProperty(iri="http://schema.org/author")
@@ -36,7 +36,7 @@ class Book
     private $author;
     /**
      * @var \DateTime Date of first broadcast/publication.
-     * 
+     *
      * @ORM\Column(type="date", nullable=true)
      * @Assert\Date
      * @ApiProperty(iri="http://schema.org/datePublished")
@@ -44,7 +44,7 @@ class Book
     private $datePublished;
     /**
      * @var string A description of the item.
-     * 
+     *
      * @ORM\Column(nullable=true)
      * @Assert\Type(type="string")
      * @ApiProperty(iri="http://schema.org/description")
@@ -52,7 +52,7 @@ class Book
     private $description;
     /**
      * @var string Genre of the creative work or group.
-     * 
+     *
      * @ORM\Column(nullable=true)
      * @Assert\Type(type="string")
      * @ApiProperty(iri="http://schema.org/genre")
@@ -60,7 +60,7 @@ class Book
     private $genre;
     /**
      * @var ArrayCollection<Person> The illustrator of the book.
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="book_illustrator")
      * @ApiProperty(iri="http://schema.org/illustrator")
@@ -68,7 +68,7 @@ class Book
     private $illustrator;
     /**
      * @var string The ISBN of the book.
-     * 
+     *
      * @ORM\Column(nullable=true)
      * @Assert\Type(type="string")
      * @ApiProperty(iri="http://schema.org/isbn")
@@ -76,7 +76,7 @@ class Book
     private $isbn;
     /**
      * @var string The name of the item.
-     * 
+     *
      * @ORM\Column(nullable=true)
      * @Assert\Type(type="string")
      * @ApiProperty(iri="http://schema.org/name")
@@ -84,7 +84,7 @@ class Book
     private $name;
     /**
      * @var int The number of pages in the book.
-     * 
+     *
      * @ORM\Column(type="integer", nullable=true)
      * @Assert\Type(type="integer")
      * @ApiProperty(iri="http://schema.org/numberOfPages")
@@ -92,7 +92,7 @@ class Book
     private $numberOfPages;
     /**
      * @var Organization The publisher of the creative work.
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Organization")
      * @ORM\JoinColumn(nullable=false)
      * @ApiProperty(iri="http://schema.org/publisher")
@@ -107,9 +107,9 @@ class Book
 
     /**
      * Sets id.
-     * 
+     *
      * @param int $id
-     * 
+     *
      * @return $this
      */
     public function setId($id)
@@ -121,7 +121,7 @@ class Book
 
     /**
      * Gets id.
-     * 
+     *
      * @return int
      */
     public function getId()
@@ -131,9 +131,9 @@ class Book
 
     /**
      * Adds author.
-     * 
+     *
      * @param Person $author
-     * 
+     *
      * @return $this
      */
     public function addAuthor(Person $author)
@@ -145,9 +145,9 @@ class Book
 
     /**
      * Removes author.
-     * 
+     *
      * @param Person $author
-     * 
+     *
      * @return $this
      */
     public function removeAuthor(Person $author)
@@ -159,7 +159,7 @@ class Book
 
     /**
      * Gets author.
-     * 
+     *
      * @return ArrayCollection<Person>
      */
     public function getAuthor()
@@ -169,9 +169,9 @@ class Book
 
     /**
      * Sets datePublished.
-     * 
+     *
      * @param \DateTime $datePublished
-     * 
+     *
      * @return $this
      */
     public function setDatePublished(\DateTime $datePublished = null)
@@ -183,7 +183,7 @@ class Book
 
     /**
      * Gets datePublished.
-     * 
+     *
      * @return \DateTime
      */
     public function getDatePublished()
@@ -193,9 +193,9 @@ class Book
 
     /**
      * Sets description.
-     * 
+     *
      * @param string $description
-     * 
+     *
      * @return $this
      */
     public function setDescription($description)
@@ -207,7 +207,7 @@ class Book
 
     /**
      * Gets description.
-     * 
+     *
      * @return string
      */
     public function getDescription()
@@ -217,9 +217,9 @@ class Book
 
     /**
      * Sets genre.
-     * 
+     *
      * @param string $genre
-     * 
+     *
      * @return $this
      */
     public function setGenre($genre)
@@ -231,7 +231,7 @@ class Book
 
     /**
      * Gets genre.
-     * 
+     *
      * @return string
      */
     public function getGenre()
@@ -241,9 +241,9 @@ class Book
 
     /**
      * Adds illustrator.
-     * 
+     *
      * @param Person $illustrator
-     * 
+     *
      * @return $this
      */
     public function addIllustrator(Person $illustrator)
@@ -255,9 +255,9 @@ class Book
 
     /**
      * Removes illustrator.
-     * 
+     *
      * @param Person $illustrator
-     * 
+     *
      * @return $this
      */
     public function removeIllustrator(Person $illustrator)
@@ -269,7 +269,7 @@ class Book
 
     /**
      * Gets illustrator.
-     * 
+     *
      * @return ArrayCollection<Person>
      */
     public function getIllustrator()
@@ -279,9 +279,9 @@ class Book
 
     /**
      * Sets isbn.
-     * 
+     *
      * @param string $isbn
-     * 
+     *
      * @return $this
      */
     public function setIsbn($isbn)
@@ -293,7 +293,7 @@ class Book
 
     /**
      * Gets isbn.
-     * 
+     *
      * @return string
      */
     public function getIsbn()
@@ -303,9 +303,9 @@ class Book
 
     /**
      * Sets name.
-     * 
+     *
      * @param string $name
-     * 
+     *
      * @return $this
      */
     public function setName($name)
@@ -317,7 +317,7 @@ class Book
 
     /**
      * Gets name.
-     * 
+     *
      * @return string
      */
     public function getName()
@@ -327,9 +327,9 @@ class Book
 
     /**
      * Sets numberOfPages.
-     * 
+     *
      * @param int $numberOfPages
-     * 
+     *
      * @return $this
      */
     public function setNumberOfPages($numberOfPages)
@@ -341,7 +341,7 @@ class Book
 
     /**
      * Gets numberOfPages.
-     * 
+     *
      * @return int
      */
     public function getNumberOfPages()
@@ -351,9 +351,9 @@ class Book
 
     /**
      * Sets publisher.
-     * 
+     *
      * @param Organization $publisher
-     * 
+     *
      * @return $this
      */
     public function setPublisher(Organization $publisher = null)
@@ -365,7 +365,7 @@ class Book
 
     /**
      * Gets publisher.
-     * 
+     *
      * @return Organization
      */
     public function getPublisher()
