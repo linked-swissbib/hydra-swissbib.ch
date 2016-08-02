@@ -7,4 +7,5 @@ php:
 
 script:
     - composer install -n
+    - phpcs -n --standard=PSR2 src tests
     - phpunit
