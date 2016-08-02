@@ -5,6 +5,10 @@ language: php
 php:
   - 7.0
 
+before_script:
+    - pyrus install pear/PHP_CodeSniffer
+    - phpenv rehash
+
 script:
     - composer install -n
     - phpcs -n --standard=PSR2 src tests
