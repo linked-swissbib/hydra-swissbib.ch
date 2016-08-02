@@ -1,13 +1,10 @@
-sudo: required
+sudo: false
 
-services:
-    - docker
+language: php
+
+php:
+  - 7.0
 
 script:
-    - docker-compose build
-    - docker-compose run web composer install -o -n
-    - docker-compose run web bin/console security:check
-    - docker-compose run web bin/console doctrine:schema:create
-    - docker-compose run web bin/console doctrine:mapping:info
-    - docker-compose run web bin/console doctrine:schema:validate
-    - docker-compose run web bin/console hautelook_alice:doctrine:fixtures:load -n
+    - composer install -n
+    - phpunit
