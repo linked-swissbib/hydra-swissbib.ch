@@ -4,6 +4,7 @@ namespace LinkedSwissbibBundle\DataProvider;
 
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use Elasticsearch\Client;
+use Elasticsearch\Common\Exceptions\Missing404Exception;
 
 class ElasticsearchDataProvider implements ItemDataProviderInterface
 {
@@ -33,9 +34,13 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
             'id' => $id
         ];
 
-        $response = $this->client->get($params);
+        try {
+            $response = $this->client->get($params);
 
-        return $response ? new $resourceClass($response) : null;
+            return new $resourceClass($response);
+        } catch (Missing404Exception $e) {
+            return null;
+        }
     }
 
     /**
