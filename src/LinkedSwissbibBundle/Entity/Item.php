@@ -1,10 +1,11 @@
 <?php
 
-namespace LinkedSwissbibBundle\Entity;
+namespace LinedSwissbibBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * An Item.
@@ -29,20 +30,6 @@ class Item
      * @ApiProperty(identifier=true)
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ApiProperty(iri="?")
-     */
-    private $context;
 
     /**
      * @var string
@@ -78,77 +65,67 @@ class Item
      * @ApiProperty(iri="http://bibframe.org/vocab/subLocation")
      */
     private $subLocation;
-
     /**
-     * BiobligraphicResource constructor.
+     * @var array
+     *
+     * @ApiProperty(readable=false)
+     */
+    private $source;
+    /**
+     * Item constructor.
      *
      * @param array $response
      */
     public function __construct(array $response)
     {
         $this->id = $response['_id'];
-        $this->context = $response['_source'];
-        $this->type = $response['_source'];
         $this->holdingFor = $response['_source']['bf:holdingFor'] ?? null;
         $this->subLocation = $response['_source']['bf:subLocation'] ?? null;
         $this->locator = $response['_source']['bibo:locator'] ?? null;
         $this->owner = $response['_source']['bibo:owner'] ?? null;
         $this->page  = $response['_source']['foaf:page'] ?? null;
+        $this->source = $response['_source'];
     }
 
     /**
-     * @return string
+     * @return
      */
-    public function getId()
+    public function getId() 
     {
         return $this->id ?? '';
     }
     /**
-     * @return string
+     * @return
      */
-    public function getContext()
-    {
-        return $this->context ?? '';
-    }
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type ?? '';
-    }
-    /**
-     * @return string
-     */
-    public function getHoldingFor()
+    public function getHoldingFor() 
     {
         return $this->holdingFor ?? '';
     }
     /**
-     * @return string
+     * @return
      */
-    public function getSubLocation()
+    public function getSubLocation() 
     {
         return $this->subLocation ?? '';
     }
     /**
-     * @return string
+     * @return
      */
-    public function getLocator()
+    public function getLocator() 
     {
         return $this->locator ?? '';
     }
     /**
-     * @return string
+     * @return
      */
-    public function getOwner()
+    public function getOwner() 
     {
         return $this->owner ?? '';
     }
     /**
-     * @return string
+     * @return
      */
-    public function getPage()
+    public function getPage() 
     {
         return $this->page ?? '';
     }
