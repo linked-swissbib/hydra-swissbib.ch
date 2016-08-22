@@ -4,6 +4,13 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    linked_swissbib.elasticsearch_client:
+        class: Elasticsearch\Client
+        factory: ['LinkedSwissbibBundle\Elasticsearch\ElasticsearchClientFactory', createClient]
+        arguments: ['%linked_swissbib.elastic_search.hosts%']
+
+    linked_swissbib.elasticsearch_item_data_provider:
+        class: 'LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider'
+        tags: [ { name: 'api_platform.item_data_provider', priority: 1 } ]
+        arguments: ['@linked_swissbib.elasticsearch_client']
+

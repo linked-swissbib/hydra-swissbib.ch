@@ -1,5 +1,5 @@
 app:
-    resource: '@AppBundle/Action/'
+    resource: '@LinkedSwissbibBundle/Action/'
     type:     'annotation'
 
 api:
