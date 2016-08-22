@@ -6,7 +6,7 @@ php:
   - 7.0
 
 before_script:
-    - pyrus install pear/PHP_CodeSniffer
+    - pear install pear/PHP_CodeSniffer
     - phpenv rehash
 
 script:

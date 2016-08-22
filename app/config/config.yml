@@ -1,6 +1,5 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
     - { resource: services.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -20,8 +19,6 @@ framework:
     csrf_protection: ~
     validation:      { enable_annotations: true }
     serializer:      { enable_annotations: true }
-    templating:
-        engines: ['twig']
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -33,10 +30,16 @@ framework:
     http_method_override: true
     assets: ~
 
-# Twig Configuration
-twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
+# Nelmio CORS
+nelmio_cors:
+    defaults:
+        allow_origin:   ["%cors_allow_origin%"]
+        allow_methods:  ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
+        allow_headers:  ["content-type", "authorization"]
+        expose_headers: ["link"]
+        max_age:        3600
+    paths:
+        '^/': ~
 
 # Doctrine Configuration
 doctrine:
@@ -60,22 +63,3 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
-
-# Nelmio CORS
-
-nelmio_cors:
-    defaults:
-        allow_origin:   ["%cors_allow_origin%"]
-        allow_methods:  ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
-        allow_headers:  ["content-type", "authorization"]
-        expose_headers: ["link"]
-        max_age:        3600
-    paths:
-        '^/': ~
