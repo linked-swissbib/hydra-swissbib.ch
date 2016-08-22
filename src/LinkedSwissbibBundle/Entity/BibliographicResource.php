@@ -76,7 +76,7 @@ class BibliographicResource
     /**
      * @return string
      */
-    public function getTitle() : string
+    public function getTitle()
     {
         return $this->title ?? '';
     }
@@ -92,7 +92,7 @@ class BibliographicResource
     /**
      * @return string
      */
-    public function getId() : string
+    public function getId()
     {
         return $this->id ?? '';
     }
@@ -115,7 +115,7 @@ class BibliographicResource
     /**
      * @return string
      */
-    public function getType() : string
+    public function getType()
     {
         return $this->type ?? '';
     }
@@ -131,7 +131,7 @@ class BibliographicResource
     /**
      * @return string
      */
-    public function getLanguage() : string
+    public function getLanguage()
     {
         return $this->language ?? '';
     }
@@ -147,7 +147,7 @@ class BibliographicResource
     /**
      * @return string
      */
-    public function getFormat() : string
+    public function getFormat()
     {
         return $this->format ?? '';
     }

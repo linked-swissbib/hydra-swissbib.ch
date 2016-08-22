@@ -99,56 +99,56 @@ class Item
     /**
      * @return string
      */
-    public function getId() : string
+    public function getId()
     {
         return $this->id ?? '';
     }
     /**
      * @return string
      */
-    public function getContext() : string
+    public function getContext()
     {
         return $this->context ?? '';
     }
     /**
      * @return string
      */
-    public function getType() : string
+    public function getType()
     {
         return $this->type ?? '';
     }
     /**
      * @return string
      */
-    public function getHoldingFor() : string
+    public function getHoldingFor()
     {
         return $this->holdingFor ?? '';
     }
     /**
      * @return string
      */
-    public function getSubLocation() : string
+    public function getSubLocation()
     {
         return $this->subLocation ?? '';
     }
     /**
      * @return string
      */
-    public function getLocator() : string
+    public function getLocator()
     {
         return $this->locator ?? '';
     }
     /**
      * @return string
      */
-    public function getOwner() : string
+    public function getOwner()
     {
         return $this->owner ?? '';
     }
     /**
      * @return string
      */
-    public function getPage() : string
+    public function getPage()
     {
         return $this->page ?? '';
     }
