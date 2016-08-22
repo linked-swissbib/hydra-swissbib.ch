@@ -1,8 +1,11 @@
 <?php
-namespace AppBundle\Entity;
+
+namespace LinkedSwissbibBundle\Entity;
+
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * A BiobligraphicResource.
  *
