@@ -30,5 +30,10 @@ monolog:
         #    type:   chromephp
         #    level:  info
 
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
 #swiftmailer:
 #    delivery_address: me@example.com
