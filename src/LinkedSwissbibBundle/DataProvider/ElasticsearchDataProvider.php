@@ -29,14 +29,26 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
     {
         $params = [
             'index' => 'testsb_160426',
-            'type' => 'bibliographicResource',
+            'type' => $this->getElasticsearchTypeFromResourceClass($resourceClass),
             'id' => $id
         ];
 
         $response = $this->client->get($params);
 
-        return $response;
+        return $response ? new $resourceClass($response) : null;
+    }
 
-        //return $response ? new BibliographicResource($response) : null;
+    /**
+     * @param string $resourceClass
+     *
+     * @return string
+     */
+    protected function getElasticsearchTypeFromResourceClass(string $resourceClass)
+    {
+        $namespaceParts = explode('\\', $resourceClass);
+        $className = array_pop($namespaceParts);
+        $type = lcfirst($className);
+
+        return $type;
     }
 }
