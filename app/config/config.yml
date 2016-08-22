@@ -63,3 +63,6 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+api_platform:
+    naming:
+        resource_path_naming_strategy: 'linked_swissbib.naming.resource_path_naming_strategy.camel_case'

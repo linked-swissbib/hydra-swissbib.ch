@@ -14,3 +14,6 @@ services:
         tags: [ { name: 'api_platform.item_data_provider', priority: 1 } ]
         arguments: ['@linked_swissbib.elasticsearch_client']
 
+    linked_swissbib.naming.resource_path_naming_strategy.camel_case:
+        class: 'LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator'
+
