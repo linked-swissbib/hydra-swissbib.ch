@@ -36,7 +36,7 @@ framework:
 nelmio_cors:
     defaults:
         allow_origin:   ["%cors_allow_origin%"]
-        allow_methods:  ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
+        allow_methods:  ["GET"]
         allow_headers:  ["content-type", "authorization"]
         expose_headers: ["link"]
         max_age:        3600
@@ -72,5 +72,10 @@ twig:
 
 #API Platform
 api_platform:
+    title: "hydra@swissbib.ch"
+    description: "Hypermedia driven REST API for linked bibliographic resources."
+    formats:
+        jsonld: ["application/ld+json"]
+        rdfxml: ["application/rdf+xml"]
     naming:
         resource_path_naming_strategy: 'linked_swissbib.naming.resource_path_naming_strategy.camel_case'

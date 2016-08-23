@@ -10,10 +10,19 @@ services:
         arguments: ['%linked_swissbib.elastic_search.hosts%']
 
     linked_swissbib.elasticsearch_item_data_provider:
-        class: 'LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider'
+        class: LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider
         tags: [ { name: 'api_platform.item_data_provider', priority: 1 } ]
         arguments: ['@linked_swissbib.elasticsearch_client']
 
     linked_swissbib.naming.resource_path_naming_strategy.camel_case:
-        class: 'LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator'
+        class: LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator
+
+    linked_swissbib.easy_rdf_graph:
+        class: EasyRdf_Graph
+
+    linked_swissbib.rdfxml_encoder:
+        class: LinkedSwissbibBundle\Serializer\Encoder\RdfxmlEncoder
+        tags:
+            - { name: serializer.encoder }
+        arguments: ['@linked_swissbib.easy_rdf_graph']
 
