@@ -6,7 +6,7 @@
  * Time: 11:35
  */
 
-namespace LinedSwissbibBundle\Entity;
+namespace LinkedSwissbibBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;

@@ -47,6 +47,11 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
     {
         $namespaceParts = explode('\\', $resourceClass);
         $className = array_pop($namespaceParts);
+
+        if ($className === 'Organization') {
+            $className = 'Organisation'; // TODO rename
+        }
+
         $type = lcfirst($className);
 
         return $type;
