@@ -3,6 +3,9 @@
 
 namespace LinedSwissbibBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * An organization such as a school, NGO, corporation, club, etc.
@@ -22,27 +25,21 @@ namespace LinedSwissbibBundle\Entity;
 class Organization
 {
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label")
      */
     private $label;
-
+    
     /**
-     * @var array
-     *
-     * @ApiProperty(readable=false)
-     */
-    private $source;
-    /**
-     * Origanizationn constructor.
+     * Origanization constructor.
      *
      * @param array $response
      */
@@ -50,30 +47,21 @@ class Organization
     {
         $this->id = $response['_id'];
         $this->label = $response['_source']['rdfs:label'] ?? null;
-        $this->source = $response['_source'];
     }
 
     /**
-     * @return string
+     * @return string | array
      */
-    public function getId() 
+    public function getId()
     {
-        return $this->id ?? '';
+        return $this->id;
     }
-
+    
     /**
-     * @return array
+     * @return string | array
      */
-    public function getSource() : array
+    public function getLabel()
     {
-        return $this->source;
-    }
-    /**
-     * @return string
-     */
-    public function getLabel() 
-    {
-        return $this->label ?? '';
+        return $this->label;
     }
 }
-

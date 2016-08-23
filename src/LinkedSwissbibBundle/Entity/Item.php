@@ -6,7 +6,6 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * An Item.
  *
@@ -25,52 +24,47 @@ use Doctrine\ORM\Mapping as ORM;
 class Item
 {
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/holdingFor")
      */
     private $holdingFor;
 
     /**
-     * @var string
+     * @var string | array | array
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page")
      */
     private $page;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/ontology/bibo/owner")
      */
     private $owner;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/ontology/bibo/locator")
      */
     private $locator;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/subLocation")
      */
     private $subLocation;
-    /**
-     * @var array
-     *
-     * @ApiProperty(readable=false)
-     */
-    private $source;
+
     /**
      * Item constructor.
      *
@@ -84,49 +78,53 @@ class Item
         $this->locator = $response['_source']['bibo:locator'] ?? null;
         $this->owner = $response['_source']['bibo:owner'] ?? null;
         $this->page  = $response['_source']['foaf:page'] ?? null;
-        $this->source = $response['_source'];
     }
 
     /**
-     * @return
+     * @return string | array
      */
-    public function getId() 
+    public function getId()
     {
-        return $this->id ?? '';
+        return $this->id;
     }
+
     /**
-     * @return
+     * @return string | array
      */
-    public function getHoldingFor() 
+    public function getHoldingFor()
     {
-        return $this->holdingFor ?? '';
+        return $this->holdingFor;
     }
+
     /**
-     * @return
+     * @return string | array
      */
-    public function getSubLocation() 
+    public function getSubLocation()
     {
-        return $this->subLocation ?? '';
+        return $this->subLocation;
     }
+
     /**
-     * @return
+     * @return string | array
      */
-    public function getLocator() 
+    public function getLocator()
     {
-        return $this->locator ?? '';
+        return $this->locator;
     }
+
     /**
-     * @return
+     * @return string | array
      */
-    public function getOwner() 
+    public function getOwner()
     {
-        return $this->owner ?? '';
+        return $this->owner;
     }
+
     /**
-     * @return
+     * @return string | array
      */
-    public function getPage() 
+    public function getPage()
     {
-        return $this->page ?? '';
+        return $this->page;
     }
 }

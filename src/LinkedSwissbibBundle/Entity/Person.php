@@ -42,7 +42,8 @@ class Person
      */
     private $description;
     /**
-     * @var string Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
+     * @var string Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used,
+     * text strings are also acceptable for people who do not identify as a binary gender.
      *
      * @ORM\Column(nullable=true)
      * @Assert\Type(type="string")

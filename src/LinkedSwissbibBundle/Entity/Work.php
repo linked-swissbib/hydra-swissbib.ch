@@ -7,6 +7,11 @@
  */
 
 namespace LinedSwissbibBundle\Entity;
+
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * A work.
  *
@@ -24,16 +29,15 @@ namespace LinedSwissbibBundle\Entity;
  */
 class Work
 {
-
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/hasInstance");
      *
@@ -41,7 +45,7 @@ class Work
     private $hasInstance;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/contributor");
      *
@@ -49,20 +53,12 @@ class Work
     private $contributor;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/title");
      *
      */
     private $title;
-
-    /**
-     * @var array
-     *
-     * @ApiProperty(readable=false)
-     */
-    private $source;
-
 
     /**
      * Work constructor.
@@ -77,46 +73,37 @@ class Work
         $this->hasInstance = $response['_source']['bf:hasInstance'] ?? null;
         $this->contributor = $response['_source']['dct:contributor']?? null;
         $this->title = $response['_source']['dct:title'] ?? null;
-        $this->source = $response['_source'];
     }
 
     /**
-     * @return string
+     * @return string | array
      */
-    public function geId() 
+    public function geId()
     {
-        return $this->id ?? '';
-    }
-    /**
-     * @return array
-     */
-    public function getSource() : array
-    {
-        return $this->source;
-    }
-    /**
-     * @return string
-     */
-    public function getHasInstance() 
-    {
-        return $this->hasInstance ?? '';
-    }
-    /**
-     * @return string
-     */
-    public function getContributor() 
-    {
-        return $this->contributor ?? '';
-    }
-    /**
-     * @return string
-     */
-    public function getTitle() 
-    {
-        return $this->title ?? '';
+        return $this->id;
     }
 
+    /**
+     * @return string | array
+     */
+    public function getHasInstance()
+    {
+        return $this->hasInstance;
+    }
 
+    /**
+     * @return string | array
+     */
+    public function getContributor()
+    {
+        return $this->contributor;
+    }
 
-
+    /**
+     * @return string | array
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }
