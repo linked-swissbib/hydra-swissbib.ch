@@ -7,7 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A BiobligraphicResource.
+ * A BibliographicResource.
  *
  * @see http://purl.org/dc/terms/BibliographicResource Documentation on purl.org
  *
@@ -24,43 +24,42 @@ use Doctrine\ORM\Mapping as ORM;
 class BibliographicResource
 {
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
+    
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/title")
      */
     private $title;
+    
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type")
      */
     private $type;
+    
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/language")
      */
     private $language;
+    
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/dc/elements/1.1/format")
      */
     private $format;
+
     /**
-     * @var array
-     *
-     * @ApiProperty(readable=false)
-     */
-    private $source;
-    /**
-     * BiobligraphicResource constructor.
+     * BibliographicResource constructor.
      *
      * @param array $response
      */
@@ -71,93 +70,45 @@ class BibliographicResource
         $this->language = $response['_source']['dct:language'] ?? null;
         $this->format = $response['_source']['dc:format'] ?? null;
         $this->id = $response['_id'];
-        $this->source = $response['_source'];
     }
+    
     /**
-     * @return string
+     * @return string | array
      */
     public function getTitle()
     {
-        return $this->title ?? '';
+        return $this->title;
     }
+    
     /**
-     * @param string $title
-     *
-     * @return string
-     */
-    public function setTitle(string $title)
-    {
-        $this->title = $title;
-    }
-    /**
-     * @return string
+     * @return string | array
      */
     public function getId()
     {
-        return $this->id ?? '';
+        return $this->id;
     }
+
     /**
-     * @param string $id
-     *
-     * @return string
-     */
-    public function setId(string $id)
-    {
-        $this->id = $id;
-    }
-    /**
-     * @return array
-     */
-    public function getSource() : array
-    {
-        return $this->source;
-    }
-    /**
-     * @return string
+     * @return string |array
      */
     public function getType()
     {
-        return $this->type ?? '';
+        return $this->type;
     }
+    
     /**
-     * @param string $type
-     *
-     * @return string
-     */
-    public function setType(string $type)
-    {
-        $this->type = $type;
-    }
-    /**
-     * @return string
+     * @return string | array
      */
     public function getLanguage()
     {
-        return $this->language ?? '';
+        return $this->language;
     }
+
     /**
-     * @param string $language
-     *
-     * @return string
-     */
-    public function setLanguage(string $language)
-    {
-        $this->language = $language;
-    }
-    /**
-     * @return string
+     * @return string | array
      */
     public function getFormat()
     {
-        return $this->format ?? '';
-    }
-    /**
-     * @param string $format
-     *
-     * @return string
-     */
-    public function setFormat(string $format)
-    {
-        $this->format = $format;
+        return $this->format;
     }
 }
