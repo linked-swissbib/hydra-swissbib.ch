@@ -32,10 +32,16 @@ class RdfxmlEncoder implements EncoderInterface
      */
     public function encode($data, $format, array $context = array())
     {
-        //$this->easyRdfGraph->parse($data, 'php');
+        $data = [
+            "http://xmlns.com/foaf/0.1/Organization" => [
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#/ID" =>  array( array( "type" => "literal" , "value" => "ABN-30iu721838-3954-3cc9-88fe-96f1eb279f1b" ), ),
+                "http://www.w3.org/2000/01/rdf-schema#/label" =>  array( array( "type" => "literal" , "value" => "testLabel" ), ),
+            ]
+        ];
+        $this->easyRdfGraph->parse($data, 'php');
 
-        return '<xml><root>some xml</root>';
-        //return $this->easyRdfGraph->serialise('rdfxml');
+        //return '<xml><root>some xml</root>';
+        return $this->easyRdfGraph->serialise('rdfxml');
     }
 
     /**
