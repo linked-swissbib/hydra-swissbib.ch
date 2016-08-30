@@ -59,27 +59,13 @@ class BibliographicResource
     private $format;
 
     /**
-     * BibliographicResource constructor.
-     *
-     * @param array $response
+     * @param array | string $id
      */
-    public function __construct(array $response)
+    public function setId($id)
     {
-        $this->title = $response['_source']['dct:title'] ?? null;
-        $this->type = $response['_source']['rdf:type'] ?? null;
-        $this->language = $response['_source']['dct:language'] ?? null;
-        $this->format = $response['_source']['dc:format'] ?? null;
-        $this->id = $response['_id'];
+        $this->id = $id;
     }
-    
-    /**
-     * @return string | array
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-    
+
     /**
      * @return string | array
      */
@@ -89,11 +75,43 @@ class BibliographicResource
     }
 
     /**
-     * @return string |array
+     * @param array | string $title
      */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string | array
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param array | string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string |array
+    */
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @param array | string $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
     }
     
     /**
@@ -102,6 +120,14 @@ class BibliographicResource
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * @param array | string $format
+     */
+    public function setFormat($format)
+    {
+        $this->format = $format;
     }
 
     /**

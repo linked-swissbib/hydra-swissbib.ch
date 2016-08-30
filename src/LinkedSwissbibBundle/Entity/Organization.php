@@ -37,16 +37,13 @@ class Organization
      * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label")
      */
     private $label;
-    
+
     /**
-     * Origanization constructor.
-     *
-     * @param array $response
+     * @param array | string $id
      */
-    public function __construct(array $response)
+    public function setId($id)
     {
-        $this->id = $response['_id'];
-        $this->label = $response['_source']['rdfs:label'] ?? null;
+        $this->id = $id;
     }
 
     /**
@@ -55,6 +52,14 @@ class Organization
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param array | string $label
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
     }
     
     /**

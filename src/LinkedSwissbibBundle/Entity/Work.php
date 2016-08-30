@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: Melanie
  * Date: 16.08.2016
  * Time: 11:35
@@ -61,18 +60,11 @@ class Work
     private $title;
 
     /**
-     * Work constructor.
-     *
-     * @param array $response
+     * @param array | string $id
      */
-    public function __construct(array $response)
+    public function setId($id)
     {
-        $this->id = $response['_id'];
-        $this->context = $response['_source'];
-        $this->type = $response['_source'];
-        $this->hasInstance = $response['_source']['bf:hasInstance'] ?? null;
-        $this->contributor = $response['_source']['dct:contributor']?? null;
-        $this->title = $response['_source']['dct:title'] ?? null;
+        $this->id = $id;
     }
 
     /**
@@ -84,6 +76,14 @@ class Work
     }
 
     /**
+     * @param array | string $hasInstance
+     */
+    public function setHasInstance($hasInstance)
+    {
+        $this->hasInstance = $hasInstance;
+    }
+
+    /**
      * @return string | array
      */
     public function getHasInstance()
@@ -92,11 +92,27 @@ class Work
     }
 
     /**
+     * @param array | string $contributor
+     */
+    public function setContributor($contributor)
+    {
+        $this->contributor = $contributor;
+    }
+
+    /**
      * @return string | array
      */
     public function getContributor()
     {
         return $this->contributor;
+    }
+
+    /**
+     * @param array | string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 
     /**
