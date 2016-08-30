@@ -51,7 +51,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
         $mappedProperties = $this->contextMapper->fromExternalToInternal($this->getElasticsearchTypeFromResourceClass($resourceClass), $response);
         $entity = $this->entityBuilder->build($resourceClass, $mappedProperties);
 
-        return $response ? new $resourceClass($response) : null;
+        return $entity;
     }
 
     /**

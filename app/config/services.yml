@@ -12,7 +12,11 @@ services:
     linked_swissbib.elasticsearch_item_data_provider:
         class: 'LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider'
         tags: [ { name: 'api_platform.item_data_provider', priority: 1 } ]
-        arguments: ['@linked_swissbib.elasticsearch_client', '@linked_swissbib.context_mapper']
+        arguments: ['@linked_swissbib.elasticsearch_client', '@linked_swissbib.entity_simple_entity_builder' ,'@linked_swissbib.elasticsearch_context_mapper']
+
+    linked_swissbib.elasticsearch_context_mapper:
+        class: LinkedSwissbibBundle\Elasticsearch\ElasticsearchContextMapper
+        arguments: ['@linked_swissbib.cache']
 
     linked_swissbib.naming.resource_path_naming_strategy.camel_case:
         class: 'LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator'
@@ -21,6 +25,6 @@ services:
         class: Doctrine\Common\Cache\FilesystemCache
         arguments: [%kernel.cache_dir%]
 
-    linked_swissbib.context_mapper:
-        class: LinkedSwissbibBundle\Elasticsearch\ContextMapper
-        arguments: ['@linked_swissbib.cache', '@logger']
+    linked_swissbib.entity_simple_entity_builder:
+        class: LinkedSwissbibBundle\Entity\SimpleEntityBuilder
+        arguments: ['@logger']
