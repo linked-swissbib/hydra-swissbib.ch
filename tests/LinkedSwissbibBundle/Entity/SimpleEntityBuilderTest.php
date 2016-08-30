@@ -33,9 +33,11 @@ class SimpleEntityBuilderTest extends \PHPUnit_Framework_TestCase
     /**
      * @return void
      */
-    public function testNotExistingClass()
+    public function testNotExistingEntity()
     {
-        $entity = $this->entityBuilder->build('LinkedSwissbibBundle\\NonExistingClassName', ['attrA' => 'attrAValue']);
+        $this->mockLogger->expects($this->once())->method('error');
+
+        $entity = $this->entityBuilder->build('Tests\\LinkedSwissbibBundle\\NonExistingEntityName', ['attrA' => 'attrAValue']);
 
         $this->assertNull($entity);
     }
@@ -45,6 +47,9 @@ class SimpleEntityBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function testExistingEntity()
     {
+        $this->mockLogger->expects($this->never())->method('warning');
+        $this->mockLogger->expects($this->never())->method('error');
+
         /** @var StubEntity $entity */
         $entity = $this->entityBuilder->build(
             'Tests\\LinkedSwissbibBundle\\Entity\\StubEntity',
@@ -64,8 +69,7 @@ class SimpleEntityBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function testWarningOnNonExistingAttribute()
     {
-        $this->mockLogger->expects($this->once())
-            ->method('warning');
+        $this->mockLogger->expects($this->once())->method('warning');
 
         $this->entityBuilder->build(
             'Tests\\LinkedSwissbibBundle\\Entity\\StubEntity',
