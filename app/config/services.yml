@@ -23,7 +23,7 @@ services:
 
     linked_swissbib.cache:
         class: Doctrine\Common\Cache\FilesystemCache
-        arguments: [%kernel.cache_dir%]
+        arguments: ['%kernel.cache_dir%']
 
     linked_swissbib.entity_simple_entity_builder:
         class: LinkedSwissbibBundle\Entity\SimpleEntityBuilder
