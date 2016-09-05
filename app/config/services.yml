@@ -26,8 +26,7 @@ services:
 
     linked_swissbib.rdfxml_encoder:
         class: LinkedSwissbibBundle\Serializer\Encoder\RdfxmlEncoder
-        tags:
-            - { name: serializer.encoder }
+        tags: [ { name: serializer.encoder } ]
         arguments: ['@linked_swissbib.easy_rdf_graph']
 
     linked_swissbib.cache:
@@ -37,3 +36,9 @@ services:
     linked_swissbib.entity_simple_entity_builder:
         class: LinkedSwissbibBundle\Entity\SimpleEntityBuilder
         arguments: ['@logger']
+
+    linked_swissbib.serializer.normalizer.item:
+        class: LinkedSwissbibBundle\Serializer\ItemNormalizer
+        decorates: api_platform.jsonld.normalizer.item
+        arguments: ['@linked_swissbib.serializer.normalizer.item.inner', '@api_platform.resource_class_resolver']
+        tags: [ { name: 'serializer.normalizer', priority: 12 } ]
