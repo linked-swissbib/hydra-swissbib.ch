@@ -10,7 +10,7 @@ services:
         arguments: ['%linked_swissbib.elastic_search.hosts%']
 
     linked_swissbib.elasticsearch_item_data_provider:
-        class: 'LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider'
+        class: LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider
         tags: [ { name: 'api_platform.item_data_provider', priority: 1 } ]
         arguments: ['@linked_swissbib.elasticsearch_client', '@linked_swissbib.entity_simple_entity_builder' ,'@linked_swissbib.elasticsearch_context_mapper']
 
@@ -19,7 +19,7 @@ services:
         arguments: ['@linked_swissbib.cache']
 
     linked_swissbib.naming.resource_path_naming_strategy.camel_case:
-        class: 'LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator'
+        class: LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator
 
     linked_swissbib.cache:
         class: Doctrine\Common\Cache\FilesystemCache
@@ -28,3 +28,9 @@ services:
     linked_swissbib.entity_simple_entity_builder:
         class: LinkedSwissbibBundle\Entity\SimpleEntityBuilder
         arguments: ['@logger']
+
+    linked_swissbib.serializer.normalizer.item:
+        class: LinkedSwissbibBundle\Serializer\ItemNormalizer
+        decorates: api_platform.jsonld.normalizer.item
+        arguments: ['@linked_swissbib.serializer.normalizer.item.inner', '@api_platform.resource_class_resolver']
+        tags: [ { name: 'serializer.normalizer', priority: 12 } ]
