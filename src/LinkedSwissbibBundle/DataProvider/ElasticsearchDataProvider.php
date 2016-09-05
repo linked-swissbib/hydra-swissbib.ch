@@ -4,6 +4,8 @@ namespace LinkedSwissbibBundle\DataProvider;
 
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use Elasticsearch\Client;
+use LinkedSwissbibBundle\ContextMapping\ContextMapper;
+use LinkedSwissbibBundle\Entity\EntityBuilder;
 
 class ElasticsearchDataProvider implements ItemDataProviderInterface
 {
@@ -13,13 +15,25 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
     protected $client;
 
     /**
-     * ElasticsearchDataProvider constructor.
-     *
-     * @param Client $client
+     * @var EntityBuilder
      */
-    public function __construct(Client $client)
+    protected $entityBuilder;
+
+    /**
+     * @var ContextMapper
+     */
+    protected $contextMapper;
+
+    /**
+     * @param Client $client
+     * @param EntityBuilder $entityBuilder
+     * @param ContextMapper $contextMapper
+     */
+    public function __construct(Client $client, EntityBuilder $entityBuilder, ContextMapper $contextMapper)
     {
         $this->client = $client;
+        $this->entityBuilder = $entityBuilder;
+        $this->contextMapper = $contextMapper;
     }
 
     /**
@@ -34,8 +48,10 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
         ];
 
         $response = $this->client->get($params);
+        $mappedProperties = $this->contextMapper->fromExternalToInternal($this->getElasticsearchTypeFromResourceClass($resourceClass), $response);
+        $entity = $this->entityBuilder->build($resourceClass, $mappedProperties);
 
-        return $response ? new $resourceClass($response) : null;
+        return $entity;
     }
 
     /**

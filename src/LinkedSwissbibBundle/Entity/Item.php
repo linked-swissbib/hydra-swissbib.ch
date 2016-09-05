@@ -66,18 +66,11 @@ class Item
     private $subLocation;
 
     /**
-     * Item constructor.
-     *
-     * @param array $response
+     * @param array | string $id
      */
-    public function __construct(array $response)
+    public function setId($id)
     {
-        $this->id = $response['_id'];
-        $this->holdingFor = $response['_source']['bf:holdingFor'] ?? null;
-        $this->subLocation = $response['_source']['bf:subLocation'] ?? null;
-        $this->locator = $response['_source']['bibo:locator'] ?? null;
-        $this->owner = $response['_source']['bibo:owner'] ?? null;
-        $this->page  = $response['_source']['foaf:page'] ?? null;
+        $this->id = $id;
     }
 
     /**
@@ -89,11 +82,27 @@ class Item
     }
 
     /**
+     * @param array | string $holdingFor
+     */
+    public function setHoldingFor($holdingFor)
+    {
+        $this->holdingFor = $holdingFor;
+    }
+
+    /**
      * @return string | array
      */
     public function getHoldingFor()
     {
         return $this->holdingFor;
+    }
+
+    /**
+     * @param array | string $subLocation
+     */
+    public function setSubLocation($subLocation)
+    {
+        $this->subLocation = $subLocation;
     }
 
     /**
@@ -105,6 +114,14 @@ class Item
     }
 
     /**
+     * @param array | string $locator
+     */
+    public function setLocator($locator)
+    {
+        $this->locator = $locator;
+    }
+
+    /**
      * @return string | array
      */
     public function getLocator()
@@ -113,11 +130,27 @@ class Item
     }
 
     /**
+     * @param array | string $owner
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
      * @return string | array
      */
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * @param array | string $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
     }
 
     /**
