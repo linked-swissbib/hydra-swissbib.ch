@@ -10,7 +10,7 @@ class RdfxmlEncoder implements EncoderInterface
     /**
      * Supported format
      */
-    const FORMAT = 'rdf'; //todo find out how to use rdfxml, because rdf is also mapped to application/rdf+xml
+    const FORMAT = 'rdf'; //TODO find out how to use rdfxml, because rdf is also mapped to application/rdf+xml
 
     /**
      * @var EasyRdf_Graph
@@ -32,15 +32,12 @@ class RdfxmlEncoder implements EncoderInterface
      */
     public function encode($data, $format, array $context = array())
     {
-        $data = [
-            "http://xmlns.com/foaf/0.1/Organization" => [
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#/ID" =>  array( array( "type" => "literal" , "value" => "ABN-30iu721838-3954-3cc9-88fe-96f1eb279f1b" ), ),
-                "http://www.w3.org/2000/01/rdf-schema#/label" =>  array( array( "type" => "literal" , "value" => "testLabel" ), ),
-            ]
-        ];
-        $this->easyRdfGraph->parse($data, 'php');
+        //TODO find out how to generate fully qualified context and id urls OR better embed context
+        $data['@context'] = 'http://' . $_SERVER['HTTP_HOST'] . $data['@context'];
+        $data['@id'] = 'http://' . $_SERVER['HTTP_HOST'] . $data['@id'];
 
-        //return '<xml><root>some xml</root>';
+        $this->easyRdfGraph->parse(json_encode($data), 'jsonld');
+
         return $this->easyRdfGraph->serialise('rdfxml');
     }
 
