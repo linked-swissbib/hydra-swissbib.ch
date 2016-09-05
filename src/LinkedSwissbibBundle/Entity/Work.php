@@ -1,9 +1,4 @@
 <?php
-/**
- * User: Melanie
- * Date: 16.08.2016
- * Time: 11:35
- */
 
 namespace LinkedSwissbibBundle\Entity;
 
