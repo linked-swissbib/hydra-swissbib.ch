@@ -5,7 +5,7 @@ namespace LinkedSwissbibBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * A person.
  *
@@ -115,7 +115,7 @@ class Person
     /**
      * @var string | array
      *
-     * @Assert\Dates
+     * @Assert\Date
      * @ApiProperty(iri="http://dbpedia.org/ontology/birthDate");
      *
      */

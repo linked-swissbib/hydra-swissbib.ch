@@ -65,7 +65,7 @@ class Work
     /**
      * @return string | array
      */
-    public function geId()
+    public function getId()
     {
         return $this->id;
     }
