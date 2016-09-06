@@ -77,5 +77,6 @@ api_platform:
     formats:
         jsonld: ["application/ld+json"]
         rdfxml: ["application/rdf+xml"]
+        html: ["text/html"]
     naming:
         resource_path_naming_strategy: 'linked_swissbib.naming.resource_path_naming_strategy.camel_case'
