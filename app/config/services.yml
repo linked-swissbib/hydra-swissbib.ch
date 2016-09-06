@@ -29,6 +29,16 @@ services:
         tags: [ { name: serializer.encoder } ]
         arguments: ['@linked_swissbib.easy_rdf_graph']
 
+    linked_swissbib.turtle_encoder:
+            class: LinkedSwissbibBundle\Serializer\Encoder\TurtleEncoder
+            tags: [ { name: serializer.encoder } ]
+            arguments: ['@linked_swissbib.easy_rdf_graph']
+
+    inked_swissbib.ntriples_encoder:
+                class: LinkedSwissbibBundle\Serializer\Encoder\NTriplesEncoder
+                tags: [ { name: serializer.encoder } ]
+                arguments: ['@linked_swissbib.easy_rdf_graph']
+
     linked_swissbib.cache:
         class: Doctrine\Common\Cache\FilesystemCache
         arguments: ['%kernel.cache_dir%']
