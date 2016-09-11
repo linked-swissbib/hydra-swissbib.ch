@@ -45,5 +45,14 @@ services:
     linked_swissbib.serializer.normalizer.item:
         class: LinkedSwissbibBundle\Serializer\ItemNormalizer
         decorates: api_platform.jsonld.normalizer.item
-        arguments: ['@linked_swissbib.serializer.normalizer.item.inner', '@api_platform.resource_class_resolver']
+        arguments:
+            - '@linked_swissbib.serializer.normalizer.item.inner'
+            - '@api_platform.metadata.resource.metadata_factory'
+            - '@api_platform.metadata.property.name_collection_factory'
+            - '@api_platform.metadata.property.metadata_factory'
+            - '@api_platform.iri_converter'
+            - '@api_platform.resource_class_resolver'
+            - '@api_platform.jsonld.context_builder'
+            - '@api_platform.property_accessor'
         tags: [ { name: 'serializer.normalizer', priority: 12 } ]
+

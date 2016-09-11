@@ -2,19 +2,24 @@
 
 namespace LinkedSwissbibBundle\Serializer;
 
+use ApiPlatform\Core\Api\IriConverterInterface;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
-use ApiPlatform\Core\Exception\InvalidArgumentException;
+use ApiPlatform\Core\Api\UrlGeneratorInterface;
+use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer as ApiPlatformItemNormalizer;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
+use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface;
+use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
+use ApiPlatform\Core\Serializer\AbstractItemNormalizer;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
+use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 use Symfony\Component\Serializer\Normalizer\scalar;
-use Symfony\Component\Serializer\SerializerAwareInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Decorated ItemNormalizer in order to be able to exclude null values and use json-ld as input format for all encoders
  */
-class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, DenormalizerInterface
+class ItemNormalizer extends AbstractItemNormalizer
 {
     /**
      * @var ApiPlatformItemNormalizer
@@ -27,23 +32,33 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
     protected $resourceClassResolver;
 
     /**
-     * @param ApiPlatformItemNormalizer $itemNormalizer
-     * @param ResourceClassResolverInterface $resourceClassResolver
+     * @var ResourceMetadataFactoryInterface
      */
-    public function __construct(ApiPlatformItemNormalizer $itemNormalizer, ResourceClassResolverInterface $resourceClassResolver)
-    {
-        $this->itemNormalizer = $itemNormalizer;
-        $this->resourceClassResolver = $resourceClassResolver;
-    }
+    protected $resourceMetadataFactory;
 
     /**
-     * Sets the owning Serializer object.
-     *
-     * @param SerializerInterface $serializer
+     * @var ContextBuilderInterface
      */
-    public function setSerializer(SerializerInterface $serializer)
+    protected $contextBuilder;
+
+    /**
+     * @param ApiPlatformItemNormalizer $itemNormalizer
+     * @param ResourceMetadataFactoryInterface $resourceMetadataFactory
+     * @param PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory
+     * @param PropertyMetadataFactoryInterface $propertyMetadataFactory
+     * @param IriConverterInterface $iriConverter
+     * @param ResourceClassResolverInterface $resourceClassResolver
+     * @param ContextBuilderInterface $contextBuilder
+     * @param PropertyAccessorInterface|null $propertyAccessor
+     * @param NameConverterInterface|null $nameConverter
+     */
+    public function __construct(ApiPlatformItemNormalizer $itemNormalizer, ResourceMetadataFactoryInterface $resourceMetadataFactory, PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory, IriConverterInterface $iriConverter, ResourceClassResolverInterface $resourceClassResolver, ContextBuilderInterface $contextBuilder, PropertyAccessorInterface $propertyAccessor = null, NameConverterInterface $nameConverter = null)
     {
-        $this->itemNormalizer->setSerializer($serializer);
+        parent::__construct($propertyNameCollectionFactory, $propertyMetadataFactory, $iriConverter, $resourceClassResolver, $propertyAccessor, $nameConverter);
+
+        $this->itemNormalizer = $itemNormalizer;
+        $this->resourceMetadataFactory = $resourceMetadataFactory;
+        $this->contextBuilder = $contextBuilder;
     }
 
     /**
@@ -58,21 +73,7 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        return $this->denormalize($data, $class, $format, $context);
-    }
-
-    /**
-     * Checks whether the given class is supported for denormalization by this normalizer.
-     *
-     * @param mixed  $data   Data to denormalize from
-     * @param string $type   The class to which the data should be denormalized
-     * @param string $format The format being deserialized from
-     *
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        return $this->itemNormalizer->supportsDenormalization($data, $type, $format);
+        return $this->itemNormalizer->denormalize($data, $class, 'jsonld', $context);
     }
 
     /**
@@ -86,33 +87,21 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
      */
     public function normalize($object, $format = null, array $context = array())
     {
+        $resourceClass = $this->resourceClassResolver->getResourceClass($object, $context['resource_class'] ?? null, true);
         $normalizedData = $this->itemNormalizer->normalize($object, $format, $context);
-        $data = $this->filterNullValues($normalizedData);
+        $filteredData = $this->filterNullValues($normalizedData);
 
-        return $data;
-    }
-
-    /**
-     * Checks whether the given class is supported for normalization by this normalizer.
-     *
-     * @param mixed  $data   Data to normalize
-     * @param string $format The format being (de-)serialized from or into
-     *
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null)
-    {
-        if (!is_object($data)) {
-            return false;
+        if (!isset($context['jsonld_embed_context'])) {
+            /**
+             * todo remove workaround if pull request gets merged, uncomment the following line
+             */
+            //$filteredData['@context'] = $this->contextBuilder->getResourceContextUri($resourceClass, UrlGeneratorInterface::ABS_URL);
+            $filteredData['@context'] = 'http://' . $_SERVER['HTTP_HOST']  . $filteredData['@context'];
         }
 
-        try {
-            $this->resourceClassResolver->getResourceClass($data);
-        } catch (InvalidArgumentException $e) {
-            return false;
-        }
+        $filteredData['@id'] =  $this->iriConverter->getIriFromItem($object, UrlGeneratorInterface::ABS_URL);
 
-        return true;
+        return $filteredData;
     }
 
     /**
@@ -125,5 +114,16 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
         return array_filter($data, function ($value) {
             return $value !== null;
         });
+    }
+
+    /**
+     * Sets the owning Serializer object.
+     *
+     * @param SerializerInterface $serializer
+     */
+    public function setSerializer(SerializerInterface $serializer)
+    {
+        parent::setSerializer($serializer);
+        $this->itemNormalizer->setSerializer($serializer);
     }
 }
