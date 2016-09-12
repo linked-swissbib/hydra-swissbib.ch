@@ -56,3 +56,10 @@ services:
             - '@api_platform.property_accessor'
         tags: [ { name: 'serializer.normalizer', priority: 12 } ]
 
+    linked_swissbib.serializer.normalizer.entrypoint:
+        class: LinkedSwissbibBundle\Serializer\EntrypointNormalizer
+        decorates: api_platform.hydra.normalizer.entrypoint
+        arguments:
+            - '@linked_swissbib.serializer.normalizer.entrypoint.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 30 } ]
+
