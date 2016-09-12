@@ -62,34 +62,19 @@ class ItemNormalizer extends AbstractItemNormalizer
     }
 
     /**
-     * Denormalizes data back into an object of the given class.
-     *
-     * @param mixed  $data    data to restore
-     * @param string $class   the expected class to instantiate
-     * @param string $format  format the given data was extracted from
-     * @param array  $context options available to the denormalizer
-     *
-     * @return object
+     * {@inheritdoc}
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        return $this->itemNormalizer->denormalize($data, $class, 'jsonld', $context);
+        return $this->itemNormalizer->denormalize($data, $class, ApiPlatformItemNormalizer::FORMAT, $context);
     }
 
     /**
-     * Normalizes an object into a set of arrays/scalars.
-     *
-     * @param object $object  object to normalize
-     * @param string $format  format the normalization result will be encoded as
-     * @param array  $context Context options for the normalizer
-     *
-     * @return array|scalar
+     * {@inheritdoc}
      */
     public function normalize($object, $format = null, array $context = array())
     {
-        $resourceClass = $this->resourceClassResolver->getResourceClass($object, $context['resource_class'] ?? null, true);
-
-        if ($format !== 'jsonld') {
+        if ($format !== ApiPlatformItemNormalizer::FORMAT) {
             //embed context to avoid an additional request on encoding to e.g. rdf
             $context['jsonld_embed_context'] = true;
         }
@@ -97,14 +82,7 @@ class ItemNormalizer extends AbstractItemNormalizer
         $normalizedData = $this->itemNormalizer->normalize($object, $format, $context);
         $filteredData = $this->filterNullValues($normalizedData);
 
-        if (!isset($context['jsonld_embed_context'])) {
-            /**
-             * todo remove workaround if pull request gets merged, uncomment the following line
-             */
-            //$filteredData['@context'] = $this->contextBuilder->getResourceContextUri($resourceClass, UrlGeneratorInterface::ABS_URL);
-            $filteredData['@context'] = 'http://' . $_SERVER['HTTP_HOST']  . $filteredData['@context'];
-        }
-
+        //todo remove after https://github.com/api-platform/api-platform/issues/128 is implemented
         $filteredData['@id'] =  $this->iriConverter->getIriFromItem($object, UrlGeneratorInterface::ABS_URL);
 
         return $filteredData;
