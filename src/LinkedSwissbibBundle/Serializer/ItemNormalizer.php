@@ -88,6 +88,12 @@ class ItemNormalizer extends AbstractItemNormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $resourceClass = $this->resourceClassResolver->getResourceClass($object, $context['resource_class'] ?? null, true);
+
+        if ($format !== 'jsonld') {
+            //embed context to avoid an additional request on encoding to e.g. rdf
+            $context['jsonld_embed_context'] = true;
+        }
+
         $normalizedData = $this->itemNormalizer->normalize($object, $format, $context);
         $filteredData = $this->filterNullValues($normalizedData);
 
