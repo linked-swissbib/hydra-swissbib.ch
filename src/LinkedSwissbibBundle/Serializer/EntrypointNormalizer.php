@@ -32,7 +32,9 @@ class EntrypointNormalizer implements NormalizerInterface
         $data = $this->entrypointNormalizer->normalize($object, $format, $context);
 
         //todo remove after https://github.com/api-platform/api-platform/issues/128 is implemented
-        $data['@context'] = 'http://' . $_SERVER['HTTP_HOST']  . $data['@context'];
+        if (isset($_SERVER['HTTP_HOST'])) {
+            $data['@context'] = 'http://' . $_SERVER['HTTP_HOST']  . $data['@context'];
+        }
 
         return $data;
     }
