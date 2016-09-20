@@ -39,6 +39,11 @@ services:
                 tags: [ { name: serializer.encoder } ]
                 arguments: ['@linked_swissbib.easy_rdf_graph']
 
+    linked_swissbib.html_encoder:
+        class: LinkedSwissbibBundle\Serializer\Encoder\HtmlEncoder
+        tags: [ { name: serializer.encoder } ]
+        arguments: ['@linked_swissbib.easy_rdf_graph', '@templating']
+
     linked_swissbib.cache:
         class: Doctrine\Common\Cache\FilesystemCache
         arguments: ['%kernel.cache_dir%']
