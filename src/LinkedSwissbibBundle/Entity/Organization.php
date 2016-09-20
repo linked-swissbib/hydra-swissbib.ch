@@ -25,21 +25,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Organization
 {
     /**
-     * @var string | array
+     * @var string|array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label")
+     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label",writable=false)
      */
     private $label;
 
     /**
-     * @param array | string $id
+     * @param array|string $id
      */
     public function setId($id)
     {
@@ -47,7 +47,7 @@ class Organization
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getId()
     {
@@ -55,7 +55,7 @@ class Organization
     }
 
     /**
-     * @param array | string $label
+     * @param array|string $label
      */
     public function setLabel($label)
     {
@@ -63,7 +63,7 @@ class Organization
     }
     
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getLabel()
     {

@@ -25,273 +25,273 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Person
 {
     /**
-     * @var string | array
+     * @var string|array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string | array
+     * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/birthYear");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/birthYear",writable=false);
      *
      */
     private $birthYear;
 
     /**
-     * @var string | array
+     * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/deathYear");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/deathYear",writable=false);
      *
      */
     private $deathYear;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/firstName");
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/firstName",writable=false);
      *
      */
     private $firstName;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/lastName");
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/lastName",writable=false);
      *
      */
     private $lastName;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/name");
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/name",writable=false);
      *
      */
     private $name;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="TODO");
+     * @ApiProperty(iri="TODO",writable=false);
      *
      */
     private $sameAs;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label");
+     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label",writable=false);
      *
      */
     private $label;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/2004/02/skos/core#/note");
+     * @ApiProperty(iri="http://www.w3.org/2004/02/skos/core#/note",writable=false);
      *
      */
     private $note;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/birthPlace");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/birthPlace",writable=false);
      *
      */
     private $birthPlace;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/deathPlace");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/deathPlace",writable=false);
      *
      */
     private $deathPlace;
 
     /**
-     * @var string | array
+     * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/birthDate");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/birthDate",writable=false);
      *
      */
     private $birthDate;
 
     /**
-     * @var string | array
+     * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/deathDate");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/deathDate",writable=false);
      *
      */
     private $deathDate;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/genre");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/genre",writable=false);
      *
      */
     private $genre;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/movement");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/movement",writable=false);
      *
      */
     private $movement;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/nationality");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/nationality",writable=false);
      *
      */
     private $nationality;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/notableWork");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/notableWork",writable=false);
      *
      */
     private $notableWork;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/occupation");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/occupation",writable=false);
      *
      */
     private $occupation;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/thumbnail");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/thumbnail",writable=false);
      *
      */
     private $thumbnail;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/influencedBy");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/influencedBy",writable=false);
      *
      */
     private $influencedBy;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/partner");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/partner",writable=false);
      *
      */
     private $partner;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/pseudonym");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/pseudonym",writable=false);
      *
      */
     private $pseudonym;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/spouse");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/spouse",writable=false);
      *
      */
     private $spouse;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/influenced");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/influenced",writable=false);
      *
      */
     private $influenced;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/alternateName");
+     * @ApiProperty(iri="https://schema.org/alternateName",writable=false);
      *
      */
     private $alternateName;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/birthDate");
+     * @ApiProperty(iri="https://schema.org/birthDate",writable=false);
      *
      */
     //TODO doppelter Eintrag private $birthDate;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/deathDate");
+     * @ApiProperty(iri="https://schema.org/deathDate",writable=false);
      *
      */
     //TODO doppelter Eintrag private $deathDate;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/familyName");
+     * @ApiProperty(iri="https://schema.org/familyName",writable=false);
      *
      */
     private $familyName;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/givenName");
+     * @ApiProperty(iri="https://schema.org/givenName",writable=false);
      *
      */
     private $givenName;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/gender");
+     * @ApiProperty(iri="https://schema.org/gender",writable=false);
      *
      */
     private $gender;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/sameAs");
+     * @ApiProperty(iri="https://schema.org/sameAs",writable=false);
      *
      */
     // TODO doppelter Eintrag private $sameAs;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#/type");
+     * @ApiProperty(iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#/type,writable=false");
      *
      */
     private $type;
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/abstract");
+     * @ApiProperty(iri="http://dbpedia.org/ontology/abstract",writable=false);
      *
      */
     private $abstract;
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getId()
     {
@@ -299,7 +299,7 @@ class Person
     }
 
     /**
-     * @param array | string $id
+     * @param array|string $id
      */
     public function setId($id)
     {
@@ -307,7 +307,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getBirthYear()
     {
@@ -315,7 +315,7 @@ class Person
     }
 
     /**
-     * @param array | string $birthYear
+     * @param array|string $birthYear
      */
     public function setBirthYear($birthYear)
     {
@@ -323,7 +323,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getDeathYear()
     {
@@ -331,7 +331,7 @@ class Person
     }
 
     /**
-     * @param array | string $deathYear
+     * @param array|string $deathYear
      */
     public function setDeathYear($deathYear)
     {
@@ -339,7 +339,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getFirstName()
     {
@@ -347,7 +347,7 @@ class Person
     }
 
     /**
-     * @param array | string $firstName
+     * @param array|string $firstName
      */
     public function setFirstName($firstName)
     {
@@ -355,7 +355,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getLastName()
     {
@@ -363,7 +363,7 @@ class Person
     }
 
     /**
-     * @param array | string $lastName
+     * @param array|string $lastName
      */
     public function setLastName($lastName)
     {
@@ -371,7 +371,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getName()
     {
@@ -379,7 +379,7 @@ class Person
     }
 
     /**
-     * @param array | string $name
+     * @param array|string $name
      */
     public function setName($name)
     {
@@ -387,7 +387,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getSameAs()
     {
@@ -395,7 +395,7 @@ class Person
     }
 
     /**
-     * @param array | string $sameAs
+     * @param array|string $sameAs
      */
     public function setSameAs($sameAs)
     {
@@ -403,7 +403,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getLabel()
     {
@@ -411,7 +411,7 @@ class Person
     }
 
     /**
-     * @param array | string $label
+     * @param array|string $label
      */
     public function setLabel($label)
     {
@@ -419,7 +419,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getNote()
     {
@@ -427,7 +427,7 @@ class Person
     }
 
     /**
-     * @param array | string $note
+     * @param array|string $note
      */
     public function setNote($note)
     {
@@ -435,7 +435,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getBirthPlace()
     {
@@ -443,7 +443,7 @@ class Person
     }
 
     /**
-     * @param array | string $birthPlace
+     * @param array|string $birthPlace
      */
     public function setBirthPlace($birthPlace)
     {
@@ -451,7 +451,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getDeathPlace()
     {
@@ -459,7 +459,7 @@ class Person
     }
 
     /**
-     * @param array | string $deathPlace
+     * @param array|string $deathPlace
      */
     public function setDeathPlace($deathPlace)
     {
@@ -467,7 +467,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getBirthDate()
     {
@@ -475,7 +475,7 @@ class Person
     }
 
     /**
-     * @param array | string $birthDate
+     * @param array|string $birthDate
      */
     public function setBirthDate($birthDate)
     {
@@ -483,7 +483,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getDeathDate()
     {
@@ -491,7 +491,7 @@ class Person
     }
 
     /**
-     * @param array | string $deathDate
+     * @param array|string $deathDate
      */
     public function setDeathDate($deathDate)
     {
@@ -499,7 +499,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getGenre()
     {
@@ -507,7 +507,7 @@ class Person
     }
 
     /**
-     * @param array | string $genre
+     * @param array|string $genre
      */
     public function setGenre($genre)
     {
@@ -515,7 +515,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getMovement()
     {
@@ -523,7 +523,7 @@ class Person
     }
 
     /**
-     * @param array | string $movement
+     * @param array|string $movement
      */
     public function setMovement($movement)
     {
@@ -531,7 +531,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getNationality()
     {
@@ -539,7 +539,7 @@ class Person
     }
 
     /**
-     * @param array | string $nationality
+     * @param array|string $nationality
      */
     public function setNationality($nationality)
     {
@@ -547,7 +547,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getNotableWork()
     {
@@ -555,7 +555,7 @@ class Person
     }
 
     /**
-     * @param array | string $notableWork
+     * @param array|string $notableWork
      */
     public function setNotableWork($notableWork)
     {
@@ -563,7 +563,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getOccupation()
     {
@@ -571,7 +571,7 @@ class Person
     }
 
     /**
-     * @param array | string $occupation
+     * @param array|string $occupation
      */
     public function setOccupation($occupation)
     {
@@ -579,7 +579,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getThumbnail()
     {
@@ -587,7 +587,7 @@ class Person
     }
 
     /**
-     * @param array | string $thumbnail
+     * @param array|string $thumbnail
      */
     public function setThumbnail($thumbnail)
     {
@@ -595,7 +595,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getInfluencedBy()
     {
@@ -603,7 +603,7 @@ class Person
     }
 
     /**
-     * @param array | string $influencedBy
+     * @param array|string $influencedBy
      */
     public function setInfluencedBy($influencedBy)
     {
@@ -611,7 +611,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getPartner()
     {
@@ -619,7 +619,7 @@ class Person
     }
 
     /**
-     * @param array | string $partner
+     * @param array|string $partner
      */
     public function setPartner($partner)
     {
@@ -627,7 +627,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getPseudonym()
     {
@@ -635,7 +635,7 @@ class Person
     }
 
     /**
-     * @param array | string $pseudonym
+     * @param array|string $pseudonym
      */
     public function setPseudonym($pseudonym)
     {
@@ -643,7 +643,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getSpouse()
     {
@@ -651,7 +651,7 @@ class Person
     }
 
     /**
-     * @param array | string $spouse
+     * @param array|string $spouse
      */
     public function setSpouse($spouse)
     {
@@ -659,7 +659,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getInfluenced()
     {
@@ -667,7 +667,7 @@ class Person
     }
 
     /**
-     * @param array | string $influenced
+     * @param array|string $influenced
      */
     public function setInfluenced($influenced)
     {
@@ -675,7 +675,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getAlternateName()
     {
@@ -683,7 +683,7 @@ class Person
     }
 
     /**
-     * @param array | string $alternateName
+     * @param array|string $alternateName
      */
     public function setAlternateName($alternateName)
     {
@@ -691,7 +691,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getFamilyName()
     {
@@ -699,7 +699,7 @@ class Person
     }
 
     /**
-     * @param array | string $familyName
+     * @param array|string $familyName
      */
     public function setFamilyName($familyName)
     {
@@ -707,7 +707,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getGivenName()
     {
@@ -715,7 +715,7 @@ class Person
     }
 
     /**
-     * @param array | string $givenName
+     * @param array|string $givenName
      */
     public function setGivenName($givenName)
     {
@@ -723,7 +723,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getGender()
     {
@@ -731,7 +731,7 @@ class Person
     }
 
     /**
-     * @param array | string $gender
+     * @param array|string $gender
      */
     public function setGender($gender)
     {
@@ -739,7 +739,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getType()
     {
@@ -747,7 +747,7 @@ class Person
     }
 
     /**
-     * @param array | string $type
+     * @param array|string $type
      */
     public function setType($type)
     {
@@ -755,7 +755,7 @@ class Person
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getAbstract()
     {
@@ -763,7 +763,7 @@ class Person
     }
 
     /**
-     * @param array | string $abstract
+     * @param array|string $abstract
      */
     public function setAbstract($abstract)
     {

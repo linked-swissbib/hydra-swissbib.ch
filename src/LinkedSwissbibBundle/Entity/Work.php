@@ -24,38 +24,38 @@ use Doctrine\ORM\Mapping as ORM;
 class Work
 {
     /**
-     * @var string | array
+     * @var string|array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://bibframe.org/vocab/hasInstance");
+     * @ApiProperty(iri="http://bibframe.org/vocab/hasInstance",writable=false);
      *
      */
     private $hasInstance;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/contributor");
+     * @ApiProperty(iri="http://purl.org/dc/terms/contributor",writable=false);
      *
      */
     private $contributor;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/title");
+     * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false);
      *
      */
     private $title;
 
     /**
-     * @param array | string $id
+     * @param array|string $id
      */
     public function setId($id)
     {
@@ -63,7 +63,7 @@ class Work
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getId()
     {
@@ -71,7 +71,7 @@ class Work
     }
 
     /**
-     * @param array | string $hasInstance
+     * @param array|string $hasInstance
      */
     public function setHasInstance($hasInstance)
     {
@@ -79,7 +79,7 @@ class Work
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getHasInstance()
     {
@@ -87,7 +87,7 @@ class Work
     }
 
     /**
-     * @param array | string $contributor
+     * @param array|string $contributor
      */
     public function setContributor($contributor)
     {
@@ -95,7 +95,7 @@ class Work
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getContributor()
     {
@@ -103,7 +103,7 @@ class Work
     }
 
     /**
-     * @param array | string $title
+     * @param array|string $title
      */
     public function setTitle($title)
     {
@@ -111,7 +111,7 @@ class Work
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getTitle()
     {

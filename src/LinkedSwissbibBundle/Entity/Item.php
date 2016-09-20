@@ -24,49 +24,49 @@ use Doctrine\ORM\Mapping as ORM;
 class Item
 {
     /**
-     * @var string | array
+     * @var string|array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://bibframe.org/vocab/holdingFor")
+     * @ApiProperty(iri="http://bibframe.org/vocab/holdingFor",writable=false)
      */
     private $holdingFor;
 
     /**
-     * @var string | array | array
+     * @var string|array|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page")
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page",writable=false)
      */
     private $page;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/ontology/bibo/owner")
+     * @ApiProperty(iri="http://purl.org/ontology/bibo/owner",writable=false)
      */
     private $owner;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/ontology/bibo/locator")
+     * @ApiProperty(iri="http://purl.org/ontology/bibo/locator",writable=false)
      */
     private $locator;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://bibframe.org/vocab/subLocation")
+     * @ApiProperty(iri="http://bibframe.org/vocab/subLocation",writable=false)
      */
     private $subLocation;
 
     /**
-     * @param array | string $id
+     * @param array|string $id
      */
     public function setId($id)
     {
@@ -74,7 +74,7 @@ class Item
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getId()
     {
@@ -82,7 +82,7 @@ class Item
     }
 
     /**
-     * @param array | string $holdingFor
+     * @param array|string $holdingFor
      */
     public function setHoldingFor($holdingFor)
     {
@@ -90,7 +90,7 @@ class Item
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getHoldingFor()
     {
@@ -98,7 +98,7 @@ class Item
     }
 
     /**
-     * @param array | string $subLocation
+     * @param array|string $subLocation
      */
     public function setSubLocation($subLocation)
     {
@@ -106,7 +106,7 @@ class Item
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getSubLocation()
     {
@@ -114,7 +114,7 @@ class Item
     }
 
     /**
-     * @param array | string $locator
+     * @param array|string $locator
      */
     public function setLocator($locator)
     {
@@ -122,7 +122,7 @@ class Item
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getLocator()
     {
@@ -130,7 +130,7 @@ class Item
     }
 
     /**
-     * @param array | string $owner
+     * @param array|string $owner
      */
     public function setOwner($owner)
     {
@@ -138,7 +138,7 @@ class Item
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getOwner()
     {
@@ -146,7 +146,7 @@ class Item
     }
 
     /**
-     * @param array | string $page
+     * @param array|string $page
      */
     public function setPage($page)
     {
@@ -154,7 +154,7 @@ class Item
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getPage()
     {

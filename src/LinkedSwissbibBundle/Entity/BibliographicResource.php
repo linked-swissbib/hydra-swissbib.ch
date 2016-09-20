@@ -24,42 +24,42 @@ use Doctrine\ORM\Mapping as ORM;
 class BibliographicResource
 {
     /**
-     * @var string | array
+     * @var string|array Identifier of a bibliographic resource
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
     
     /**
-     * @var string | array
+     * @var string|array Title of a bibliographic resource
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/title")
+     * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false)
      */
     private $title;
     
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type")
+     * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type",writable=false)
      */
     private $type;
     
     /**
-     * @var string | array
+     * @var string|array Written language of the bibliographic resource
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/language")
+     * @ApiProperty(iri="http://purl.org/dc/terms/language",writable=false)
      */
     private $language;
     
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/elements/1.1/format")
+     * @ApiProperty(iri="http://purl.org/dc/elements/1.1/format",writable=false)
      */
     private $format;
 
     /**
-     * @param array | string $id
+     * @param array|string $id
      */
     public function setId($id)
     {
@@ -67,7 +67,7 @@ class BibliographicResource
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getId()
     {
@@ -75,7 +75,7 @@ class BibliographicResource
     }
 
     /**
-     * @param array | string $title
+     * @param array|string $title
      */
     public function setTitle($title)
     {
@@ -83,7 +83,7 @@ class BibliographicResource
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getTitle()
     {
@@ -91,7 +91,7 @@ class BibliographicResource
     }
 
     /**
-     * @param array | string $type
+     * @param array|string $type
      */
     public function setType($type)
     {
@@ -107,7 +107,7 @@ class BibliographicResource
     }
 
     /**
-     * @param array | string $language
+     * @param array|string $language
      */
     public function setLanguage($language)
     {
@@ -115,7 +115,7 @@ class BibliographicResource
     }
     
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getLanguage()
     {
@@ -123,7 +123,7 @@ class BibliographicResource
     }
 
     /**
-     * @param array | string $format
+     * @param array|string $format
      */
     public function setFormat($format)
     {
@@ -131,7 +131,7 @@ class BibliographicResource
     }
 
     /**
-     * @return string | array
+     * @return string|array
      */
     public function getFormat()
     {

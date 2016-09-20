@@ -23,54 +23,54 @@ use Doctrine\ORM\Mapping as ORM;
 class Document
 {
     /**
-     * @var string | array
+     * @var string|array identifier of a document
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://bibframe.org/vocab/local");
+     * @ApiProperty(iri="http://bibframe.org/vocab/local",writable=false);
      *
      */
     private $local;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/contributor");
+     * @ApiProperty(iri="http://purl.org/dc/terms/contributor",writable=false);
      *
      */
     private $contributor;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/issued");
+     * @ApiProperty(iri="http://purl.org/dc/terms/issued",writable=false);
      *
      */
     private $issued;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/modified");
+     * @ApiProperty(iri="http://purl.org/dc/terms/modified",writable=false);
      *
      */
     private $modified;
 
     /**
-     * @var string | array
+     * @var string|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/primaryTopic");
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/primaryTopic",writable=false);
      *
      */
     private $primaryTopic;
 
     /**
-     * @return array | string/
+     * @return array|string
      */
     public function getId()
     {
@@ -78,7 +78,7 @@ class Document
     }
 
     /**
-     * @param array | string/ $id
+     * @param array|string/ $id
      */
     public function setId($id)
     {
@@ -86,7 +86,7 @@ class Document
     }
 
     /**
-     * @return array | string/
+     * @return array|string/
      */
     public function getLocal()
     {
@@ -94,7 +94,7 @@ class Document
     }
 
     /**
-     * @param array | string/ $local
+     * @param array|string/ $local
      */
     public function setLocal($local)
     {
@@ -102,7 +102,7 @@ class Document
     }
 
     /**
-     * @return array | string/
+     * @return array|string/
      */
     public function getContributor()
     {
@@ -110,7 +110,7 @@ class Document
     }
 
     /**
-     * @param array | string/ $contributor
+     * @param array|string/ $contributor
      */
     public function setContributor($contributor)
     {
@@ -118,7 +118,7 @@ class Document
     }
 
     /**
-     * @return array | string/
+     * @return array|string/
      */
     public function getIssued()
     {
@@ -126,7 +126,7 @@ class Document
     }
 
     /**
-     * @param array | string/ $issued
+     * @param array|string/ $issued
      */
     public function setIssued($issued)
     {
@@ -134,7 +134,7 @@ class Document
     }
 
     /**
-     * @return array | string/
+     * @return array|string/
      */
     public function getModified()
     {
@@ -142,7 +142,7 @@ class Document
     }
 
     /**
-     * @param array | string/ $modified
+     * @param array|string/ $modified
      */
     public function setModified($modified)
     {
@@ -150,7 +150,7 @@ class Document
     }
 
     /**
-     * @return array | string
+     * @return array|string
      */
     public function getPrimaryTopic()
     {
@@ -158,7 +158,7 @@ class Document
     }
 
     /**
-     * @param array | string/ $primaryTopic
+     * @param array|string/ $primaryTopic
      */
     public function setPrimaryTopic($primaryTopic)
     {
