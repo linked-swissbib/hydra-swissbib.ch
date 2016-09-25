@@ -16,6 +16,12 @@ class CamelCaseResourcePathGenerator implements ResourcePathNamingStrategyInterf
      */
     public function generateResourceBasePath(string $resourceShortName) : string
     {
-        return lcfirst(Inflector::pluralize($resourceShortName));
+        if ($resourceShortName === 'Person') {
+            $plural = 'Persons';
+        } else {
+            $plural = Inflector::pluralize($resourceShortName);
+        }
+
+        return lcfirst($plural);
     }
 }
