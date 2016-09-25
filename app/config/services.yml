@@ -34,3 +34,8 @@ services:
         decorates: api_platform.jsonld.normalizer.item
         arguments: ['@linked_swissbib.serializer.normalizer.item.inner', '@api_platform.resource_class_resolver']
         tags: [ { name: 'serializer.normalizer', priority: 12 } ]
+
+    linked_swissbib.router:
+        class: LinkedSwissbibBundle\Routing\Router
+        decorates: api_platform.router
+        arguments: ['@linked_swissbib.router.inner']
