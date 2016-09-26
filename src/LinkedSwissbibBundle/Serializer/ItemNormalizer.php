@@ -58,7 +58,7 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        return $this->denormalize($data, $class, $format, $context);
+        return $this->itemNormalizer->denormalize($data, $class, $format, $context);
     }
 
     /**
