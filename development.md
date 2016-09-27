@@ -1,5 +1,11 @@
 # Development
 
+## First install
+
+1. Copy the file parameters.yml.dist to parameters.yml
+    * Adjust parameter `linked_swissbib.elastic_search.hosts`to match your elastic search server
+2. Follow the steps in **Deployment**
+
 ## Deployment
 
 The following steps have to be taken when deploying this application:

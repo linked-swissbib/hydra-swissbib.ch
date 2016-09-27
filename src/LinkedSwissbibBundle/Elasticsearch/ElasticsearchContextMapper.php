@@ -53,8 +53,8 @@ class ElasticsearchContextMapper implements ContextMapper
             $mapping = $this->cache->fetch($cacheKey);
         }
 
-        $externalContextUrl = str_replace('{type}', $type, $this->contextUrlTemplate);
-        $externalContext = file_get_contents($externalContextUrl);
+        //$externalContextUrl = str_replace('{type}', $type, $this->contextUrlTemplate);
+        //$externalContext = file_get_contents($externalContextUrl);
 
         $this->cache->save($cacheKey, []);
 
