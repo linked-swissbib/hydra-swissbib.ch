@@ -5,6 +5,7 @@ namespace LinkedSwissbibBundle\Serializer\Encoder;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use EasyRdf_Graph;
+use EasyRdf_Resource;
 
 class HtmlEncoder implements EncoderInterface
 {
@@ -39,16 +40,21 @@ class HtmlEncoder implements EncoderInterface
      */
     public function encode($data, $format, array $context = array())
     {
-        //TODO find out how to generate fully qualified context and id urls OR better embed context
-        $data['@context'] = 'http://' . $_SERVER['HTTP_HOST'] . $data['@context'];
-        $data['@id'] = 'http://' . $_SERVER['HTTP_HOST'] . $data['@id'];
+        $this->easyRdfGraph->parse(json_encode($data), 'jsonld');
+        //$resource = new EasyRdf_Resource($this->easyRdfGraph->getUri(), $this->easyRdfGraph);
+        //return $resource->dump();
+        //$resource =  $this->easyRdfGraph->resources()[0];
+        //return $resource ->dump();
+        //return $this->easyRdfGraph -> dumpResource($resource,'html');
 
-        return $this->templating->render(
-            'concept.html.twig',
-            [
-                'data' => $data
-            ]
-        );
+        return $this->easyRdfGraph->dump('html');
+
+       // return $this->templating->render(
+       //     'concept.html.twig',
+       //     [
+       //         'data' => $data
+       //     ]
+        //);
     }
 
     /**

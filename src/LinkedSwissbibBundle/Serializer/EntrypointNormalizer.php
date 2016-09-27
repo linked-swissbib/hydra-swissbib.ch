@@ -30,12 +30,6 @@ class EntrypointNormalizer implements NormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = $this->entrypointNormalizer->normalize($object, $format, $context);
-
-        //todo remove after https://github.com/api-platform/api-platform/issues/128 is implemented
-        if (isset($_SERVER['HTTP_HOST'])) {
-            $data['@context'] = 'http://' . $_SERVER['HTTP_HOST']  . $data['@context'];
-        }
-
         return $data;
     }
 

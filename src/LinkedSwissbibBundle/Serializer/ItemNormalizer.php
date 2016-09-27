@@ -86,10 +86,13 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
      */
     public function normalize($object, $format = null, array $context = array())
     {
+        if ($format !== ApiPlatformItemNormalizer::FORMAT) {
+            //embed context to avoid an additional request on encoding to e.g. rdf
+            $context['jsonld_embed_context'] = true;
+        }
         $normalizedData = $this->itemNormalizer->normalize($object, $format, $context);
-        $data = $this->filterNullValues($normalizedData);
-
-        return $data;
+        $filteredData = $this->filterNullValues($normalizedData);
+        return $filteredData;
     }
 
     /**
