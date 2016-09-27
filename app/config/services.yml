@@ -73,3 +73,7 @@ services:
             - '@linked_swissbib.serializer.normalizer.entrypoint.inner'
         tags: [ { name: 'serializer.normalizer', priority: 30 } ]
 
+    linked_swissbib.router:
+        class: LinkedSwissbibBundle\Routing\Router
+        decorates: api_platform.router
+        arguments: ['@linked_swissbib.router.inner']
