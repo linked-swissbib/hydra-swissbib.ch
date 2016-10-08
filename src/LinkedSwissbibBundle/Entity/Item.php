@@ -24,132 +24,140 @@ use Doctrine\ORM\Mapping as ORM;
 class Item
 {
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(identifier=true)
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ApiProperty(iri="?")
-     */
-    private $context;
-
-    /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/holdingFor")
      */
     private $holdingFor;
 
     /**
-     * @var string
+     * @var string | array | array
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page")
      */
     private $page;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/ontology/bibo/owner")
      */
     private $owner;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://purl.org/ontology/bibo/locator")
      */
     private $locator;
 
     /**
-     * @var string
+     * @var string | array
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/subLocation")
      */
     private $subLocation;
 
     /**
-     * BiobligraphicResource constructor.
-     *
-     * @param array $response
+     * @param array | string $id
      */
-    public function __construct(array $response)
+    public function setId($id)
     {
-        $this->id = $response['_id'];
-        $this->context = $response['_source'];
-        $this->type = $response['_source'];
-        $this->holdingFor = $response['_source']['bf:holdingFor'] ?? null;
-        $this->subLocation = $response['_source']['bf:subLocation'] ?? null;
-        $this->locator = $response['_source']['bibo:locator'] ?? null;
-        $this->owner = $response['_source']['bibo:owner'] ?? null;
-        $this->page  = $response['_source']['foaf:page'] ?? null;
+        $this->id = $id;
     }
 
     /**
-     * @return string
+     * @return string | array
      */
     public function getId()
     {
-        return $this->id ?? '';
+        return $this->id;
     }
+
     /**
-     * @return string
+     * @param array | string $holdingFor
      */
-    public function getContext()
+    public function setHoldingFor($holdingFor)
     {
-        return $this->context ?? '';
+        $this->holdingFor = $holdingFor;
     }
+
     /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type ?? '';
-    }
-    /**
-     * @return string
+     * @return string | array
      */
     public function getHoldingFor()
     {
-        return $this->holdingFor ?? '';
+        return $this->holdingFor;
     }
+
     /**
-     * @return string
+     * @param array | string $subLocation
+     */
+    public function setSubLocation($subLocation)
+    {
+        $this->subLocation = $subLocation;
+    }
+
+    /**
+     * @return string | array
      */
     public function getSubLocation()
     {
-        return $this->subLocation ?? '';
+        return $this->subLocation;
     }
+
     /**
-     * @return string
+     * @param array | string $locator
+     */
+    public function setLocator($locator)
+    {
+        $this->locator = $locator;
+    }
+
+    /**
+     * @return string | array
      */
     public function getLocator()
     {
-        return $this->locator ?? '';
+        return $this->locator;
     }
+
     /**
-     * @return string
+     * @param array | string $owner
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * @return string | array
      */
     public function getOwner()
     {
-        return $this->owner ?? '';
+        return $this->owner;
     }
+
     /**
-     * @return string
+     * @param array | string $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
+     * @return string | array
      */
     public function getPage()
     {
-        return $this->page ?? '';
+        return $this->page;
     }
 }

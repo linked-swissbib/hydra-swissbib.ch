@@ -4,7 +4,8 @@ namespace LinkedSwissbibBundle\DataProvider;
 
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use Elasticsearch\Client;
-use Elasticsearch\Common\Exceptions\Missing404Exception;
+use LinkedSwissbibBundle\ContextMapping\ContextMapper;
+use LinkedSwissbibBundle\Entity\EntityBuilder;
 
 class ElasticsearchDataProvider implements ItemDataProviderInterface
 {
@@ -14,13 +15,25 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
     protected $client;
 
     /**
-     * ElasticsearchDataProvider constructor.
-     *
-     * @param Client $client
+     * @var EntityBuilder
      */
-    public function __construct(Client $client)
+    protected $entityBuilder;
+
+    /**
+     * @var ContextMapper
+     */
+    protected $contextMapper;
+
+    /**
+     * @param Client $client
+     * @param EntityBuilder $entityBuilder
+     * @param ContextMapper $contextMapper
+     */
+    public function __construct(Client $client, EntityBuilder $entityBuilder, ContextMapper $contextMapper)
     {
         $this->client = $client;
+        $this->entityBuilder = $entityBuilder;
+        $this->contextMapper = $contextMapper;
     }
 
     /**
@@ -34,13 +47,11 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
             'id' => $id
         ];
 
-        try {
-            $response = $this->client->get($params);
+        $response = $this->client->get($params);
+        $mappedProperties = $this->contextMapper->fromExternalToInternal($this->getElasticsearchTypeFromResourceClass($resourceClass), $response);
+        $entity = $this->entityBuilder->build($resourceClass, $mappedProperties);
 
-            return new $resourceClass($response);
-        } catch (Missing404Exception $e) {
-            return null;
-        }
+        return $entity;
     }
 
     /**
@@ -52,6 +63,11 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
     {
         $namespaceParts = explode('\\', $resourceClass);
         $className = array_pop($namespaceParts);
+
+        if ($className === 'Organization') {
+            $className = 'Organisation'; // TODO rename
+        }
+
         $type = lcfirst($className);
 
         return $type;
