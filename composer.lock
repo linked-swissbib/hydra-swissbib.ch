@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93b6a2bcf860c1b85a79b317a37426e9",
-    "content-hash": "7cfe48dd5acc2225a1a3732faff1dd06",
+    "hash": "c03ebaaeb14422cef369a2376ef61feb",
+    "content-hash": "bcc9e70fccb56489ef4aae2c633b3db9",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1225,7 +1225,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/linked-swissbib/adapterElasticsearch.git",
-                "reference": "master"
+                "reference": "develop"
             },
             "type": "library",
             "autoload": {
@@ -1233,7 +1233,7 @@
                     "ElasticsearchAdapter": "src"
                 }
             },
-            "time": "2016-09-26 12:40:25"
+            "time": "2016-10-09 10:14:18"
         },
         {
             "name": "monolog/monolog",
@@ -1432,6 +1432,54 @@
                 "crossdomain"
             ],
             "time": "2015-12-09 17:26:34"
+        },
+        {
+            "name": "ongr/elasticsearch-dsl",
+            "version": "v2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ongr-io/ElasticsearchDSL.git",
+                "reference": "ef5c2e16c0a02a504b14dbc56f7c1eb0ab186700"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ongr-io/ElasticsearchDSL/zipball/ef5c2e16c0a02a504b14dbc56f7c1eb0ab186700",
+                "reference": "ef5c2e16c0a02a504b14dbc56f7c1eb0ab186700",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "symfony/serializer": "~2.7|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4",
+                "satooshi/php-coveralls": "~0.7",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ONGR\\ElasticsearchDSL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ONGR team",
+                    "homepage": "http://www.ongr.io"
+                }
+            ],
+            "description": "Elasticsearch DSL library",
+            "homepage": "http://ongr.io",
+            "time": "2016-09-22 12:13:56"
         },
         {
             "name": "paragonie/random_compat",

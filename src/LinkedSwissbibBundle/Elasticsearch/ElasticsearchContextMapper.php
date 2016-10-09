@@ -59,13 +59,13 @@ class ElasticsearchContextMapper implements ContextMapper
         $this->cache->save($cacheKey, []);
 
         $data = [];
-        $data['id'] = $external['_id'];
+        $data['id'] = $external['hits']['hits'][0]['_id'];
 
-        foreach ($external['_source'] as $propertyKey => $propertyValue) {
+        foreach ($external['hits']['hits'][0]['_source'] as $propertyKey => $propertyValue) {
             if (strpos($propertyKey, ':') !== false) {
                 list($namespace, $value) = explode(':', $propertyKey);
 
-                $data[$value] = $external['_source'][$propertyKey];
+                $data[$value] = $external['hits']['hits'][0]['_source'][$propertyKey];
             }
         }
 

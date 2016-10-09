@@ -27,7 +27,7 @@
                 "source": {
                     "url": "https://github.com/linked-swissbib/adapterElasticsearch.git",
                     "type": "git",
-                    "reference": "master"
+                    "reference": "develop"
                 },
                 "autoload": {
                     "psr-0" : {
@@ -55,7 +55,8 @@
         "phpdocumentor/reflection-docblock": "^3.0",
         "doctrine/data-fixtures": "^1.1",
         "hautelook/alice-bundle": "^1.2",
-        "linked-swissbib/adapterES": "dev-master"
+        "linked-swissbib/adapterES": "dev-master",
+        "ongr/elasticsearch-dsl": "^2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -1,0 +1,49 @@
+parameters:
+  elasticsearch_adapter.hosts: [localhost]
+  elasticsearch_adapter.templates:
+    search:
+      index: testsb_160426
+      type: [bibliographicResource,document,item,organization,person,work]
+      query:
+        match:
+          _all: '{{q}}'
+
+    item:
+      index: testsb_160426
+      type: item
+      query:
+        bool:
+          should:
+            holdingFor: '{{holdingFor}}'
+            page: '{{page}}'
+            owner: '{{owner}}'
+            locator: '{{locator}}'
+            subLocation: '{{subLocation}}'
+            _all: '{{q}}'
+
+    document:
+      index: testsb_160426
+      type: document
+      query:
+        bool:
+          should:
+            local: '{{local}}'
+            contributor: '{{contributor}}'
+            issued: '{{issued}}'
+            modified: '{{modified}}'
+            primaryTopic: '{{primaryTopic}}'
+            _all: '{{q}}'
+
+    id:
+      index: 'testsb_160426'
+      type: '{{type}}'
+      query:
+        ids:
+          values: ['{{id}}']
+
+    filter_example:
+      index: 'testsb_160426'
+      type: item
+      query:
+        ids:
+          values: '{{id}}'

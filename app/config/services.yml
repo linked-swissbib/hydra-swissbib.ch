@@ -4,15 +4,26 @@ parameters:
 #    parameter_name: value
 
 services:
-    linked_swissbib.elasticsearch_client:
-        class: Elasticsearch\Client
-        factory: ['LinkedSwissbibBundle\Elasticsearch\ElasticsearchClientFactory', createClient]
-        arguments: ['%linked_swissbib.elastic_search.hosts%']
+    linked_swissbib.elasticsearchadapter_adapter:
+        class: ElasticsearchAdapter\Adapter
+        arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
 
-    linked_swissbib.elasticsearch_item_data_provider:
+    linked_swissbib.elasticsearchadapter_templatequerybuilder:
+        class: ElasticsearchAdapter\QueryBuilder\TemplateQueryBuilder
+        arguments: ['%elasticsearch_adapter.templates%']
+
+    linked_swissbib.elasticsearchadapter_elasticsearchclientconnector:
+        class: ElasticsearchAdapter\Connector\ElasticsearchClientConnector
+        arguments: ['%elasticsearch_adapter.hosts%']
+
+    linked_swissbib.elasticsearch_data_provider:
         class: LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider
-        tags: [ { name: 'api_platform.item_data_provider', priority: 1 } ]
-        arguments: ['@linked_swissbib.elasticsearch_client', '@linked_swissbib.entity_simple_entity_builder' ,'@linked_swissbib.elasticsearch_context_mapper']
+        tags: [ { name: 'api_platform.item_data_provider', priority: 1 }, { name: 'api_platform.collection_data_provider', priority: 1 } ]
+        arguments: ['@linked_swissbib.elasticsearchadapter_adapter', '@linked_swissbib.elasticsearchadapter_templatequerybuilder', '@linked_swissbib.entity_simple_entity_builder' ,'@linked_swissbib.elasticsearch_context_mapper', '@request_stack']
+
+    linked_swissbib.elasticsearch_context_mapper:
+        class: LinkedSwissbibBundle\Elasticsearch\ElasticsearchContextMapper
+        arguments: ['@linked_swissbib.cache']
 
     linked_swissbib.elasticsearch_context_mapper:
         class: LinkedSwissbibBundle\Elasticsearch\ElasticsearchContextMapper

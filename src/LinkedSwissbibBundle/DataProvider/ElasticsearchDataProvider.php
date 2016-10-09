@@ -2,17 +2,29 @@
 
 namespace LinkedSwissbibBundle\DataProvider;
 
+use ApiPlatform\Core\DataProvider\CollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
-use Elasticsearch\Client;
+use ApiPlatform\Core\DataProvider\PaginatorInterface;
+use ApiPlatform\Core\Exception\ResourceClassNotSupportedException;
+use ElasticsearchAdapter\Adapter;
+use ElasticsearchAdapter\Params\ArrayParams;
+use ElasticsearchAdapter\Params\Params;
+use ElasticsearchAdapter\QueryBuilder\TemplateQueryBuilder;
 use LinkedSwissbibBundle\ContextMapping\ContextMapper;
 use LinkedSwissbibBundle\Entity\EntityBuilder;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
-class ElasticsearchDataProvider implements ItemDataProviderInterface
+class ElasticsearchDataProvider implements ItemDataProviderInterface, CollectionDataProviderInterface
 {
     /**
-     * @var Client
+     * @var Adapter
      */
-    protected $client;
+    protected $adapter;
+    /**
+     * @var TemplateQueryBuilder
+     */
+    protected $queryBuilder;
 
     /**
      * @var EntityBuilder
@@ -25,15 +37,23 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
     protected $contextMapper;
 
     /**
-     * @param Client $client
+     * @var RequestStack
+     */
+    protected $requestStack;
+
+    /**
+     * @param Adapter $adapter
+     * @param TemplateQueryBuilder $queryBuilder
      * @param EntityBuilder $entityBuilder
      * @param ContextMapper $contextMapper
      */
-    public function __construct(Client $client, EntityBuilder $entityBuilder, ContextMapper $contextMapper)
+    public function __construct(Adapter $adapter, TemplateQueryBuilder $queryBuilder, EntityBuilder $entityBuilder, ContextMapper $contextMapper, RequestStack $requestStack)
     {
-        $this->client = $client;
+        $this->adapter = $adapter;
+        $this->queryBuilder = $queryBuilder;
         $this->entityBuilder = $entityBuilder;
         $this->contextMapper = $contextMapper;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -41,13 +61,12 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
      */
     public function getItem(string $resourceClass, $id, string $operationName = null, bool $fetchData = false)
     {
-        $params = [
-            'index' => 'testsb_160426',
-            'type' => $this->getElasticsearchTypeFromResourceClass($resourceClass),
-            'id' => $id
-        ];
+        $query = $this->queryBuilder->buildQueryFromTemplate('id');
+        $params = (new ArrayParams())
+            ->set('id', $id)
+            ->set('type', $this->getElasticsearchTypeFromResourceClass($resourceClass));
 
-        $response = $this->client->get($params);
+        $response = $this->adapter->search($query, $params);
         $mappedProperties = $this->contextMapper->fromExternalToInternal($this->getElasticsearchTypeFromResourceClass($resourceClass), $response);
         $entity = $this->entityBuilder->build($resourceClass, $mappedProperties);
 
@@ -55,11 +74,30 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function getCollection(string $resourceClass, string $operationName = null)
+    {
+        $template = $this->getElasticsearchTypeFromResourceClass($resourceClass);
+        $query = $this->queryBuilder->buildQueryFromTemplate($template);
+        $params = $this->buildParamsFromRequest($this->requestStack->getCurrentRequest());
+        $response = $this->adapter->search($query, $params);
+        $mappedEntities = $this->contextMapper->fromExternalToInternal($this->getElasticsearchTypeFromResourceClass($resourceClass), $response);
+        $entities = [];
+
+        foreach ($mappedEntities as $mappedEntity) {
+            $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);
+        }
+
+        return $entities;
+    }
+
+    /**
      * @param string $resourceClass
      *
      * @return string
      */
-    protected function getElasticsearchTypeFromResourceClass(string $resourceClass)
+    protected function getElasticsearchTypeFromResourceClass(string $resourceClass) : string
     {
         $namespaceParts = explode('\\', $resourceClass);
         $className = array_pop($namespaceParts);
@@ -71,5 +109,21 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface
         $type = lcfirst($className);
 
         return $type;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Params
+     */
+    protected function buildParamsFromRequest(Request $request) : Params
+    {
+        $params = new ArrayParams();
+
+        foreach ($request->query->all() as $name => $value) {
+            $params->set($name, $value);
+        }
+
+        return $params;
     }
 }
