@@ -23,11 +23,7 @@ services:
 
     linked_swissbib.elasticsearch_context_mapper:
         class: LinkedSwissbibBundle\Elasticsearch\ElasticsearchContextMapper
-        arguments: ['@linked_swissbib.cache']
-
-    linked_swissbib.elasticsearch_context_mapper:
-        class: LinkedSwissbibBundle\Elasticsearch\ElasticsearchContextMapper
-        arguments: ['@linked_swissbib.cache']
+        arguments: ['@linked_swissbib.cache', '@linked_swissbib.http_client', '%linked_swissbib.context_mapper%']
 
     linked_swissbib.naming.resource_path_naming_strategy.camel_case:
         class: LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator
@@ -50,3 +46,6 @@ services:
         class: LinkedSwissbibBundle\Routing\Router
         decorates: api_platform.router
         arguments: ['@linked_swissbib.router.inner']
+
+    linked_swissbib.http_client:
+        class: GuzzleHttp\Client

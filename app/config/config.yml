@@ -8,6 +8,8 @@ imports:
 parameters:
     locale: en
     linked_swissbib.elastic_search.hosts: ["localhost"]
+    linked_swissbib.context_mapper:
+      template_url: 'http://data.swissbib.ch/{type}/context.jsonld'
 
 framework:
     #esi:             ~

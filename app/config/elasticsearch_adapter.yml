@@ -1,49 +1,33 @@
 parameters:
-  elasticsearch_adapter.hosts: [localhost]
+  elasticsearch_adapter.hosts: ['localhost']
   elasticsearch_adapter.templates:
     search:
-      index: testsb_160426
-      type: [bibliographicResource,document,item,organization,person,work]
+      index: 'testsb_160426'
+      type: ['bibliographicResource', 'document', 'item', 'organization', 'person', 'work']
       query:
-        match:
-          _all: '{{q}}'
+        multi_match:
+          query: '{q}'
+          fields: '{fields}'
+#          type: 'cross_fields'
+#          operator: 'and'
 
-    item:
-      index: testsb_160426
-      type: item
+    collection:
+      index: 'testsb_160426'
+      type: '{type}'
       query:
-        bool:
-          should:
-            holdingFor: '{{holdingFor}}'
-            page: '{{page}}'
-            owner: '{{owner}}'
-            locator: '{{locator}}'
-            subLocation: '{{subLocation}}'
-            _all: '{{q}}'
+        multi_match:
+          query: '{q}'
+          fields: '{fields}'
+#          type: 'cross_fields'
+#          operator: 'and'
 
-    document:
-      index: testsb_160426
-      type: document
-      query:
-        bool:
-          should:
-            local: '{{local}}'
-            contributor: '{{contributor}}'
-            issued: '{{issued}}'
-            modified: '{{modified}}'
-            primaryTopic: '{{primaryTopic}}'
-            _all: '{{q}}'
+    empty:
+      index: 'testsb_160426'
+      type: '{type}'
 
     id:
       index: 'testsb_160426'
-      type: '{{type}}'
+      type: '{type}'
       query:
         ids:
-          values: ['{{id}}']
-
-    filter_example:
-      index: 'testsb_160426'
-      type: item
-      query:
-        ids:
-          values: '{{id}}'
+          values: ['{id}']
