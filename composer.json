@@ -18,6 +18,25 @@
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "linked-swissbib/adapterES",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/linked-swissbib/adapterElasticsearch.git",
+                    "type": "git",
+                    "reference": "develop"
+                },
+                "autoload": {
+                    "psr-0" : {
+                        "ElasticsearchAdapter" : "src"
+                    }
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=7.0",
         "symfony/symfony": "3.1.*",
@@ -37,7 +56,10 @@
         "doctrine/data-fixtures": "^1.1",
         "hautelook/alice-bundle": "^1.2",
         "elasticsearch/elasticsearch": "~2.0",
-        "ml/json-ld": "^1.0"
+        "ml/json-ld": "^1.0",
+        "linked-swissbib/adapterES": "dev-master",
+        "ongr/elasticsearch-dsl": "^2.1",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

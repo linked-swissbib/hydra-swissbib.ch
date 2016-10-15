@@ -1,0 +1,33 @@
+parameters:
+  elasticsearch_adapter.hosts: ['localhost']
+  elasticsearch_adapter.templates:
+    search:
+      index: 'testsb_160426'
+      type: ['bibliographicResource', 'document', 'item', 'organization', 'person', 'work']
+      query:
+        multi_match:
+          query: '{q}'
+          fields: '{fields}'
+#          type: 'cross_fields'
+#          operator: 'and'
+
+    collection:
+      index: 'testsb_160426'
+      type: '{type}'
+      query:
+        multi_match:
+          query: '{q}'
+          fields: '{fields}'
+#          type: 'cross_fields'
+#          operator: 'and'
+
+    empty:
+      index: 'testsb_160426'
+      type: '{type}'
+
+    id:
+      index: 'testsb_160426'
+      type: '{type}'
+      query:
+        ids:
+          values: ['{id}']
