@@ -4,32 +4,32 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "da68f77fe86e0dd082d2499ba95b6402",
-    "content-hash": "1d27b95186a0c7677112520e010372cd",
+    "hash": "20b4330f4c0012383aec80aaa03be7cd",
+    "content-hash": "10c2572bc2bf15ca2848d630e13e5483",
     "packages": [
         {
             "name": "api-platform/core",
-            "version": "v2.0.0-beta.3",
+            "version": "v2.0.0-rc.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "44f4f37c5b21e81569f29e430f983f6a1f64df05"
+                "reference": "f45ebe8682f608e5826651a37160ee88335cac5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/44f4f37c5b21e81569f29e430f983f6a1f64df05",
-                "reference": "44f4f37c5b21e81569f29e430f983f6a1f64df05",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/f45ebe8682f608e5826651a37160ee88335cac5e",
+                "reference": "f45ebe8682f608e5826651a37160ee88335cac5e",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^1.0",
                 "php": ">=7.0",
                 "psr/cache": "^1.0",
-                "symfony/http-foundation": "^2.3 || ^3.0",
-                "symfony/http-kernel": "^2.8 || ^3.0",
-                "symfony/property-info": "^2.8 || ^3.0 ",
+                "symfony/http-foundation": "^2.7 || ^3.0",
+                "symfony/http-kernel": "^2.7 || ^3.0",
+                "symfony/property-info": "^3.1",
                 "symfony/serializer": "^3.1",
-                "willdurand/negotiation": "^2.0"
+                "willdurand/negotiation": "^2.0.3"
             },
             "require-dev": {
                 "behat/behat": "^3.1",
@@ -38,27 +38,32 @@
                 "behat/mink-extension": "^2.2",
                 "behat/symfony2-extension": "^2.1",
                 "behatch/contexts": "^2.5",
-                "doctrine/doctrine-bundle": "^1.6@dev",
-                "doctrine/orm": "^2.2.3",
+                "doctrine/annotations": "^1.2",
+                "doctrine/doctrine-bundle": "^1.6.3",
+                "doctrine/orm": "^2.5",
                 "friendsofsymfony/user-bundle": "^2.0@dev",
                 "nelmio/api-doc-bundle": "^2.11.2",
                 "php-mock/php-mock-phpunit": "^1.1",
                 "phpdocumentor/reflection-docblock": "^3.0",
-                "phpunit/phpunit": "^5.0",
+                "psr/log": "^1.0",
                 "symfony/cache": "^3.1",
-                "symfony/dependency-injection": "^2.8 || ^3.0",
-                "symfony/finder": "^2.8 || ^3.1",
+                "symfony/config": "^2.7",
+                "symfony/dependency-injection": "^2.7 || ^3.0",
+                "symfony/doctrine-bridge": "^2.8 || ^3.0",
+                "symfony/finder": "^2.7 || ^3.0",
                 "symfony/framework-bundle": "^3.1",
-                "symfony/phpunit-bridge": "^3.1",
+                "symfony/phpunit-bridge": "^2.7 || ^3.0",
                 "symfony/security": "^2.7 || ^3.0",
-                "symfony/validator": "^2.5 || ^3.0"
+                "symfony/twig-bundle": "^2.8 || ^3.1",
+                "symfony/validator": "^2.7 || ^3.0"
             },
             "suggest": {
                 "friendsofsymfony/user-bundle": "To use the FOSUserBundle bridge.",
-                "nelmio/api-doc-bundle": "To have the api sandbox & documentation.",
                 "phpdocumentor/reflection-docblock": "To support extracting metadata from PHPDoc.",
                 "psr/cache-implementation": "To use metadata caching.",
-                "symfony/cache": "To have metadata caching when using Symfony integration."
+                "symfony/cache": "To have metadata caching when using Symfony integration.",
+                "symfony/config": "To load XML configuration files.",
+                "symfony/twig-bundle": "To use the Swagger UI integration."
             },
             "type": "library",
             "extra": {
@@ -82,16 +87,18 @@
                     "homepage": "https://dunglas.fr"
                 }
             ],
-            "description": "JSON-LD / Hydra REST API for Symfony",
+            "description": "The ultimate solution to create web APIs.",
             "homepage": "https://api-platform.com",
             "keywords": [
                 "Hydra",
                 "JSON-LD",
                 "api",
+                "hal",
                 "json",
-                "rest"
+                "rest",
+                "swagger"
             ],
-            "time": "2016-07-16 23:00:14"
+            "time": "2016-10-09 21:15:10"
         },
         {
             "name": "doctrine/annotations",
@@ -4209,7 +4216,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "symfony/property-info": 20,
-        "api-platform/core": 10,
+        "api-platform/core": 5,
         "doctrine/doctrine-bundle": 20,
         "linked-swissbib/adapteres": 20
     },

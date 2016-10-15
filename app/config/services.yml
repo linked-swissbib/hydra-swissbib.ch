@@ -25,8 +25,8 @@ services:
         class: LinkedSwissbibBundle\Elasticsearch\ElasticsearchContextMapper
         arguments: ['@linked_swissbib.cache', '@linked_swissbib.http_client', '%linked_swissbib.context_mapper%']
 
-    linked_swissbib.naming.resource_path_naming_strategy.camel_case:
-        class: LinkedSwissbibBundle\Naming\CamelCaseResourcePathGenerator
+    linked_swissbib.operation_path_resolver.camel_case:
+        class: LinkedSwissbibBundle\PathResolver\CamelCaseResourcePathGenerator
 
     linked_swissbib.easy_rdf_graph:
         class: EasyRdf_Graph

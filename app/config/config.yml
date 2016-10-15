@@ -83,5 +83,4 @@ api_platform:
         turtle: ["text/turtle"]
         ntriples: ["application/n-triples"]
         html: ["text/html"]
-    naming:
-        resource_path_naming_strategy: 'linked_swissbib.naming.resource_path_naming_strategy.camel_case'
+    default_operation_path_resolver: 'linked_swissbib.operation_path_resolver.camel_case'
