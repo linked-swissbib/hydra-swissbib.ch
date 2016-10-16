@@ -41,20 +41,8 @@ class HtmlEncoder implements EncoderInterface
     public function encode($data, $format, array $context = array())
     {
         $this->easyRdfGraph->parse(json_encode($data), 'jsonld');
-        //$resource = new EasyRdf_Resource($this->easyRdfGraph->getUri(), $this->easyRdfGraph);
-        //return $resource->dump();
-        //$resource =  $this->easyRdfGraph->resources()[0];
-        //return $resource ->dump();
-        //return $this->easyRdfGraph -> dumpResource($resource,'html');
 
         return $this->easyRdfGraph->dump('html');
-
-       // return $this->templating->render(
-       //     'concept.html.twig',
-       //     [
-       //         'data' => $data
-       //     ]
-        //);
     }
 
     /**

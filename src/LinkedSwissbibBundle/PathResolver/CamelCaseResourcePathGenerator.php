@@ -13,11 +13,19 @@ class CamelCaseResourcePathGenerator implements OperationPathResolverInterface
     public function resolveOperationPath(string $resourceShortName, array $operation, bool $collection) : string
     {
         if ($resourceShortName === 'Person') {
-            $plural = 'Persons';
+            $path = 'Persons';
         } else {
-            $plural = Inflector::pluralize($resourceShortName);
+            $path = Inflector::pluralize($resourceShortName);
         }
 
-        return lcfirst($plural);
+        $path = lcfirst($path);
+
+        if (!$collection) {
+            $path .= '/{id}';
+        }
+
+        $path .= '.{_format}';
+
+        return $path;
     }
 }
