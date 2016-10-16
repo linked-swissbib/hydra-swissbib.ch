@@ -67,6 +67,14 @@ services:
             - '@api_platform.resource_class_resolver'
         tags: [ { name: 'serializer.normalizer', priority: 12 } ]
 
+    linked_swissbib.serializer.normalizer.collection:
+        class: LinkedSwissbibBundle\Serializer\CollectionNormalizer
+        decorates: api_platform.hydra.normalizer.collection
+        arguments:
+            - '@linked_swissbib.serializer.normalizer.collection.inner'
+            - '@api_platform.resource_class_resolver'
+        tags: [ { name: 'serializer.normalizer', priority: 12 } ]
+
     linked_swissbib.serializer.normalizer.entrypoint:
         class: LinkedSwissbibBundle\Serializer\EntrypointNormalizer
         decorates: api_platform.hydra.normalizer.entrypoint

@@ -79,8 +79,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
     public function getCollection(string $resourceClass, string $operationName = null)
     {
         $type = $this->getElasticsearchTypeFromResourceClass($resourceClass);
-        $params = $this->buildParamsFromRequest($this->requestStack->getCurrentRequest(), $type)
-            ->set('type', $type);
+        $params = $this->buildParamsFromRequest($this->requestStack->getCurrentRequest(), $type)->set('type', $type);
 
         $this->queryBuilder->setParams($params);
 
