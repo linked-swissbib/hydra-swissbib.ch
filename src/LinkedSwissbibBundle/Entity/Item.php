@@ -33,35 +33,55 @@ class Item
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://bibframe.org/vocab/holdingFor",writable=false)
+     * @ApiProperty(iri="http://bibframe.org/vocab/holdingFor",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="@id"
+     *     }
+     * })
      */
     private $holdingFor;
 
     /**
      * @var string|array|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page",writable=false)
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $page;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/ontology/bibo/owner",writable=false)
+     * @ApiProperty(iri="http://purl.org/ontology/bibo/owner",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="@id"
+     *     }
+     * })
      */
     private $owner;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/ontology/bibo/locator",writable=false)
+     * @ApiProperty(iri="http://purl.org/ontology/bibo/locator",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $locator;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://bibframe.org/vocab/subLocation",writable=false)
+     * @ApiProperty(iri="http://bibframe.org/vocab/subLocation",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $subLocation;
 
