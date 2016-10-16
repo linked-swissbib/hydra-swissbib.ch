@@ -1,7 +1,5 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Hello World</h1>
-    {{ data['@context'] }}<br>
-    {{ data['@id'] }}
+    {{ body | raw }}
 {% endblock %}

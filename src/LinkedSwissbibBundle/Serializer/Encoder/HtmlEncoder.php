@@ -42,7 +42,12 @@ class HtmlEncoder implements EncoderInterface
     {
         $this->easyRdfGraph->parse(json_encode($data), 'jsonld');
 
-        return $this->easyRdfGraph->dump('html');
+        return $this->templating->render(
+            'concept.html.twig',
+            [
+                'body' => $this->easyRdfGraph->dump('html')
+            ]
+        );
     }
 
     /**
