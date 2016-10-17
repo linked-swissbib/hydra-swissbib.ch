@@ -98,6 +98,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
             $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);
         }
 
+        //TODO return new Paginator...
         return $entities;
     }
 
@@ -110,10 +111,6 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
     {
         $namespaceParts = explode('\\', $resourceClass);
         $className = array_pop($namespaceParts);
-
-        if ($className === 'Organization') {
-            $className = 'Organisation'; // TODO rename
-        }
 
         $type = lcfirst($className);
 
