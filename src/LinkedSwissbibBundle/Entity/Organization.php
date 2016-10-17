@@ -34,7 +34,11 @@ class Organization
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label",writable=false)
+     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $label;
 

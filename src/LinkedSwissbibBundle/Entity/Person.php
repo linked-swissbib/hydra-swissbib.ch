@@ -35,8 +35,11 @@ class Person
      * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/birthYear",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/birthYear",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *     }
+     * })
      */
     private $birthYear;
 
@@ -44,31 +47,44 @@ class Person
      * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/deathYear",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/deathYear",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *     }
+     * })
      */
     private $deathYear;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/firstName",writable=false);
-     *
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/firstName",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $firstName;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/lastName",writable=false);
-     *
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/lastName",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $lastName;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/name",writable=false);
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/name",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      *
      */
     private $name;
@@ -76,39 +92,55 @@ class Person
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="TODO",writable=false);
-     *
+     * @ApiProperty(iri="https://schema.org/sameAs",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $sameAs;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label",writable=false);
-     *
+     * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $label;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/2004/02/skos/core#/note",writable=false);
-     *
+     * @ApiProperty(iri="http://www.w3.org/2004/02/skos/core#/note",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $note;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/birthPlace",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/birthPlace",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $birthPlace;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/deathPlace",writable=false);
+     * @ApiProperty(iri="http://dbpedia.org/ontology/deathPlace",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      *
      */
     private $deathPlace;
@@ -117,8 +149,11 @@ class Person
      * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/birthDate",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/birthDate",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *     }
+     * })
      */
     private $birthDate;
 
@@ -126,39 +161,55 @@ class Person
      * @var string|array
      *
      * @Assert\Date
-     * @ApiProperty(iri="http://dbpedia.org/ontology/deathDate",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/deathDate",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *     }
+     * })
      */
     private $deathDate;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/genre",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/genre",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $genre;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/movement",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/movement",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $movement;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/nationality",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/nationality",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $nationality;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/notableWork",writable=false);
+     * @ApiProperty(iri="http://dbpedia.org/ontology/notableWork",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      *
      */
     private $notableWork;
@@ -166,127 +217,145 @@ class Person
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/occupation",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/occupation",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $occupation;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/thumbnail",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/thumbnail",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $thumbnail;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/influencedBy",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/influencedBy",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $influencedBy;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/partner",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/partner",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $partner;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/pseudonym",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/pseudonym",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     "@container"="@language"
+     *     }
+     * })
      */
     private $pseudonym;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/spouse",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/spouse",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $spouse;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/influenced",writable=false);
-     *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/influenced",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $influenced;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/alternateName",writable=false);
-     *
+     * @ApiProperty(iri="https://schema.org/alternateName",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $alternateName;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/birthDate",writable=false);
-     *
-     */
-    //TODO doppelter Eintrag private $birthDate;
-
-    /**
-     * @var string|array
-     *
-     * @ApiProperty(iri="https://schema.org/deathDate",writable=false);
-     *
-     */
-    //TODO doppelter Eintrag private $deathDate;
-
-    /**
-     * @var string|array
-     *
-     * @ApiProperty(iri="https://schema.org/familyName",writable=false);
-     *
+     * @ApiProperty(iri="https://schema.org/familyName",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $familyName;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/givenName",writable=false);
-     *
+     * @ApiProperty(iri="https://schema.org/givenName",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $givenName;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/gender",writable=false);
-     *
+     * @ApiProperty(iri="https://schema.org/gender",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $gender;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/sameAs",writable=false);
-     *
-     */
-    // TODO doppelter Eintrag private $sameAs;
-
-    /**
-     * @var string|array
-     *
-     * @ApiProperty(iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#/type,writable=false");
-     *
+     * @ApiProperty(iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#/type,writable=false",attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $type;
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://dbpedia.org/ontology/abstract",writable=false);
      *
+     * @ApiProperty(iri="http://dbpedia.org/ontology/abstract",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     "@container"="@language"
+     *     }
+     * })
      */
     private $abstract;
 

@@ -33,28 +33,44 @@ class BibliographicResource
     /**
      * @var string|array Title of a bibliographic resource
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false)
+     * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $title;
     
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type",writable=false)
+     * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type",writable=false, attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $type;
     
     /**
      * @var string|array Written language of the bibliographic resource
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/language",writable=false)
+     * @ApiProperty(iri="http://purl.org/dc/terms/language",writable=false, attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $language;
     
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/elements/1.1/format",writable=false)
+     * @ApiProperty(iri="http://purl.org/dc/elements/1.1/format",writable=false, attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $format;
 

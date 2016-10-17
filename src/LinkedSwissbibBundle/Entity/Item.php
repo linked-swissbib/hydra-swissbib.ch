@@ -46,7 +46,7 @@ class Item
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page",writable=false,attributes={
      *     "jsonld_context"={
-     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="@id"
      *     }
      * })
      */

@@ -33,15 +33,22 @@ class Work
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://bibframe.org/vocab/hasInstance",writable=false);
-     *
+     * @ApiProperty(iri="http://bibframe.org/vocab/hasInstance",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      */
     private $hasInstance;
 
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/contributor",writable=false);
+     * @ApiProperty(iri="http://purl.org/dc/terms/contributor",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="@id"
+     *     }
+     * })
      *
      */
     private $contributor;
@@ -49,8 +56,11 @@ class Work
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false);
-     *
+     * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false,attributes={
+     *     "jsonld_context"={
+     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *     }
+     * })
      */
     private $title;
 
