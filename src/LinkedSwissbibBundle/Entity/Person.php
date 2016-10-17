@@ -37,7 +37,7 @@ class Person
      * @Assert\Date
      * @ApiProperty(iri="http://dbpedia.org/ontology/birthYear",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#gYear"
      *     }
      * })
      */
@@ -49,7 +49,7 @@ class Person
      * @Assert\Date
      * @ApiProperty(iri="http://dbpedia.org/ontology/deathYear",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#gYear"
      *     }
      * })
      */
@@ -60,7 +60,7 @@ class Person
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/firstName",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -71,7 +71,7 @@ class Person
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/lastName",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -82,7 +82,7 @@ class Person
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/name",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      *
@@ -94,7 +94,7 @@ class Person
      *
      * @ApiProperty(iri="https://schema.org/sameAs",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -105,7 +105,7 @@ class Person
      *
      * @ApiProperty(iri="http://www.w3.org/2000/01/rdf-schema#/label",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -116,7 +116,7 @@ class Person
      *
      * @ApiProperty(iri="http://www.w3.org/2004/02/skos/core#/note",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -127,7 +127,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/birthPlace",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -138,7 +138,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/deathPlace",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      *
@@ -151,7 +151,7 @@ class Person
      * @Assert\Date
      * @ApiProperty(iri="http://dbpedia.org/ontology/birthDate",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#gYear"
      *     }
      * })
      */
@@ -163,7 +163,7 @@ class Person
      * @Assert\Date
      * @ApiProperty(iri="http://dbpedia.org/ontology/deathDate",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#gYear"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#gYear"
      *     }
      * })
      */
@@ -174,7 +174,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/genre",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -185,7 +185,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/movement",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -196,7 +196,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/nationality",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -207,7 +207,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/notableWork",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      *
@@ -219,7 +219,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/occupation",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -230,7 +230,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/thumbnail",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -241,7 +241,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/influencedBy",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -252,7 +252,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/partner",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -263,8 +263,8 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/pseudonym",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
-     *     "@container"="@language"
+     *         "@type"="@id",
+     *         "@container"="@language"
      *     }
      * })
      */
@@ -275,7 +275,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/spouse",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -286,7 +286,7 @@ class Person
      *
      * @ApiProperty(iri="http://dbpedia.org/ontology/influenced",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -297,7 +297,7 @@ class Person
      *
      * @ApiProperty(iri="https://schema.org/alternateName",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -308,7 +308,7 @@ class Person
      *
      * @ApiProperty(iri="https://schema.org/familyName",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -319,7 +319,7 @@ class Person
      *
      * @ApiProperty(iri="https://schema.org/givenName",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -330,7 +330,7 @@ class Person
      *
      * @ApiProperty(iri="https://schema.org/gender",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -341,7 +341,7 @@ class Person
      *
      * @ApiProperty(iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#/type,writable=false",attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *              "@type"="@id"
      *     }
      * })
      */
@@ -349,11 +349,10 @@ class Person
     /**
      * @var string|array
      *
-     *
      * @ApiProperty(iri="http://dbpedia.org/ontology/abstract",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
-     *     "@container"="@language"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string",
+     *         "@container"="@language"
      *     }
      * })
      */

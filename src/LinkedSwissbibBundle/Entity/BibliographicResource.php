@@ -35,7 +35,7 @@ class BibliographicResource
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -46,7 +46,7 @@ class BibliographicResource
      *
      * @ApiProperty(iri="https://www.w3.org/1999/02/22-rdf-syntax-ns#type",writable=false, attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -57,7 +57,7 @@ class BibliographicResource
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/language",writable=false, attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -68,7 +68,7 @@ class BibliographicResource
      *
      * @ApiProperty(iri="http://purl.org/dc/elements/1.1/format",writable=false, attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */

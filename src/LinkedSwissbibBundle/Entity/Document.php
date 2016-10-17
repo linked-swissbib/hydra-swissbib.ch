@@ -34,7 +34,7 @@ class Document
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/local",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
@@ -45,7 +45,7 @@ class Document
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/contributor",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -56,7 +56,7 @@ class Document
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/issued",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#dateTime"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#dateTime"
      *     }
      * })
      */
@@ -67,7 +67,7 @@ class Document
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/modified",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#dateTime"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#dateTime"
      *     }
      * })
      */
@@ -78,7 +78,7 @@ class Document
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/primaryTopic",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */

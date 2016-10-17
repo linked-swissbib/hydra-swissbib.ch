@@ -35,7 +35,7 @@ class Work
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/hasInstance",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      */
@@ -46,7 +46,7 @@ class Work
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/contributor",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="@id"
+     *         "@type"="@id"
      *     }
      * })
      *
@@ -58,7 +58,7 @@ class Work
      *
      * @ApiProperty(iri="http://purl.org/dc/terms/title",writable=false,attributes={
      *     "jsonld_context"={
-     *     "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
      *     }
      * })
      */
