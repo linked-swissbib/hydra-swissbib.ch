@@ -8,18 +8,26 @@ parameters:
         multi_match:
           query: '{q}'
           fields: '{fields}'
-#          type: 'cross_fields'
-#          operator: 'and'
 
-    collection:
+    collection_fields:
       index: 'testsb_160426'
       type: '{type}'
+      size: 20
       query:
         multi_match:
           query: '{q}'
           fields: '{fields}'
 #          type: 'cross_fields'
 #          operator: 'and'
+#          minimum_should_match: '50%'
+
+    collection_all:
+      index: 'testsb_160426'
+      type: '{type}'
+      size: 20
+      query:
+        match:
+          _all: '{q}'
 
     empty:
       index: 'testsb_160426'

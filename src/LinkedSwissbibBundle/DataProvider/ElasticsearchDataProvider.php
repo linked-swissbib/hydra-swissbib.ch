@@ -103,8 +103,10 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
 
         $this->queryBuilder->setParams($params);
 
-        if ($params->has('q')) {
-            $query = $this->queryBuilder->buildQueryFromTemplate('collection');
+        if ($params->has('q') && $params->has('fields')) {
+            $query = $this->queryBuilder->buildQueryFromTemplate('collection_fields');
+        } elseif ($params->has('q')) {
+            $query = $this->queryBuilder->buildQueryFromTemplate('collection_all');
         } else {
             $query = $this->queryBuilder->buildQueryFromTemplate('empty');
         }
