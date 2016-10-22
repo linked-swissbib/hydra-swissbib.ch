@@ -59,7 +59,8 @@
         "ml/json-ld": "^1.0",
         "linked-swissbib/adapterES": "dev-master",
         "ongr/elasticsearch-dsl": "^2.1",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "easyrdf/easyrdf": "^0.9.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
