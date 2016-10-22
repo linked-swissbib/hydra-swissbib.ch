@@ -3,7 +3,7 @@ parameters:
   elasticsearch_adapter.templates:
     search:
       index: 'testsb_160426'
-      type: ['bibliographicResource', 'document', 'item', 'organization', 'person', 'work']
+      type: 'bibliographicResource, document, item, organization, person, work'
       query:
         multi_match:
           query: '{q}'
