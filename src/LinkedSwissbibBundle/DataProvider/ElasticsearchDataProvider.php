@@ -5,14 +5,11 @@ namespace LinkedSwissbibBundle\DataProvider;
 use ApiPlatform\Core\DataProvider\CollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use ElasticsearchAdapter\Adapter;
-use ElasticsearchAdapter\Params\ArrayParams;
-use ElasticsearchAdapter\Params\Params;
 use ElasticsearchAdapter\QueryBuilder\TemplateQueryBuilder;
 use LinkedSwissbibBundle\ContextMapping\ContextMapper;
 use LinkedSwissbibBundle\Elasticsearch\ResourceNameConverter;
 use LinkedSwissbibBundle\Entity\EntityBuilder;
 use LinkedSwissbibBundle\Params\ParamsBuilder;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -112,7 +109,6 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         }
 
         $response = $this->adapter->search($query, $params);
-
         $mappedEntities = $this->contextMapper->fromExternalToInternal($type, $response);
         $entities = [];
 
