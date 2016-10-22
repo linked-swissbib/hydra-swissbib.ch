@@ -43,6 +43,8 @@ class ContextMapper implements ContextMapperInterface
     }
 
     /**
+     * TODO: Respect URL from context for mappings
+     *
      * {@inheritdoc}
      */
     public function fromInternalToExternal(string $type, array $internal) : array
