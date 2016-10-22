@@ -11,6 +11,10 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Decorated CollectionNormalizer in order to be able to use json-ld as input format for all encoders
+ *
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @license  http://opensource.org/licenses/gpl-2.0.php
+ * @link     http://linked.swissbib.ch
  */
 class CollectionNormalizer implements NormalizerInterface, NormalizerAwareInterface
 {

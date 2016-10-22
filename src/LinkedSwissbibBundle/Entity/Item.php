@@ -20,6 +20,10 @@ use Doctrine\ORM\Mapping as ORM;
  *          "get":{"method":"GET"}
  *     }
  * )
+ *
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @license  http://opensource.org/licenses/gpl-2.0.php
+ * @link     http://linked.swissbib.ch
  */
 class Item
 {

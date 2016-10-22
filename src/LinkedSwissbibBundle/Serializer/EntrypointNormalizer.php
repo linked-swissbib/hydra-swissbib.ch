@@ -8,6 +8,10 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Decorated classEntrypointNormalizer in order to allow all formats
+ *
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @license  http://opensource.org/licenses/gpl-2.0.php
+ * @link     http://linked.swissbib.ch
  */
 class EntrypointNormalizer implements NormalizerInterface
 {

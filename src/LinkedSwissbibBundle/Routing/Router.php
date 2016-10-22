@@ -6,6 +6,13 @@ use ApiPlatform\Core\Api\UrlGeneratorInterface;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * Decorating the router in order to make all urls absolute, see method generate()
+ *
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @license  http://opensource.org/licenses/gpl-2.0.php
+ * @link     http://linked.swissbib.ch
+ */
 class Router implements RouterInterface, UrlGeneratorInterface
 {
     /**
@@ -13,6 +20,9 @@ class Router implements RouterInterface, UrlGeneratorInterface
      */
     private $router;
 
+    /**
+     * @param RouterInterface $router
+     */
     public function __construct(RouterInterface $router)
     {
         $this->router = $router;

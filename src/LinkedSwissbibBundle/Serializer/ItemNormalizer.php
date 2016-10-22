@@ -13,6 +13,10 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Decorated ItemNormalizer in order to be able to exclude null values and use json-ld as input format for all encoders
+ *
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @license  http://opensource.org/licenses/gpl-2.0.php
+ * @link     http://linked.swissbib.ch
  */
 class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, DenormalizerInterface
 {

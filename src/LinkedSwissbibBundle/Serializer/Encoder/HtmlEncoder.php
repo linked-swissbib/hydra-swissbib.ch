@@ -7,6 +7,13 @@ use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use EasyRdf_Graph;
 use EasyRdf_Resource;
 
+/**
+ * HtmlEncoder
+ *
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @license  http://opensource.org/licenses/gpl-2.0.php
+ * @link     http://linked.swissbib.ch
+ */
 class HtmlEncoder implements EncoderInterface
 {
     /**
