@@ -4,9 +4,7 @@ namespace LinkedSwissbibBundle\Elasticsearch;
 
 use Doctrine\Common\Cache\Cache;
 use GuzzleHttp\Client;
-use GuzzleHttp\Ring\Client\ClientUtils;
-use Monolog\Logger;
-use \LinkedSwissbibBundle\ContextMapping\ContextMapper;
+use LinkedSwissbibBundle\ContextMapping\ContextMapper as ContextMapperInterface;
 
 /**
  * ElasticsearchContextMapper
@@ -15,7 +13,7 @@ use \LinkedSwissbibBundle\ContextMapping\ContextMapper;
  * @license  http://opensource.org/licenses/gpl-2.0.php
  * @link     http://linked.swissbib.ch
  */
-class ElasticsearchContextMapper implements ContextMapper
+class ContextMapper implements ContextMapperInterface
 {
     /**
      * @var Cache
@@ -23,23 +21,25 @@ class ElasticsearchContextMapper implements ContextMapper
     protected $cache;
 
     /**
-     * @var array
-     */
-    protected $config = [];
-
-    /**
      * @var Client
      */
     protected $client;
 
     /**
+     * @var array
+     */
+    protected $config = [];
+
+    /**
      * @param Cache $cache
+     * @param Client $client
+     * @param array $config
      */
     public function __construct(Cache $cache, Client $client, array $config)
     {
         $this->cache = $cache;
-        $this->config = $config;
         $this->client = $client;
+        $this->config = $config;
     }
 
     /**
@@ -103,10 +103,8 @@ class ElasticsearchContextMapper implements ContextMapper
      * @param string $type
      *
      * @return array
-     *
-     * @throws \Exception
      */
-    protected function loadRemoteContext(string $type)
+    protected function loadRemoteContext(string $type) : array
     {
         $url = str_replace('{type}', $type, $this->config['template_url']);
 

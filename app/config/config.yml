@@ -10,6 +10,10 @@ parameters:
     linked_swissbib.elastic_search.hosts: ["localhost"]
     linked_swissbib.context_mapper:
       template_url: 'http://data.swissbib.ch/{type}/context.jsonld'
+    linked_swissbib.elasticsearch_params_builder:
+      mapped_params:
+        single: []
+        multi: ['fields']
 
 framework:
     #esi:             ~

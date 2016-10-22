@@ -19,11 +19,25 @@ services:
     linked_swissbib.elasticsearch_data_provider:
         class: LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider
         tags: [ { name: 'api_platform.item_data_provider', priority: 1 }, { name: 'api_platform.collection_data_provider', priority: 1 } ]
-        arguments: ['@linked_swissbib.elasticsearchadapter_adapter', '@linked_swissbib.elasticsearchadapter_templatequerybuilder', '@linked_swissbib.entity_simple_entity_builder' ,'@linked_swissbib.elasticsearch_context_mapper', '@request_stack']
+        arguments:
+          - '@linked_swissbib.elasticsearchadapter_adapter'
+          - '@linked_swissbib.elasticsearchadapter_templatequerybuilder'
+          - '@linked_swissbib.entity_simple_entity_builder'
+          - '@linked_swissbib.elasticsearch_context_mapper'
+          - '@request_stack'
+          - '@linked_swissbib.elasticsearch_resource_name_converter'
+          - '@linked_swissbib.elasticsearch_params_builder'
 
     linked_swissbib.elasticsearch_context_mapper:
-        class: LinkedSwissbibBundle\Elasticsearch\ElasticsearchContextMapper
+        class: LinkedSwissbibBundle\Elasticsearch\ContextMapper
         arguments: ['@linked_swissbib.cache', '@linked_swissbib.http_client', '%linked_swissbib.context_mapper%']
+
+    linked_swissbib.elasticsearch_params_builder:
+        class: LinkedSwissbibBundle\Elasticsearch\ParamsBuilder
+        arguments: ['@linked_swissbib.elasticsearch_resource_name_converter', '@linked_swissbib.elasticsearch_context_mapper', '%linked_swissbib.elasticsearch_params_builder%']
+
+    linked_swissbib.elasticsearch_resource_name_converter:
+        class: LinkedSwissbibBundle\Elasticsearch\ResourceNameConverter
 
     linked_swissbib.operation_path_resolver.camel_case:
         class: LinkedSwissbibBundle\PathResolver\CamelCaseResourcePathGenerator
