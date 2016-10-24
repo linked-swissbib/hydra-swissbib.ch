@@ -1,8 +1,9 @@
 parameters:
   elasticsearch_adapter.hosts: ['localhost']
+  #elasticsearch_adapter.hosts: ['sb-s2.swissbib.unibas.ch:8080']
   elasticsearch_adapter.templates:
     search:
-      index: 'testsb_160426'
+      index: 'testsb'
       type: 'bibliographicResource, document, item, organization, person, work'
       query:
         multi_match:
@@ -10,7 +11,7 @@ parameters:
           fields: '{fields}'
 
     collection_fields:
-      index: 'testsb_160426'
+      index: 'testsb'
       type: '{type}'
       size: 20
       query:
@@ -22,7 +23,7 @@ parameters:
 #          minimum_should_match: '50%'
 
     collection_all:
-      index: 'testsb_160426'
+      index: 'testsb'
       type: '{type}'
       size: 20
       query:
@@ -30,11 +31,11 @@ parameters:
           _all: '{q}'
 
     empty:
-      index: 'testsb_160426'
+      index: 'testsb'
       type: '{type}'
 
     id:
-      index: 'testsb_160426'
+      index: 'testsb'
       type: '{type}'
       query:
         ids:
