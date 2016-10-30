@@ -5,6 +5,14 @@ language: php
 php:
   - 7.0
 
+before_install:
+    - mkdir -p build/logs build/cov
+    - wget https://phar.phpunit.de/phpcov.phar
+    - https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+
+install:
+    - composer require --dev --no-update 'phpunit/php-code-coverage:^4.0.1'
+
 before_script:
     - pear install pear/PHP_CodeSniffer
     - phpenv rehash
@@ -12,5 +20,8 @@ before_script:
 script:
     - composer install -n
     - phpcs -n --standard=PSR2 src tests
-    - phpunit
-    - vendor/bin/behat
+    - phpdbg -qrr -dmemory_limit=-1 "$(phpenv which phpunit)" --coverage-php build/cov/coverage-phpunit.cov
+    - phpdbg -qrr vendor/bin/behat --profile coverage
+
+after_success:
+  - travis_retry php coveralls.phar
