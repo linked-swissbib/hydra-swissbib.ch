@@ -25,4 +25,4 @@ script:
     - phpdbg -qrr phpcov.phar merge --clover build/logs/clover.xml build/cov
 
 after_success:
-  - travis_retry php coveralls.phar
+  - travis_retry php coveralls.phar -v
