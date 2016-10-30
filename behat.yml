@@ -8,6 +8,7 @@ default:
         - Behat\MinkExtension\Context\MinkContext
         - Sanpi\Behatch\Context\RestContext
         - Sanpi\Behatch\Context\JsonContext
+        - CoverageContext
   extensions:
     Behat\Symfony2Extension:
       kernel:
