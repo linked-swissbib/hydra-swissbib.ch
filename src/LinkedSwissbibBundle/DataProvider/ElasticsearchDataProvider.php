@@ -6,6 +6,7 @@ use ApiPlatform\Core\DataProvider\CollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use ElasticsearchAdapter\Adapter;
 use ElasticsearchAdapter\QueryBuilder\TemplateQueryBuilder;
+use ElasticsearchAdapter\SearchBuilder\TemplateSearchBuilder;
 use LinkedSwissbibBundle\ContextMapping\ContextMapper;
 use LinkedSwissbibBundle\Elasticsearch\ResourceNameConverter;
 use LinkedSwissbibBundle\Entity\EntityBuilder;
@@ -26,9 +27,9 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
      */
     protected $adapter;
     /**
-     * @var TemplateQueryBuilder
+     * @var TemplateSearchBuilder
      */
-    protected $queryBuilder;
+    protected $searchBuilder;
 
     /**
      * @var EntityBuilder
@@ -57,14 +58,14 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
 
     /**
      * @param Adapter $adapter
-     * @param TemplateQueryBuilder $queryBuilder
+     * @param TemplateSearchBuilder $searchBuilder
      * @param EntityBuilder $entityBuilder
      * @param ContextMapper $contextMapper
      */
-    public function __construct(Adapter $adapter, TemplateQueryBuilder $queryBuilder, EntityBuilder $entityBuilder, ContextMapper $contextMapper, RequestStack $requestStack, ResourceNameConverter $resourceNameConverter, ParamsBuilder $paramsBuilder)
+    public function __construct(Adapter $adapter, TemplateSearchBuilder $searchBuilder, EntityBuilder $entityBuilder, ContextMapper $contextMapper, RequestStack $requestStack, ResourceNameConverter $resourceNameConverter, ParamsBuilder $paramsBuilder)
     {
         $this->adapter = $adapter;
-        $this->queryBuilder = $queryBuilder;
+        $this->searchBuilder = $searchBuilder;
         $this->entityBuilder = $entityBuilder;
         $this->contextMapper = $contextMapper;
         $this->requestStack = $requestStack;
@@ -80,14 +81,17 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         $params = $this->paramsBuilder->buildItemParams($this->requestStack->getCurrentRequest());
         $type = $this->resourceNameConverter->getElasticsearchTypeFromResourceClass($resourceClass);
 
-        $this->queryBuilder->setParams($params);
+        $this->searchBuilder->setParams($params);
 
-        $query = $this->queryBuilder->buildQueryFromTemplate('id');
-        $response = $this->adapter->search($query, $params);
-        $mappedProperties = $this->contextMapper->fromExternalToInternal($type, $response);
-        $entity = $this->entityBuilder->build($resourceClass, $mappedProperties);
+        $search = $this->searchBuilder->buildSearchFromTemplate('id');
+        $response = $this->adapter->search($search);
+        $mappedProperties = $this->contextMapper->fromExternalToInternal($type, $response->getHits());
 
-        return $entity;
+        if (isset($mappedProperties[0])) {
+            return $this->entityBuilder->build($resourceClass, $mappedProperties[0]);
+        }
+
+        return null;
     }
 
     /**
@@ -98,18 +102,18 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         $type = $this->resourceNameConverter->getElasticsearchTypeFromResourceClass($resourceClass);
         $params = $this->paramsBuilder->buildCollectionParams($this->requestStack->getCurrentRequest());
 
-        $this->queryBuilder->setParams($params);
+        $this->searchBuilder->setParams($params);
 
         if ($params->has('q') && $params->has('fields')) {
-            $query = $this->queryBuilder->buildQueryFromTemplate('collection_fields');
+            $search = $this->searchBuilder->buildSearchFromTemplate('collection_fields');
         } elseif ($params->has('q')) {
-            $query = $this->queryBuilder->buildQueryFromTemplate('collection_all');
+            $search = $this->searchBuilder->buildSearchFromTemplate('collection_all');
         } else {
-            $query = $this->queryBuilder->buildQueryFromTemplate('empty');
+            $search = $this->searchBuilder->buildSearchFromTemplate('empty');
         }
 
-        $response = $this->adapter->search($query, $params);
-        $mappedEntities = $this->contextMapper->fromExternalToInternal($type, $response);
+        $response = $this->adapter->search($search);
+        $mappedEntities = $this->contextMapper->fromExternalToInternal($type, $response->getHits());
         $entities = [];
 
         foreach ($mappedEntities as $mappedEntity) {

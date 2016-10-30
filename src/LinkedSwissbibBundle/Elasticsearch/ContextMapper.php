@@ -83,7 +83,7 @@ class ContextMapper implements ContextMapperInterface
     {
         $data = [];
 
-        foreach ($external['hits']['hits'] as $hits) {
+        foreach ($external as $hits) {
             $entity = [];
 
             foreach ($hits['_source'] as $propertyKey => $propertyValue) {
@@ -98,7 +98,7 @@ class ContextMapper implements ContextMapperInterface
             $data[] = $entity;
         }
 
-        return count($data) === 1 ? $data[0] : $data;
+        return $data;
     }
 
     /**

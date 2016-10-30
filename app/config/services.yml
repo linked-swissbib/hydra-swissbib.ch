@@ -8,8 +8,8 @@ services:
         class: ElasticsearchAdapter\Adapter
         arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
 
-    linked_swissbib.elasticsearchadapter_templatequerybuilder:
-        class: ElasticsearchAdapter\QueryBuilder\TemplateQueryBuilder
+    linked_swissbib.elasticsearchadapter_templatesearchbuilder:
+        class: ElasticsearchAdapter\SearchBuilder\TemplateSearchBuilder
         arguments: ['%elasticsearch_adapter.templates%']
 
     linked_swissbib.elasticsearchadapter_elasticsearchclientconnector:
@@ -21,7 +21,7 @@ services:
         tags: [ { name: 'api_platform.item_data_provider', priority: 1 }, { name: 'api_platform.collection_data_provider', priority: 1 } ]
         arguments:
           - '@linked_swissbib.elasticsearchadapter_adapter'
-          - '@linked_swissbib.elasticsearchadapter_templatequerybuilder'
+          - '@linked_swissbib.elasticsearchadapter_templatesearchbuilder'
           - '@linked_swissbib.entity_simple_entity_builder'
           - '@linked_swissbib.elasticsearch_context_mapper'
           - '@request_stack'
