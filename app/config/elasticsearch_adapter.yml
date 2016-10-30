@@ -10,26 +10,6 @@ parameters:
           query: '{q}'
           fields: '{fields}'
 
-    collection_fields:
-      index: 'testsb'
-      type: '{type}'
-      size: 20
-      query:
-        multi_match:
-          query: '{q}'
-          fields: '{fields}'
-#          type: 'cross_fields'
-#          operator: 'and'
-#          minimum_should_match: '50%'
-
-    collection_all:
-      index: 'testsb'
-      type: '{type}'
-      size: 20
-      query:
-        match:
-          _all: '{q}'
-
     empty:
       index: 'testsb'
       type: '{type}'
@@ -40,3 +20,57 @@ parameters:
       query:
         ids:
           values: ['{id}']
+
+    collection_fields:
+      index: 'testsb'
+      type: '{type}'
+      size: 20
+      query:
+        multi_match:
+          query: '{q}'
+          fields: '{fields}'
+
+    collection_document:
+      index: 'testsb'
+      type: 'document'
+      size: 20
+      query:
+        multi_match:
+          query: '{q}'
+          fields: 'bf:local,dct:contributor'
+
+    collection_bibliographicresource:
+      index: 'testsb'
+      type: 'bibliographicResource'
+      size: 20
+      query:
+        multi_match:
+          query: '{q}'
+          fields: 'dct:title'
+
+    collection_item:
+      index: 'testsb'
+      type: 'item'
+      size: 20
+      query:
+        multi_match:
+          query: '{q}'
+          fields: 'bf:holdingFor,foaf:page,bibo:owner,bibo:locator,bf:subLocation'
+
+    collection_organisation:
+      index: 'testsb'
+      type: 'organisation'
+      size: 20
+      query:
+        multi_match:
+          query: '{q}'
+          fields: 'rdfs:label'
+
+    collection_person:
+      index: 'testsb'
+      type: 'person'
+      size: 20
+      query:
+        multi_match:
+          query: '{q}'
+          fields: 'firstName,lastName'

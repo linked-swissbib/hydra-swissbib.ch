@@ -101,20 +101,19 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
     {
         $type = $this->resourceNameConverter->getElasticsearchTypeFromResourceClass($resourceClass);
         $params = $this->paramsBuilder->buildCollectionParams($this->requestStack->getCurrentRequest());
-
-        $this->searchBuilder->setParams($params);
+        $templateName = 'empty';
+        $entities = [];
 
         if ($params->has('q') && $params->has('fields')) {
-            $search = $this->searchBuilder->buildSearchFromTemplate('collection_fields');
+            $templateName = 'collection_fields';
         } elseif ($params->has('q')) {
-            $search = $this->searchBuilder->buildSearchFromTemplate('collection_all');
-        } else {
-            $search = $this->searchBuilder->buildSearchFromTemplate('empty');
+            $templateName = 'collection_' . strtolower($type);
         }
 
+        $this->searchBuilder->setParams($params);
+        $search = $this->searchBuilder->buildSearchFromTemplate($templateName);
         $response = $this->adapter->search($search);
         $mappedEntities = $this->contextMapper->fromExternalToInternal($type, $response->getHits());
-        $entities = [];
 
         foreach ($mappedEntities as $mappedEntity) {
             $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);

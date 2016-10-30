@@ -108,6 +108,11 @@ class ContextMapper implements ContextMapperInterface
      */
     protected function loadRemoteContext(string $type) : array
     {
+        //todo: Remove when we have decided whether its resource or bibliographicResource
+        if ($type === 'bibliographicResource') {
+            $type = 'resource';
+        }
+
         $url = str_replace('{type}', $type, $this->config['template_url']);
 
         $response = $this->client->get($url);
