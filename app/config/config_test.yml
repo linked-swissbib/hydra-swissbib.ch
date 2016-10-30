@@ -16,3 +16,8 @@ web_profiler:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+
+services:
+    linked_swissbib.elasticsearchadapter_adapter:
+        class: LinkedSwissbibBundle\Tests\ElasticsearchAdapter\ElasticsearchAdapterMock
+        arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
