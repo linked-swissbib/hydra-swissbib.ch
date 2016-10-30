@@ -8,7 +8,7 @@ php:
 before_install:
     - mkdir -p build/logs build/cov
     - wget https://phar.phpunit.de/phpcov.phar
-    - https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+    - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
 
 install:
     - composer require --dev --no-update 'phpunit/php-code-coverage:^4.0.1'
@@ -22,6 +22,7 @@ script:
     - phpcs -n --standard=PSR2 src tests
     - phpdbg -qrr -dmemory_limit=-1 "$(phpenv which phpunit)" --coverage-php build/cov/coverage-phpunit.cov
     - phpdbg -qrr vendor/bin/behat --profile coverage
+    - phpdbg -qrr phpcov.phar merge --clover build/logs/clover.xml build/cov
 
 after_success:
   - travis_retry php coveralls.phar
