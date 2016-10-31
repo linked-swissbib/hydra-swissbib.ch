@@ -27,7 +27,7 @@
                 "source": {
                     "url": "https://github.com/linked-swissbib/adapterElasticsearch.git",
                     "type": "git",
-                    "reference": "develop"
+                    "reference": "master"
                 },
                 "autoload": {
                     "psr-0" : {

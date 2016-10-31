@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "72274349e6a56b0e36bf7c3d67337dbf",
-    "content-hash": "5d21d7768628f3b89f67021cd10b00aa",
+    "hash": "dad20d7eb9a78d7b77bc4fedb151ab04",
+    "content-hash": "ca41d51599e6fb817782452dacb79f5c",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1616,7 +1616,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/linked-swissbib/adapterElasticsearch.git",
-                "reference": "develop"
+                "reference": "master"
             },
             "type": "library",
             "autoload": {
@@ -1624,7 +1624,7 @@
                     "ElasticsearchAdapter": "src"
                 }
             },
-            "time": "2016-10-30 14:26:19"
+            "time": "2016-10-31 09:16:59"
         },
         {
             "name": "ml/iri",
