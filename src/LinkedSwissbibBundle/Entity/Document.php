@@ -100,7 +100,7 @@ class Document
     }
 
     /**
-     * @param array|string/ $id
+     * @param array|string $id
      */
     public function setId($id)
     {
@@ -108,7 +108,7 @@ class Document
     }
 
     /**
-     * @return array|string/ Die super description
+     * @return array|string
      */
     public function getLocal()
     {
@@ -116,7 +116,7 @@ class Document
     }
 
     /**
-     * @param array|string/ $local
+     * @param array|string $local
      */
     public function setLocal($local)
     {
@@ -124,7 +124,7 @@ class Document
     }
 
     /**
-     * @return array|string/
+     * @return array|string
      */
     public function getContributor()
     {
@@ -132,7 +132,7 @@ class Document
     }
 
     /**
-     * @param array|string/ $contributor
+     * @param array|string $contributor
      */
     public function setContributor($contributor)
     {
@@ -140,7 +140,7 @@ class Document
     }
 
     /**
-     * @return array|string/
+     * @return array|string
      */
     public function getIssued()
     {
@@ -148,7 +148,7 @@ class Document
     }
 
     /**
-     * @param array|string/ $issued
+     * @param array|string $issued
      */
     public function setIssued($issued)
     {
@@ -156,7 +156,7 @@ class Document
     }
 
     /**
-     * @return array|string/
+     * @return array|string
      */
     public function getModified()
     {
@@ -164,7 +164,7 @@ class Document
     }
 
     /**
-     * @param array|string/ $modified
+     * @param array|string $modified
      */
     public function setModified($modified)
     {
@@ -180,7 +180,7 @@ class Document
     }
 
     /**
-     * @param array|string/ $primaryTopic
+     * @param array|string $primaryTopic
      */
     public function setPrimaryTopic($primaryTopic)
     {

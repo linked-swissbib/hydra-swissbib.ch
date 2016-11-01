@@ -73,6 +73,25 @@ Feature: Responses for documents
                 "primaryTopic": "http:\/\/data.swissbib.ch\/resource\/000000051\/about"
             }
         ],
-        "hydra:totalItems": 2
+        "hydra:totalItems": 2,
+        "hydra:search": {
+            "@type": "hydra:IriTemplate",
+            "hydra:template": "\/document{?q,fields}",
+            "hydra:variableRepresentation": "BasicRepresentation",
+            "hydra:mapping": [
+                {
+                    "@type": "IriTemplateMapping",
+                    "variable": "q",
+                    "property": "_all",
+                    "required": false
+                },
+                {
+                    "@type": "IriTemplateMapping",
+                    "variable": "fields",
+                    "property": "_fields",
+                    "required": false
+                }
+            ]
+        }
     }
     """

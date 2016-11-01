@@ -49,7 +49,7 @@ class Item
     private $holdingFor;
 
     /**
-     * @var string|array|array
+     * @var string|array
      *
      * @ApiProperty(iri="http://xmlns.com/foaf/0.1/page",writable=false,attributes={
      *     "jsonld_context"={
