@@ -19,7 +19,7 @@ class CamelCaseResourcePathGenerator implements OperationPathResolverInterface
      */
     public function resolveOperationPath(string $resourceShortName, array $operation, bool $collection) : string
     {
-        $path = lcfirst($resourceShortName);
+        $path = '/' . lcfirst($resourceShortName);
 
         if (!$collection) {
             $path .= '/{id}';
