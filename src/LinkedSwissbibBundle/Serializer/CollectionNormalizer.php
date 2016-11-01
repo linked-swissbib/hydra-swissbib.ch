@@ -40,6 +40,11 @@ class CollectionNormalizer implements NormalizerInterface, NormalizerAwareInterf
 
     public function normalize($object, $format = null, array $context = array())
     {
+        if ($format !== ApiPlatformCollectionNormalizer::FORMAT) {
+            //embed context to avoid an additional request on encoding to e.g. rdf
+            $context['jsonld_embed_context'] = true;
+        }
+
         return $this->collectionNormalizer->normalize($object, $format, $context);
     }
 
