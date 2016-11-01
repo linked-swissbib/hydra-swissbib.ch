@@ -104,6 +104,10 @@ services:
     linked_swissbib.http_client:
         class: GuzzleHttp\Client
 
+    linked_swissbib.filter.fieldsqueryfilter:
+        class: LinkedSwissbibBundle\Filter\FieldsQueryFilter
+        tags: [ { name: 'api_platform.filter', id: 'linked_swissbib.fieldsqueryfilter' } ]
+
     api_platform.swagger.listener.ui:
         class: LinkedSwissbibBundle\Bridge\Symfony\Bundle\EventListener\SwaggerUiListener
         tags: [ { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' } ]

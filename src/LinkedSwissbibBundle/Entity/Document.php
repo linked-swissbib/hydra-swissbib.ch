@@ -17,6 +17,9 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     collectionOperations={
  *          "get":{"method":"GET"}
+ *     },
+ *     attributes={
+ *          "filters"={"linked_swissbib.fieldsqueryfilter"}
  *     }
  * )
  *
@@ -34,7 +37,7 @@ class Document
     private $id;
 
     /**
-     * @var string|array
+     * @var string|array fuu thats the description
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/local",writable=false,attributes={
      *     "jsonld_context"={
@@ -105,7 +108,7 @@ class Document
     }
 
     /**
-     * @return array|string/
+     * @return array|string/ Die super description
      */
     public function getLocal()
     {

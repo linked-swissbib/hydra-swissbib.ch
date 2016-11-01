@@ -19,6 +19,9 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     collectionOperations={
  *          "get":{"method":"GET"}
+ *     },
+ *     attributes={
+ *          "filters"={"linked_swissbib.fieldsqueryfilter"}
  *     }
  * )
  *

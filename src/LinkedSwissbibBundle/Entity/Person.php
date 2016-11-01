@@ -19,6 +19,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *     collectionOperations={
  *          "get":{"method":"GET"}
+ *     },
+ *     attributes={
+ *          "filters"={"linked_swissbib.fieldsqueryfilter"}
  *     }
  * )
  *
