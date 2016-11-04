@@ -96,6 +96,27 @@ services:
             - '@linked_swissbib.serializer.normalizer.entrypoint.inner'
         tags: [ { name: 'serializer.normalizer', priority: 30 } ]
 
+    linked_swissbib.serializer.normalizer.error:
+        class: LinkedSwissbibBundle\Serializer\ErrorNormalizer
+        decorates: api_platform.hydra.normalizer.error
+        arguments:
+            - '@linked_swissbib.serializer.normalizer.error.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 34 } ]
+
+    linked_swissbib.serializer.normalizer.constraint_violation_list:
+        class: LinkedSwissbibBundle\Serializer\ConstraintViolationListNormalizer
+        decorates: api_platform.hydra.normalizer.constraint_violation_list
+        arguments:
+            - '@linked_swissbib.serializer.normalizer.constraint_violation_list.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 34 } ]
+
+    linked_swissbib.serializer.normalizer.documentation:
+        class: LinkedSwissbibBundle\Serializer\DocumentationNormalizer
+        decorates: api_platform.hydra.normalizer.documentation
+        arguments:
+            - '@linked_swissbib.serializer.normalizer.documentation.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 34 } ]
+
     linked_swissbib.router:
         class: LinkedSwissbibBundle\Routing\Router
         decorates: api_platform.router

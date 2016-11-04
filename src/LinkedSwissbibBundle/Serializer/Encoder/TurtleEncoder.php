@@ -17,7 +17,7 @@ class TurtleEncoder implements EncoderInterface
     /**
      * Supported format
      */
-    const FORMAT = 'turtle'; //TODO find out how to use rdfxml, because rdf is also mapped to application/rdf+xml
+    const FORMAT = 'turtle';
 
     /**
      * @var EasyRdf_Graph

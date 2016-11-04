@@ -7,7 +7,7 @@ use ApiPlatform\Core\Hydra\Serializer\EntrypointNormalizer as ApiPlatformEntrypo
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Decorated classEntrypointNormalizer in order to allow all formats
+ * Decorated class EntrypointNormalizer in order to allow all formats
  *
  * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
  * @license  http://opensource.org/licenses/gpl-2.0.php
@@ -34,6 +34,7 @@ class EntrypointNormalizer implements NormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = $this->entrypointNormalizer->normalize($object, $format, $context);
+
         return $data;
     }
 

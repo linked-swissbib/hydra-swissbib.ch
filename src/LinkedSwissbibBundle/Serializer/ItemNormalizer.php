@@ -94,8 +94,10 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
             //embed context to avoid an additional request on encoding to e.g. rdf
             $context['jsonld_embed_context'] = true;
         }
+
         $normalizedData = $this->itemNormalizer->normalize($object, $format, $context);
         $filteredData = $this->filterNullValues($normalizedData);
+
         return $filteredData;
     }
 

@@ -17,7 +17,7 @@ class NTriplesEncoder implements EncoderInterface
     /**
      * Supported format
      */
-    const FORMAT = 'ntriples'; //TODO find out how to use rdfxml, because rdf is also mapped to application/rdf+xml
+    const FORMAT = 'ntriples';
 
     /**
      * @var EasyRdf_Graph
