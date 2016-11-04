@@ -44,6 +44,8 @@ services:
 
     linked_swissbib.easy_rdf_graph:
         class: EasyRdf_Graph
+        factory: [LinkedSwissbibBundle\EasyRdf\EasyRdfFactory, createEasyRdfGraph]
+        arguments: ['%linked_swissbib.easyrdf.namespaces%']
 
     linked_swissbib.rdfxml_encoder:
         class: LinkedSwissbibBundle\Serializer\Encoder\RdfxmlEncoder

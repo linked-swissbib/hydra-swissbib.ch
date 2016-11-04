@@ -10,16 +10,16 @@ Feature: Content negotiation for turtle
     And the response should be equal to
     """
     @prefix bibo: <http://purl.org/ontology/bibo/> .
-    @prefix ns0: <http://bibframe.org/vocab/> .
+    @prefix bf: <http://bibframe.org/vocab/> .
     @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix ns1: <http://example.com/doc.jsonld##Document/> .
+    @prefix ns0: <http://example.com/doc.jsonld##Document/> .
     @prefix dc: <http://purl.org/dc/terms/> .
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
     <http://example.com/document/000000051>
       a bibo:document ;
-      ns0:local "OCoLC/775794624"^^xsd:string, "ABN/000300043"^^xsd:string ;
-      ns1:id "000000051"^^xsd:string ;
+      bf:local "OCoLC/775794624"^^xsd:string, "ABN/000300043"^^xsd:string ;
+      ns0:id "000000051"^^xsd:string ;
       dc:contributor <http://d-nb.info/gnd/1046905-9>, <http://data.swissbib.ch/agent/ABN> ;
       dc:issued "2016-04-26T08:41:49.227Z"^^xsd:dateTime ;
       dc:modified "2014-08-14T16:40:57+01:00"^^xsd:dateTime ;
