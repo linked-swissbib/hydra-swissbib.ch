@@ -1,0 +1,5 @@
+<div class="rdfa-array">
+    {% for object in data %}
+        {% include 'rdfaObject.html.twig' with {'properties': object} %}
+    {% endfor %}
+</div>

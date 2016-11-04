@@ -1,0 +1,11 @@
+<div class="rdfa-literal">
+    <div class="rdfa-literal-key">{{ property }}:&nbsp;</div>
+
+    {% if value starts with 'http' %}
+        <div class="rdfa-literal-value">
+            <a href="{{ value }}" property="{{ property }}">{{ value }}</a>
+        </div>
+    {% else %}
+        <div class="rdfa-literal-value" property="{{ property }}">{{ value }}</div>
+    {% endif %}
+</div>

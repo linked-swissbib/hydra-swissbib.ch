@@ -5,6 +5,7 @@ namespace LinkedSwissbibBundle\Serializer;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\Exception\InvalidArgumentException;
 use ApiPlatform\Core\Hydra\Serializer\CollectionNormalizer as ApiPlatformCollectionNormalizer;
+use LinkedSwissbibBundle\Serializer\Encoder\HtmlEncoder;
 use Symfony\Component\Serializer\Normalizer\scalar;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -40,7 +41,7 @@ class CollectionNormalizer implements NormalizerInterface, NormalizerAwareInterf
 
     public function normalize($object, $format = null, array $context = array())
     {
-        if ($format !== ApiPlatformCollectionNormalizer::FORMAT) {
+        if ($format !== ApiPlatformCollectionNormalizer::FORMAT && $format !== HtmlEncoder::FORMAT) {
             //embed context to avoid an additional request on encoding to e.g. rdf
             $context['jsonld_embed_context'] = true;
         }

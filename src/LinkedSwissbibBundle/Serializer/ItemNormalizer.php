@@ -5,6 +5,7 @@ namespace LinkedSwissbibBundle\Serializer;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\Exception\InvalidArgumentException;
 use ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer as ApiPlatformItemNormalizer;
+use LinkedSwissbibBundle\Serializer\Encoder\HtmlEncoder;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\scalar;
@@ -90,7 +91,7 @@ class ItemNormalizer implements SerializerAwareInterface, NormalizerInterface, D
      */
     public function normalize($object, $format = null, array $context = array())
     {
-        if ($format !== ApiPlatformItemNormalizer::FORMAT) {
+        if ($format !== ApiPlatformItemNormalizer::FORMAT && $format !== HtmlEncoder::FORMAT) {
             //embed context to avoid an additional request on encoding to e.g. rdf
             $context['jsonld_embed_context'] = true;
         }
