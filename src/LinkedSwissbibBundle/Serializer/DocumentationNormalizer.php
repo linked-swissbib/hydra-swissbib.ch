@@ -40,6 +40,6 @@ class DocumentationNormalizer implements NormalizerInterface
      */
     public function supportsNormalization($data, $format = null, array $context = [])
     {
-        return $data instanceof Documentation;
+        return $data instanceof Documentation && $format !== 'json';
     }
 }
