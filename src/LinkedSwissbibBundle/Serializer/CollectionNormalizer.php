@@ -55,12 +55,6 @@ class CollectionNormalizer implements NormalizerInterface, NormalizerAwareInterf
             return false;
         }
 
-        try {
-            $this->resourceClassResolver->getResourceClass(array_values($data)[0]);
-        } catch (InvalidArgumentException $e) {
-            return false;
-        }
-
         return true;
     }
 
