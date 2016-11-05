@@ -85,7 +85,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
 
         $search = $this->searchBuilder->buildSearchFromTemplate('id');
         $response = $this->adapter->search($search);
-        $mappedProperties = $this->contextMapper->fromExternalToInternal($type, $response->getHits());
+        $mappedProperties = $this->contextMapper->fromExternalToInternal($resourceClass, $response->getHits());
 
         if (isset($mappedProperties[0])) {
             return $this->entityBuilder->build($resourceClass, $mappedProperties[0]);
@@ -113,7 +113,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         $this->searchBuilder->setParams($params);
         $search = $this->searchBuilder->buildSearchFromTemplate($templateName);
         $response = $this->adapter->search($search);
-        $mappedEntities = $this->contextMapper->fromExternalToInternal($type, $response->getHits());
+        $mappedEntities = $this->contextMapper->fromExternalToInternal($resourceClass, $response->getHits());
 
         foreach ($mappedEntities as $mappedEntity) {
             $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);

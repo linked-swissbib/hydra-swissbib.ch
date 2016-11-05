@@ -30,7 +30,13 @@ services:
 
     linked_swissbib.elasticsearch_context_mapper:
         class: LinkedSwissbibBundle\Elasticsearch\ContextMapper
-        arguments: ['@linked_swissbib.cache', '@linked_swissbib.http_client', '%linked_swissbib.context_mapper%']
+        arguments:
+          - '@linked_swissbib.cache'
+          - '@linked_swissbib.http_client'
+          - '%linked_swissbib.context_mapper%'
+          - '@linked_swissbib.elasticsearch_resource_name_converter'
+          - '@api_platform.metadata.property.name_collection_factory.cached'
+          - '@api_platform.metadata.property.metadata_factory'
 
     linked_swissbib.elasticsearch_params_builder:
         class: LinkedSwissbibBundle\Elasticsearch\ParamsBuilder

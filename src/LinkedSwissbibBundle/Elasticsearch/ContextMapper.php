@@ -2,6 +2,8 @@
 
 namespace LinkedSwissbibBundle\Elasticsearch;
 
+use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
+use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface;
 use Doctrine\Common\Cache\Cache;
 use GuzzleHttp\Client;
 use LinkedSwissbibBundle\ContextMapping\ContextMapper as ContextMapperInterface;
@@ -31,46 +33,48 @@ class ContextMapper implements ContextMapperInterface
     protected $config = [];
 
     /**
+     * @var PropertyMetadataFactoryInterface
+     */
+    protected $propertyMetadataFactory;
+
+    /**
+     * @var PropertyNameCollectionFactoryInterface
+     */
+    protected $propertyNameCollectionFactory;
+
+    /**
+     * @var ResourceNameConverter
+     */
+    protected $resourceNameConverter;
+
+    /**
      * @param Cache $cache
      * @param Client $client
      * @param array $config
+     * @param ResourceNameConverter $resourceNameConverter
+     * @param PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory
+     * @param PropertyMetadataFactoryInterface $propertyMetadataFactory
      */
-    public function __construct(Cache $cache, Client $client, array $config)
+    public function __construct(Cache $cache, Client $client, array $config, ResourceNameConverter $resourceNameConverter, PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory)
     {
         $this->cache = $cache;
         $this->client = $client;
         $this->config = $config;
+        $this->resourceNameConverter = $resourceNameConverter;
+        $this->propertyMetadataFactory = $propertyMetadataFactory;
+        $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
     }
 
     /**
-     * TODO: Respect URL from context for mappings
-     *
      * {@inheritdoc}
      */
-    public function fromInternalToExternal(string $type, array $internal) : array
+    public function fromInternalToExternal(string $resourceClass, array $internal) : array
     {
-        $cacheKey = 'elasticsearch_context_mapper.from_internal_to_external.' . $type;
+        $mapping = $this->loadCachedMapping($resourceClass);
         $mappedValues = [];
 
-        if ($this->cache->contains($cacheKey)) {
-            $mapping = $this->cache->fetch($cacheKey);
-        } else {
-            $remoteContext = $this->loadRemoteContext($type);
-            $mapping = [];
-
-            foreach ($remoteContext['@context'] as $propertyName => $propertyValue) {
-                if (strpos($propertyName, ':') !== false) {
-                    list($namespace, $value) = explode(':', $propertyName);
-
-                    $mapping[$value] = $propertyName;
-                }
-            }
-
-            $this->cache->save($cacheKey, $mapping);
-        }
-
         foreach ($internal as $property) {
-            $mappedValues[] = $mapping[$property] ?? $property;
+            $mappedValues[] = $mapping['internal_to_external'][$property] ?? $property;
         }
 
         return $mappedValues;
@@ -79,26 +83,26 @@ class ContextMapper implements ContextMapperInterface
     /**
      * {@inheritdoc}
      */
-    public function fromExternalToInternal(string $type, array $external) : array
+    public function fromExternalToInternal(string $resourceClass, array $external) : array
     {
-        $data = [];
+        $mapping = $this->loadCachedMapping($resourceClass);
+        $mappedValues = [];
 
         foreach ($external as $hits) {
             $entity = [];
 
             foreach ($hits['_source'] as $propertyKey => $propertyValue) {
-                if (strpos($propertyKey, ':') !== false) {
-                    list($namespace, $value) = explode(':', $propertyKey);
-
-                    $entity[$value] = $hits['_source'][$propertyKey];
+                if (strpos($propertyKey, '@') === false && isset($mapping['external_to_internal'][$propertyKey])) {
+                    $internalPropertyName = $mapping['external_to_internal'][$propertyKey];
+                    $entity[$internalPropertyName] = $hits['_source'][$propertyKey];
                 }
             }
 
             $entity['id'] = $hits['_id'];
-            $data[] = $entity;
+            $mappedValues[] = $entity;
         }
 
-        return $data;
+        return $mappedValues;
     }
 
     /**
@@ -119,5 +123,59 @@ class ContextMapper implements ContextMapperInterface
         $body = $response->getBody();
 
         return json_decode($body, true);
+    }
+
+    /**
+     * @param string $resourceClass
+     *
+     * @return array
+     */
+    protected function loadCachedMapping(string $resourceClass) : array
+    {
+        $cacheKey = 'elasticsearch_context_mapper.' . $resourceClass;
+
+        if ($this->cache->contains($cacheKey)) {
+            return $this->cache->fetch($cacheKey);
+        }
+
+        $type = $this->resourceNameConverter->getElasticsearchTypeFromResourceClass($resourceClass);
+        $remoteContext = $this->loadRemoteContext($type);
+        $propertyNames = $this->propertyNameCollectionFactory->create($resourceClass);
+        $remoteNamespaces = [];
+        $fullNamespaceToRemotePropertyName = [];
+        $mapping = [
+            'internal_to_external' => [],
+            'external_to_internal' => [],
+        ];
+
+        foreach ($remoteContext['@context'] as $propertyKey => $propertyValue) {
+            if (strpos($propertyKey, ':') === false) {
+                $remoteNamespaces[$propertyKey] = $propertyValue;
+            }
+        }
+
+        foreach ($remoteContext['@context'] as $propertyKey => $propertyValue) {
+            if (strpos($propertyKey, ':') !== false) {
+                list($namespace, $value) = explode(':', $propertyKey);
+
+                if (isset($remoteNamespaces[$namespace])) {
+                    $fullNamespaceToRemotePropertyName[$remoteNamespaces[$namespace] . $value] = $propertyKey;
+                }
+            }
+        }
+
+        foreach ($propertyNames as $propertyName) {
+            $propertyMetaData = $this->propertyMetadataFactory->create($resourceClass, $propertyName);
+            $iri = $propertyMetaData->getIri();
+
+            if (isset($fullNamespaceToRemotePropertyName[$iri])) {
+                $mapping['internal_to_external'][$propertyName] = $fullNamespaceToRemotePropertyName[$iri];
+                $mapping['external_to_internal'][$fullNamespaceToRemotePropertyName[$iri]] = $propertyName;
+            }
+        }
+
+        $this->cache->save($cacheKey, $mapping);
+
+        return $mapping;
     }
 }
