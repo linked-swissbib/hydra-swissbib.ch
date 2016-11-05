@@ -13,19 +13,24 @@
     {% endif %}
     >
 
-    {% for property,value in properties %}
-
-        {% if property starts with '@' %}
-        {% else %}
-            {% if value is iterable %}
-                {% if value[0] is defined %}
-                    {{ property }}:  {% include 'rdfaArray.html.twig' with {'data': value} %}
-                {% else %}
-                    {{ property }}: {% include 'rdfaObject.html.twig' with {'properties': value} %}
-                {% endif %}
-            {% else %}
-                {% include 'rdfaLiteral.html.twig' with {'property': property, 'value': value} %}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+    {% if properties is iterable %}
+        {% for property,value in properties %}
+            <div class="rdfa-element">
+                <div class="rdfa-property">{{ property }}:&nbsp;</div>
+                <div class="rdfa-value">
+                    {% if value is iterable %}
+                        {% if value[0] is defined %}
+                            {% include 'rdfaArray.html.twig' with {'data': value, 'property': property} %}
+                        {% else %}
+                            {% include 'rdfaObject.html.twig' with {'properties': value} %}
+                        {% endif %}
+                    {% else %}
+                        {% include 'rdfaLiteral.html.twig' with {'property': property, 'value': value} %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% include 'rdfaLiteral.html.twig' with {'property': property, 'value': properties} %}
+    {% endif %}
 </div>

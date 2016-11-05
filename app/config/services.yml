@@ -131,6 +131,11 @@ services:
         class: LinkedSwissbibBundle\Filter\FieldsQueryFilter
         tags: [ { name: 'api_platform.filter', id: 'linked_swissbib.fieldsqueryfilter' } ]
 
+    linked_swissbib.twig.linked_swissbib_extension:
+        class: LinkedSwissbibBundle\Twig\LinkedSwissbibExtension
+        tags:
+            - { name: twig.extension }
+
     api_platform.swagger.listener.ui:
         class: LinkedSwissbibBundle\Bridge\Symfony\Bundle\EventListener\SwaggerUiListener
         tags: [ { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' } ]

@@ -1,11 +1,21 @@
-<div class="rdfa-literal">
-    <div class="rdfa-literal-key">{{ property }}:&nbsp;</div>
+{% set type = type(value) %}
 
+<div class="rdfa-literal">
     {% if value starts with 'http' %}
         <div class="rdfa-literal-value">
-            <a href="{{ value }}" property="{{ property }}">{{ value }}</a>
+            <a href="{{ value }}" {{ rdfaProperty(property) }}>{{ value }}</a>
         </div>
     {% else %}
-        <div class="rdfa-literal-value" property="{{ property }}">{{ value }}</div>
+        <div class="rdfa-literal-value rdfa-{{ type }}">
+            {% if type == 'string' %}
+                <span>"</span><span {{ rdfaProperty(property) }}>{{ value }}</span><span>"</span>
+            {% elseif type == 'number' %}
+                <span {{ rdfaProperty(property) }}>{{ value }}</span>
+            {% elseif type == 'bool' %}
+                <span {{ rdfaProperty(property) }}>{% if value %} true {% else %} false {% endif %}</span>
+            {% else %}
+                <span>undefined</span>
+            {% endif %}
+        </div>
     {% endif %}
 </div>
