@@ -4,7 +4,6 @@ namespace LinkedSwissbibBundle\Serializer\Encoder;
 
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Serializer\Encoder\EncoderInterface;
-use EasyRdf_Graph;
 
 /**
  * HtmlEncoder
