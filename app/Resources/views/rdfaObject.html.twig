@@ -16,7 +16,7 @@
     {% if properties is iterable %}
         {% for property,value in properties %}
             <div class="rdfa-element">
-                <div class="rdfa-property">{{ property }}:&nbsp;</div>
+                <div class="rdfa-property{% if property starts with '@' %} rdfa-jsonld{% endif %}">{{ property }}:&nbsp;</div>
                 <div class="rdfa-value">
                     {% if value is iterable %}
                         {% if value[0] is defined %}
