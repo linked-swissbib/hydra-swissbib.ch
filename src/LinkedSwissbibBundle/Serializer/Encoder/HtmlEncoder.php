@@ -5,7 +5,6 @@ namespace LinkedSwissbibBundle\Serializer\Encoder;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use EasyRdf_Graph;
-use EasyRdf_Resource;
 
 /**
  * HtmlEncoder
@@ -22,23 +21,15 @@ class HtmlEncoder implements EncoderInterface
     const FORMAT = 'html';
 
     /**
-     * @var EasyRdf_Graph
-     */
-    protected $easyRdfGraph;
-
-    /**
      * @var EngineInterface
      */
     protected $templating;
 
     /**
-     * RdfxmlEncoder constructor.
-     *
-     * @param EasyRdf_Graph $easyRdfGraph
+     * @param EngineInterface $templating
      */
-    public function __construct(EasyRdf_Graph $easyRdfGraph, EngineInterface $templating)
+    public function __construct(EngineInterface $templating)
     {
-        $this->easyRdfGraph = $easyRdfGraph;
         $this->templating = $templating;
     }
 
