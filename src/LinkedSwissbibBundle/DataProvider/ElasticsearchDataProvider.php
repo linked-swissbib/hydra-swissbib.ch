@@ -76,7 +76,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
     /**
      * {@inheritDoc}
      */
-    public function getItem(string $resourceClass, $id, string $operationName = null, bool $fetchData = false)
+    public function getItem(string $resourceClass, $id, string $operationName = null, array $context = [])
     {
         $params = $this->paramsBuilder->buildItemParams($this->requestStack->getCurrentRequest());
 
