@@ -81,7 +81,7 @@ twig:
 
 #API Platform
 api_platform:
-    title: "hydra@swissbib.ch"
+    title: "Linked swissbib API"
     description: "Hypermedia driven REST API for linked bibliographic resources."
     version: "1.0.0"
     formats:
