@@ -65,6 +65,12 @@ class Router implements RouterInterface, UrlGeneratorInterface
      */
     public function generate($name, $parameters = [], $referenceType = RouterInterface::ABSOLUTE_PATH)
     {
-        return $this->router->generate($name, $parameters, UrlGeneratorInterface::ABS_URL);
+        if (isset($parameters['_dont_force_reference_type'])) {
+            unset($parameters['_dont_force_reference_type']);
+
+            return $this->router->generate($name, $parameters, $referenceType);
+        } else {
+            return $this->router->generate($name, $parameters, UrlGeneratorInterface::ABS_URL);
+        }
     }
 }

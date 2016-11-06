@@ -21,6 +21,9 @@ final class AddFormatListener
      */
     protected $addFormatListener;
 
+    /**
+     * @param ApiPlatformAddFormatListner $addFormatListener
+     */
     public function __construct(ApiPlatformAddFormatListner $addFormatListener)
     {
         $this->addFormatListener = $addFormatListener;
