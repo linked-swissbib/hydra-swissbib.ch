@@ -21,3 +21,5 @@ services:
     linked_swissbib.elasticsearchadapter_adapter:
         class: LinkedSwissbibBundle\Tests\ElasticsearchAdapter\ElasticsearchAdapterMock
         arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
+    linked_swissbib.elasticsearch_context_mapper:
+        class: LinkedSwissbibBundle\Tests\Elasticsearch\SimpleContextMapper

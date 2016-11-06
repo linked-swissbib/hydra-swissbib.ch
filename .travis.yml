@@ -21,7 +21,7 @@ script:
     - composer install -n
     - phpcs -n --standard=PSR2 src tests
     - phpdbg -qrr -dmemory_limit=-1 "$(phpenv which phpunit)" --coverage-php build/cov/coverage-phpunit.cov
-#    - phpdbg -qrr vendor/bin/behat
+    - phpdbg -qrr vendor/bin/behat
     - phpdbg -qrr phpcov.phar merge --clover build/logs/clover.xml build/cov
 
 after_success:
