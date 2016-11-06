@@ -153,5 +153,5 @@ services:
 
     linked_swissbib.swagger.normalizer.documentation:
         class: LinkedSwissbibBundle\Swagger\Normalizer\DocumentationNormalizer
-        decorates: api_platform.swagger.normalizer.documentation
-        arguments: ['@linked_swissbib.swagger.normalizer.documentation.inner', '@api_platform.router']
+        arguments: ['@api_platform.swagger.normalizer.documentation', '@api_platform.router']
+        tags: [ { name: 'serializer.normalizer', priority: 24 } ]

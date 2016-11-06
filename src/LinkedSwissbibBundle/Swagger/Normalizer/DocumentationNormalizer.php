@@ -54,6 +54,6 @@ class DocumentationNormalizer implements NormalizerInterface
      */
     public function supportsNormalization($data, $format = null)
     {
-        return ApiPlatformDocumentationNormalizer::FORMAT === $format && $data instanceof Documentation;
+        return $this->documentationNormalizer->supportsNormalization($data, $format);
     }
 }
