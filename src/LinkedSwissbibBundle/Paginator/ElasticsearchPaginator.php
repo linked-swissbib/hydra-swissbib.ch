@@ -129,6 +129,6 @@ class ElasticsearchPaginator implements PaginatorInterface, Iterator
      */
     public function rewind()
     {
-        return array_slice($this->response->getHits(),0,$this->itemsPerPage);
+        $this->current = 0;
     }
 }
