@@ -5,11 +5,11 @@ namespace LinkedSwissbibBundle\DataProvider;
 use ApiPlatform\Core\DataProvider\CollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use ElasticsearchAdapter\Adapter;
-use ElasticsearchAdapter\QueryBuilder\TemplateQueryBuilder;
 use ElasticsearchAdapter\SearchBuilder\TemplateSearchBuilder;
 use LinkedSwissbibBundle\ContextMapping\ContextMapper;
 use LinkedSwissbibBundle\Elasticsearch\ResourceNameConverter;
 use LinkedSwissbibBundle\Entity\EntityBuilder;
+use LinkedSwissbibBundle\Paginator\ElasticsearchPaginator;
 use LinkedSwissbibBundle\Params\ParamsBuilder;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -102,7 +102,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         $params = $this->paramsBuilder->buildCollectionParams($this->requestStack->getCurrentRequest());
         $templateName = 'empty';
         $entities = [];
-
+        $currentPage = 1;
         if ($params->has('q') && $params->has('fields')) {
             $templateName = 'collection_fields';
         } elseif ($params->has('q')) {
@@ -111,14 +111,17 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
 
         $this->searchBuilder->setParams($params);
         $search = $this->searchBuilder->buildSearchFromTemplate($templateName);
+        $search->setSize(20);
+        $search->setFrom(($currentPage-1) * $search->getSize());
         $response = $this->adapter->search($search);
         $mappedEntities = $this->contextMapper->fromExternalToInternal($resourceClass, $response->getHits());
 
         foreach ($mappedEntities as $mappedEntity) {
             $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);
         }
-
+        //var_dump($response->getHits()[3]);
+        return new ElasticsearchPaginator(0,0,1);
         //TODO return new Paginator...
-        return $entities;
+        //return $entities;
     }
 }
