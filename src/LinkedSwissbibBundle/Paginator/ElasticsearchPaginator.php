@@ -1,11 +1,12 @@
 <?php
 
 namespace LinkedSwissbibBundle\Paginator;
+
 use ApiPlatform\Core\DataProvider\PaginatorInterface;
 use ElasticsearchAdapter\Result\Result;
 use \Iterator;
 
-class ElasticsearchPaginator implements Iterator,PaginatorInterface
+class ElasticsearchPaginator implements Iterator, PaginatorInterface
 {
 
     private $response;
@@ -14,14 +15,12 @@ class ElasticsearchPaginator implements Iterator,PaginatorInterface
     private $resources;
     private $itemsPerPage = 8;
 
-    public function __construct(Result $response, int $page = 0, int $itemsPerPage)
+    public function __construct(Result $response, int $itemsPerPage, int $page = 0)
     {
         $this->response = $response;
         $this->page = $page;
-       // var_dump($this->response);
-       // var_dump($this->resources);
-
     }
+
     /**
      * Gets the current page number.
      *
@@ -39,7 +38,7 @@ class ElasticsearchPaginator implements Iterator,PaginatorInterface
      */
     public function getLastPage() : float
     {
-        return $this->getTotalItems()/8;
+        return $this->getTotalItems() / 8;
     }
 
     /**
@@ -73,7 +72,7 @@ class ElasticsearchPaginator implements Iterator,PaginatorInterface
      */
     public function count()
     {
-        return $this->response->getTotal()/8;
+        return $this->response->getTotal() / 8;
     }
 
     /**
@@ -84,7 +83,7 @@ class ElasticsearchPaginator implements Iterator,PaginatorInterface
      */
     public function current()
     {
-        return $this->response->getHits()[$this->current];
+        return 2;
     }
 
     /**
@@ -93,7 +92,7 @@ class ElasticsearchPaginator implements Iterator,PaginatorInterface
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-        public function next()
+    public function next()
     {
         $this->current += 1;
     }
