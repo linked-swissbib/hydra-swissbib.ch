@@ -2,9 +2,10 @@
 
 namespace LinkedSwissbibBundle\Paginator;
 use ApiPlatform\Core\DataProvider\PaginatorInterface;
+use ElasticsearchAdapter\Result\Result;
 use \Iterator;
 
-class ElasticsearchPaginator implements PaginatorInterface, Iterator
+class ElasticsearchPaginator implements Iterator,PaginatorInterface
 {
 
     private $response;
@@ -13,14 +14,13 @@ class ElasticsearchPaginator implements PaginatorInterface, Iterator
     private $resources;
     private $itemsPerPage = 8;
 
-    public function __construct(array $response, array $resources, int $page = 0)
+    public function __construct(Result $response, int $page = 0, int $itemsPerPage)
     {
         $this->response = $response;
-        $this->resources = $resources;
         $this->page = $page;
        // var_dump($this->response);
        // var_dump($this->resources);
-        exit;
+
     }
     /**
      * Gets the current page number.
@@ -95,7 +95,7 @@ class ElasticsearchPaginator implements PaginatorInterface, Iterator
      */
         public function next()
     {
-        ;
+        $this->current += 1;
     }
 
     /**

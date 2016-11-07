@@ -119,9 +119,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         foreach ($mappedEntities as $mappedEntity) {
             $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);
         }
-        //var_dump($response->getHits()[3]);
-        return new ElasticsearchPaginator(0,0,1);
-        //TODO return new Paginator...
-        //return $entities;
+        return new ElasticsearchPaginator($response,$currentPage, $search->getSize());
     }
 }
+
