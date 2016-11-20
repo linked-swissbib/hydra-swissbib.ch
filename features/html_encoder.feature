@@ -1,6 +1,6 @@
-Feature: Content negotiation for n-triples
-  In order to be able to provide content in the rdf format n-triples    
-  the API should be able to encode responses to n-triples.
+Feature: Content negotiation for html
+  In order to be able to provide content in the rdf format html
+  the API should be able to encode responses to html.
 
 
   Scenario: Simple n-triples content negotiation
