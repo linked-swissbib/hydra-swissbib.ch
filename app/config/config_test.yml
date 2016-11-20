@@ -23,3 +23,7 @@ services:
         arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
     linked_swissbib.elasticsearch_context_mapper:
         class: LinkedSwissbibBundle\Tests\Elasticsearch\SimpleContextMapper
+    linked_swissbib.html_encoder:
+            class: LinkedSwissbibBundle\Tests\Encoder\HtmlEncoder
+            tags: [ { name: serializer.encoder } ]
+            arguments: ['@templating']
