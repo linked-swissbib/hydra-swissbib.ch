@@ -85,11 +85,10 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function current()
     {
-        if ($this->current < count($this->resources)){
+        if ($this->current < count($this->resources)) {
             return $this->resources[$this->current];
         }
         return null;
-        //return $this->current;
     }
 
     /**
