@@ -1,0 +1,63 @@
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 3,
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "testsb_160426",
+        "_type": "item",
+        "_id": "IDSLU-37610588-eb60-3689-ab25-23d7e11259a7",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://bibframe.org/vocab/HeldItem",
+          "@context": "http://data.swissbib.ch/item/context.jsonld",
+          "bf:subLocation": "Aussenmagazin, bestellt bis 9.00/14.30: bereit ab 11.30 (Mo-Sa)/17.00 (Mo-Fr)",
+          "@id": "http://data.swissbib.ch/item/IDSLU-37610588-eb60-3689-ab25-23d7e11259a7",
+          "bf:holdingFor": "http://data.swissbib.ch/resource/023321059",
+          "foaf:page": "http://ilu.zhbluzern.ch/F?func=item-global&doc_library=ILU01&doc_number=000492361&sub_library=LUZHB",
+          "bibo:locator": "E.b 15096",
+          "bibo:owner": "http://data.swissbib.ch/organisation/IDSLU-LUZHB"
+        }
+      },
+      {
+        "_index": "testsb_160426",
+        "_type": "item",
+        "_id": "IDSLU-ec014b0b-efca-3cf5-8c25-e656a46915d1",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://bibframe.org/vocab/HeldItem",
+          "@context": "http://data.swissbib.ch/item/context.jsonld",
+          "bf:subLocation": "Aussenmagazin, bestellt bis 9.00/14.30: bereit ab 11.30 (Mo-Sa)/17.00 (Mo-Fr)",
+          "@id": "http://data.swissbib.ch/item/IDSLU-ec014b0b-efca-3cf5-8c25-e656a46915d1",
+          "bf:holdingFor": "http://data.swissbib.ch/resource/023321199",
+          "foaf:page": "http://ilu.zhbluzern.ch/F?func=item-global&doc_library=ILU01&doc_number=000492388&sub_library=LUZHB",
+          "bibo:locator": "G.b 15303",
+          "bibo:owner": "http://data.swissbib.ch/organisation/IDSLU-LUZHB"
+        }
+      },
+      {
+        "_index": "testsb_160426",
+        "_type": "item",
+        "_id": "IDSLU-b6e1bd07-27fc-31f4-9549-12f4224b57c5",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://bibframe.org/vocab/HeldItem",
+          "@context": "http://data.swissbib.ch/item/context.jsonld",
+          "bf:subLocation": "Aussenmagazin, bestellt bis 9.00/14.30: bereit ab 11.30 (Mo-Sa)/17.00 (Mo-Fr)",
+          "@id": "http://data.swissbib.ch/item/IDSLU-b6e1bd07-27fc-31f4-9549-12f4224b57c5",
+          "bf:holdingFor": "http://data.swissbib.ch/resource/023321245",
+          "foaf:page": "http://ilu.zhbluzern.ch/F?func=item-global&doc_library=ILU01&doc_number=000492414&sub_library=LUZHB",
+          "bibo:locator": "E.b 15095",
+          "bibo:owner": "http://data.swissbib.ch/organisation/IDSLU-LUZHB"
+        }
+      }
+    ]
+  }
+}

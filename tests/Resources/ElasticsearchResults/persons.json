@@ -1,0 +1,83 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 2,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 5,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "lsb",
+        "_type": "person",
+        "_id": "88cacf50-bf67-34e5-aaac-d87982b8bd7a",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://xmlns.com/foaf/0.1/Person",
+          "@context": "http://data.swissbib.ch/person/context.jsonld",
+          "foaf:lastName": "Kornmann",
+          "foaf:firstName": "Egon",
+          "@id": "http://data.swissbib.ch/person/88cacf50-bf67-34e5-aaac-d87982b8bd7a",
+          "rdfs:label": "Kornmann, Egon"
+        }
+      },
+      {
+        "_index": "lsb",
+        "_type": "person",
+        "_id": "c3b60842-5100-3f20-b2de-27627309929c",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://xmlns.com/foaf/0.1/Person",
+          "@context": "http://data.swissbib.ch/person/context.jsonld",
+          "foaf:lastName": "Smejkal",
+          "foaf:firstName": "Wolfgang",
+          "@id": "http://data.swissbib.ch/person/c3b60842-5100-3f20-b2de-27627309929c",
+          "rdfs:label": "Smejkal, Wolfgang"
+        }
+      },
+      {
+        "_index": "lsb",
+        "_type": "person",
+        "_id": "c497b156-4a04-3922-a561-7c786bd21eb2",
+        "_score": 1.0,
+        "_source": {
+          "foaf:lastName": "Colombier",
+          "foaf:firstName": "Carsten",
+          "@type": "http://xmlns.com/foaf/0.1/Person",
+          "@context": "http://data.swissbib.ch/person/context.jsonld",
+          "rdfs:label": "Colombier, Carsten",
+          "@id": "http://data.swissbib.ch/person/c497b156-4a04-3922-a561-7c786bd21eb2"
+        }
+      },
+      {
+        "_index": "lsb",
+        "_type": "person",
+        "_id": "276481fd-ed5b-3efa-ae06-6716718dd354",
+        "_score": 1.0,
+        "_source": {
+          "foaf:lastName": "Fischer",
+          "foaf:firstName": "Roland",
+          "@type": "http://xmlns.com/foaf/0.1/Person",
+          "@context": "http://data.swissbib.ch/person/context.jsonld",
+          "rdfs:label": "Fischer, Roland",
+          "@id": "http://data.swissbib.ch/person/276481fd-ed5b-3efa-ae06-6716718dd354"
+        }
+      },
+      {
+        "_index": "lsb",
+        "_type": "person",
+        "_id": "e5582ee3-a173-38a7-8e2e-749b0a04f45d",
+        "_score": 1.0,
+        "_source": {
+          "foaf:lastName": "De Quincey",
+          "foaf:firstName": "Thomas",
+          "@id": "http://data.swissbib.ch/person/e5582ee3-a173-38a7-8e2e-749b0a04f45d",
+          "rdfs:label": "De Quincey, Thomas"
+        }
+      }
+    ]
+  }
+}

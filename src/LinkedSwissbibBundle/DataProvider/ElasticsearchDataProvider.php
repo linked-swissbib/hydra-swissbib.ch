@@ -99,10 +99,11 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
     public function getCollection(string $resourceClass, string $operationName = null)
     {
         $type = $this->resourceNameConverter->getElasticsearchTypeFromResourceClass($resourceClass);
-        $params = $this->paramsBuilder->buildCollectionParams($this->requestStack->getCurrentRequest());
+        $request = $this->requestStack->getCurrentRequest();
+        $params = $this->paramsBuilder->buildCollectionParams($request);
         $templateName = 'empty';
         $entities = [];
-        $currentPage = 1;
+        $currentPage = $request->query->has('page') ? $request->query->get('page') : 1;
         if ($params->has('q') && $params->has('fields')) {
             $templateName = 'collection_fields';
         } elseif ($params->has('q')) {
@@ -111,15 +112,15 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
 
         $this->searchBuilder->setParams($params);
         $search = $this->searchBuilder->buildSearchFromTemplate($templateName);
-        $search->setSize(20);
+        $search->setSize(20); //todo fix bug
         $search->setFrom(($currentPage-1) * $search->getSize());
-        $response = $this->adapter->search($search);
-        $mappedEntities = $this->contextMapper->fromExternalToInternal($resourceClass, $response->getHits());
+        $result = $this->adapter->search($search);
+
+        $mappedEntities = $this->contextMapper->fromExternalToInternal($resourceClass, $result->getHits());
 
         foreach ($mappedEntities as $mappedEntity) {
             $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);
         }
-        //return new ElasticsearchPaginator($response, $search->getSize(), $currentPage);
-        return $entities;
+        return new ElasticsearchPaginator($result, $entities, $search->getSize(), $currentPage);
     }
 }

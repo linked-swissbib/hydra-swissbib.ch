@@ -1,0 +1,28 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "testsb_160426",
+        "_type": "organisation",
+        "_id": "38bc8e24-b064-3fa0-b336-d2b680da66ab",
+        "_version": 1,
+        "found": true,
+        "_source": {
+          "@type": "http://xmlns.com/foaf/0.1/Organization",
+          "@context": "http://data.swissbib.ch/organisation/context.jsonld",
+          "@id": "http://data.swissbib.ch/organisation/38bc8e24-b064-3fa0-b336-d2b680da66ab",
+          "rdfs:label": "Produce Marketing Association"
+        }
+      }
+    ]
+  }
+}

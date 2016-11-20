@@ -1,0 +1,47 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "testsb_160426",
+        "_type": "bibliographicResource",
+        "_id": "023324791",
+        "_version": 1,
+        "found": true,
+        "_source": {
+          "@type": "http://purl.org/dc/terms/BibliographicResource",
+          "@context": "http://data.swissbib.ch/resource/context.jsonld",
+          "@id": "http://data.swissbib.ch/resource/023324791",
+          "rdfs:isDefinedBy": "http://data.swissbib.ch/resource/023324791/about",
+          "dct:language": "http://lexvo.org/id/iso639-3/eng",
+          "rdau:P60163": "http://sws.geonames.org/6252001/",
+          "bibo:isbn13": "9780072260854",
+          "bibo:isbn10": "0072260858",
+          "dct:contributor": [
+            "http://data.swissbib.ch/person/4a0ee4ca-254e-33e2-a957-245282075543",
+            "http://data.swissbib.ch/person/7146e2b5-2b5c-3077-954b-d18b81c27238",
+            "http://data.swissbib.ch/person/db5d4867-35b4-3991-b58b-5e037426e531"
+          ],
+          "rdau:P60339": "Michael Howard, David LeBlanc, John Viega",
+          "rdau:P60333": "New York : McGraw-Hill, 2005",
+          "dc:format": "281 S : Ill ; 24 cm",
+          "rdau:P60470": "Formerly CIP. Uk",
+          "dct:subject": "http://d-nb.info/gnd/4274324-2",
+          "rdau:P60049": "http://rdvocab.info/termList/RDAContentType/1020",
+          "rdau:P60050": "http://rdvocab.info/termList/RDAMediaType/1007",
+          "rdf:type": "http://purl.org/ontology/bibo/Book",
+          "dct:issued": "2005",
+          "dct:title": "19 deadly sins of software security : programming flaws and how to fix them"
+        }
+      }
+    ]
+  }
+}

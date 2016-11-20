@@ -2,18 +2,40 @@
   "took": 2,
   "timed_out": false,
   "_shards": {
-    "total": 1,
+    "total": 12,
     "successful": 5,
     "failed": 0
   },
   "hits": {
-    "total": 1,
+    "total": 12,
     "max_score": 1,
     "hits": [
       {
         "_index": "testsb_160426",
         "_type": "document",
         "_id": "000000051",
+        "_score": 1,
+        "_source": {
+          "@type": "http:\/\/purl.org\/ontology\/bibo\/document",
+          "@context": "http:\/\/data.swissbib.ch\/document\/context.jsonld",
+          "dct:issued": "2016-04-26T08:41:49.227Z",
+          "@id": "http:\/\/data.swissbib.ch\/resource\/000000051\/about",
+          "foaf:primaryTopic": "http:\/\/data.swissbib.ch\/resource\/000000051\/about",
+          "dct:modified": "2014-08-14T16:40:57+01:00",
+          "dct:contributor": [
+            "http:\/\/d-nb.info\/gnd\/1046905-9",
+            "http:\/\/data.swissbib.ch\/agent\/ABN"
+          ],
+          "bf:local": [
+            "OCoLC\/775794624",
+            "ABN\/000300043"
+          ]
+        }
+      },
+      {
+        "_index": "testsb_160426",
+        "_type": "document",
+        "_id": "000000052",
         "_score": 1,
         "_source": {
           "@type": "http:\/\/purl.org\/ontology\/bibo\/document",

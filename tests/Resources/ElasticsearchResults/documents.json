@@ -2,12 +2,12 @@
   "took": 2,
   "timed_out": false,
   "_shards": {
-    "total": 5,
+    "total": 2,
     "successful": 5,
     "failed": 0
   },
   "hits": {
-    "total": 1,
+    "total": 201,
     "max_score": 1,
     "hits": [
       {

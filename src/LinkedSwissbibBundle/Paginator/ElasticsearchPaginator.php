@@ -12,13 +12,15 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
     private $response;
     private $current = 0;
     private $page;
+    private $itemsPerPage;
     private $resources;
-    private $itemsPerPage = 8;
 
-    public function __construct(Result $response, int $itemsPerPage, int $page = 0)
+    public function __construct(Result $response, array $resources, int $itemsPerPage = 0, int $page = 1)
     {
         $this->response = $response;
         $this->page = $page;
+        $this->itemsPerPage = $itemsPerPage;
+        $this->resources = $resources;
     }
 
     /**
@@ -38,7 +40,7 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function getLastPage() : float
     {
-        return $this->getTotalItems() / 8;
+        return ceil($this->getTotalItems() / $this->itemsPerPage);
     }
 
     /**
@@ -72,7 +74,7 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function count()
     {
-        return $this->response->getTotal() / 8;
+        return count($this->resources);
     }
 
     /**
@@ -83,7 +85,11 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function current()
     {
-        return 2;
+        if ($this->current < count($this->resources)){
+            return $this->resources[$this->current];
+        }
+        return null;
+        //return $this->current;
     }
 
     /**
@@ -105,7 +111,7 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function key()
     {
-        return 0;
+        return $this->current();
     }
 
     /**
@@ -117,7 +123,7 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function valid()
     {
-        return true;
+        return $this->current < $this->count();
     }
 
     /**

@@ -1,0 +1,29 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "lsb",
+        "_type": "person",
+        "_id": "88cacf50-bf67-34e5-aaac-d87982b8bd7a",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://xmlns.com/foaf/0.1/Person",
+          "@context": "http://data.swissbib.ch/person/context.jsonld",
+          "foaf:lastName": "Kornmann",
+          "foaf:firstName": "Egon",
+          "@id": "http://data.swissbib.ch/person/88cacf50-bf67-34e5-aaac-d87982b8bd7a",
+          "rdfs:label": "Kornmann, Egon"
+        }
+      }
+    ]
+  }
+}

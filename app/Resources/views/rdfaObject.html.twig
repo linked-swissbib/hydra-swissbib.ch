@@ -1,18 +1,14 @@
 <div class="rdfa-object"
-
     {% if properties['@context'] is defined %}
         vocab="{{ properties['@context'] }}"
     {% endif %}
-
     {% if properties['@id'] is defined %}
         resource="{{ properties['@id'] }}"
     {% endif %}
-
     {% if properties['@type'] is defined %}
         typeof="{{ properties['@type'] }}"
     {% endif %}
     >
-
     {% if properties is iterable %}
         {% for property,value in properties %}
             <div class="rdfa-element">

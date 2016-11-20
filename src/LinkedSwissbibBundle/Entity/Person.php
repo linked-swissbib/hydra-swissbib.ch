@@ -10,10 +10,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * A person.
  *
- * @see ?
+ * @see http://xmlns.com/foaf/0.1/Person
  *
  * @ApiResource(
- *     iri="?",
+ *     iri="http://xmlns.com/foaf/0.1/Person",
  *     itemOperations={
  *          "get":{"method":"GET"}
  *     },

@@ -1,0 +1,61 @@
+{
+  "took": 23,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 2744928,
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "testsb_160426",
+        "_type": "work",
+        "_id": "025316931",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://bibframe.org/vocab/Work",
+          "@context": "http://data.swissbib.ch/work/context.jsonld",
+          "dct:contributor": [
+            "http://data.swissbib.ch/person/3006dad4-7737-390a-9621-47d3266d2c1f",
+            "http://data.swissbib.ch/person/3006dad4-7737-390a-9621-47d3266d2c1f"
+          ],
+          "@id": "http://data.swissbib.ch/work/025316931",
+          "bf:hasInstance": [
+            "http://data.swissbib.ch/resource/025316931",
+            "http://data.swissbib.ch/resource/061176214"
+          ],
+          "dct:title": [
+            "Die Lage von 100 Bergbauernfamilien im Bezirk Einsiedeln und den Gemeinden Alphthal und Unteryberg",
+            "Die Lage von 100 Bergbauernfamilien im Bezirk Einsiedeln und den Gemeinden Alpthal und Unteryberg / Margrit Ruhstaller"
+          ]
+        }
+      },
+      {
+        "_index": "testsb_160426",
+        "_type": "work",
+        "_id": "025316958",
+        "_score": 1.0,
+        "_source": {
+          "@type": "http://bibframe.org/vocab/Work",
+          "@context": "http://data.swissbib.ch/work/context.jsonld",
+          "dct:contributor": [
+            "http://data.swissbib.ch/person/1cdb0b9f-1905-3e2c-82b2-33b4dc6db701",
+            "http://data.swissbib.ch/person/1cdb0b9f-1905-3e2c-82b2-33b4dc6db701"
+          ],
+          "@id": "http://data.swissbib.ch/work/025316958",
+          "bf:hasInstance": [
+            "http://data.swissbib.ch/resource/025316958",
+            "http://data.swissbib.ch/resource/260254770"
+          ],
+          "dct:title": [
+            "Das Innerschweizer Heimatwerk 1932-1947 / Margrit Süess",
+            "Das Innerschweizer Heimatwerk 1932-1947 / hrrg. vom Innerschweizer Heimatwerk"
+          ]
+        }
+      }
+    ]
+  }
+}
