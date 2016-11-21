@@ -16,6 +16,7 @@ class LinkedSwissbibExtensionTest extends \PHPUnit_Framework_TestCase
      * @var LinkedSwissbibExtension
      */
     protected $extension;
+
     /**
      * @return void
      */
