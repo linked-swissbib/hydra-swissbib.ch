@@ -19,7 +19,7 @@ class SimpleContextMapper implements ContextMapperInterface
      */
     public function fromInternalToExternal(string $type, array $internal) : array
     {
-        throw new MethodNotImplementedException('fromInternalToExternal');
+        return $internal;
     }
 
     /**
