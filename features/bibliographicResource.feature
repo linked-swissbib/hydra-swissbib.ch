@@ -17,22 +17,32 @@ Feature: Responses for documents
       "title": "19 deadly sins of software security : programming flaws and how to fix them",
       "type": "http:\/\/purl.org\/ontology\/bibo\/Book",
       "language": "http:\/\/lexvo.org\/id\/iso639-3\/eng",
+      "instanceOf": "dummy instanceOf",
       "format": "281 S : Ill ; 24 cm",
+      "edition": "dummy edition",
       "isbn10": "0072260858",
       "isbn13": "9780072260854",
+      "issn": "dummy issn",
+      "originalLanguage": "dummy originalLanguage",
+      "alternative": "dummy alternative",
+      "bibliographicCitation": "dummy bibliographicCitation",
       "contributor": [
         "http:\/\/data.swissbib.ch\/person\/4a0ee4ca-254e-33e2-a957-245282075543",
         "http:\/\/data.swissbib.ch\/person\/7146e2b5-2b5c-3077-954b-d18b81c27238",
         "http:\/\/data.swissbib.ch\/person\/db5d4867-35b4-3991-b58b-5e037426e531"
       ],
+      "hasPart": "dummy hasPart",
+      "isPartOf": "dummy isPartOf",
       "issued": "2005",
       "subject": "http:\/\/d-nb.info\/gnd\/4274324-2",
       "p60049": "http:\/\/rdvocab.info\/termList\/RDAContentType\/1020",
       "p60050": "http:\/\/rdvocab.info\/termList\/RDAMediaType\/1007",
+      "p60051": "dummy P60051",
       "p60163": "http:\/\/sws.geonames.org\/6252001\/",
       "p60333": "New York : McGraw-Hill, 2005",
       "p60339": "Michael Howard, David LeBlanc, John Viega",
       "p60470": "Formerly CIP. Uk",
+      "p60489": "dummy P60489",
       "isDefinedBy": "http:\/\/data.swissbib.ch\/resource\/023324791\/about"
     }
     """
