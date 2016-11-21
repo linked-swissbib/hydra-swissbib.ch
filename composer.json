@@ -73,7 +73,7 @@
         "behatch/contexts": "^2.5",
         "doctrine/data-fixtures": "^1.1",
         "hautelook/alice-bundle": "^1.2",
-        "phpunit/phpunit": "5.5.*"
+        "phpunit/phpunit": "5.6.*"
     },
     "scripts": {
         "post-install-cmd": [

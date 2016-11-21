@@ -4,6 +4,13 @@ namespace Tests\LinkedSwissbibBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * DefaultControllerTest
+ *
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @license  http://opensource.org/licenses/gpl-2.0.php
+ * @link     http://linked.swissbib.ch
+ */
 class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()

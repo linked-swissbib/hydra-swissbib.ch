@@ -69,7 +69,7 @@ class ParamsBuilder implements ParamsBuilderInterface
 
         foreach ($request->query->all() as $name => $value) {
             if (in_array($name, $this->config['mapped_params']['single'])) {
-                $name = $this->contextMapper->fromInternalToExternal($type, $name);
+                $name = $this->contextMapper->fromInternalToExternal($type, [$name])[0];
             } elseif (in_array($name, $this->config['mapped_params']['multi'])) {
                 $mappedValues = $this->contextMapper->fromInternalToExternal($resourceClass, explode(',', $value));
                 $value = implode(',', $mappedValues);

@@ -2,15 +2,16 @@
 namespace Tests\LinkedSwissbibBundle\Twig;
 
 use \LinkedSwissbibBundle\Twig\LinkedSwissbibExtension;
+use PHPUnit\Framework\TestCase;
 
 /**
- * LinkedSwissbibExtension
+ * LinkedSwissbibExtensionTest
  *
  * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
  * @license  http://opensource.org/licenses/gpl-2.0.php
  * @link     http://linked.swissbib.ch
  */
-class LinkedSwissbibExtensionTest extends \PHPUnit_Framework_TestCase
+class LinkedSwissbibExtensionTest extends TestCase
 {
     /**
      * @var LinkedSwissbibExtension
