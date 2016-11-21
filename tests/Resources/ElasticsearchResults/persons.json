@@ -45,7 +45,10 @@
           "schema:familyName": "TestFamilyName",
           "schema:givenName": "TestGivenName",
           "dbp:abstract": "DE",
-          "rdf:type": "TestType"
+          "rdf:type": "TestType",
+          "foaf:name": "TestName",
+          "schema:sameA": "TestSameAs",
+          "schema:gender": "male"
         }
       },
       {
