@@ -47,7 +47,7 @@
           "dbp:abstract": "DE",
           "rdf:type": "TestType",
           "foaf:name": "TestName",
-          "schema:sameA": "TestSameAs",
+          "schema:sameAs": "TestSameAs",
           "schema:gender": "male"
         }
       },

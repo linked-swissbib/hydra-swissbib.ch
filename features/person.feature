@@ -41,6 +41,7 @@ Feature: Responses for documents
           "firstName": "Egon",
           "lastName": "Kornmann",
           "name": "TestName",
+          "sameAs": "TestSameAs",
           "label": "Kornmann, Egon",
           "note": "Test Note",
           "birthPlace": "http:\/\/data.swissbib.ch\/testBirthPlace",
