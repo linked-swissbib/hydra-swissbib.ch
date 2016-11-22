@@ -100,6 +100,14 @@ footer a {
     width: 200px;
 }
 
+.created-by .container {
+    padding: 0;
+}
+
+.created-by {
+    background: #3f3f3f;
+}
+
 .rdfa-object  {
     padding: 2px;
     line-height: 1.3;
