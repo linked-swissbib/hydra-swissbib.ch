@@ -31,7 +31,7 @@ services:
     linked_swissbib.elasticsearch_context_mapper:
         class: LinkedSwissbibBundle\Elasticsearch\ContextMapper
         arguments:
-          - '@linked_swissbib.cache'
+          - '@linked_swissbib.php_file_cache'
           - '@linked_swissbib.http_client'
           - '%linked_swissbib.context_mapper%'
           - '@linked_swissbib.elasticsearch_resource_name_converter'
@@ -73,8 +73,8 @@ services:
         tags: [ { name: serializer.encoder } ]
         arguments: ['@templating']
 
-    linked_swissbib.cache:
-        class: Doctrine\Common\Cache\FilesystemCache
+    linked_swissbib.php_file_cache:
+        class: Doctrine\Common\Cache\PhpFileCache
         arguments: ['%kernel.cache_dir%']
 
     linked_swissbib.entity_simple_entity_builder:
