@@ -67,7 +67,7 @@ Feature: Responses for documents
       "hydra:totalItems": 3,
       "hydra:search": {
         "@type": "hydra:IriTemplate",
-        "hydra:template": "\/item{?q,fields}",
+        "hydra:template": "http:\/\/example.com\/item{?q,fields}",
         "hydra:variableRepresentation": "BasicRepresentation",
         "hydra:mapping": [
           {

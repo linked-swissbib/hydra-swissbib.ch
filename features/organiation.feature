@@ -49,7 +49,7 @@ Feature: Responses for documents
       "hydra:totalItems": 3,
       "hydra:search": {
         "@type": "hydra:IriTemplate",
-        "hydra:template": "\/organisation{?q,fields}",
+        "hydra:template": "http:\/\/example.com\/organisation{?q,fields}",
         "hydra:variableRepresentation": "BasicRepresentation",
         "hydra:mapping": [
           {

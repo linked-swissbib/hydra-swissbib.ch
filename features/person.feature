@@ -102,7 +102,7 @@ Feature: Responses for documents
       "hydra:totalItems": 5,
       "hydra:search": {
         "@type": "hydra:IriTemplate",
-        "hydra:template": "\/person{?q,fields}",
+        "hydra:template": "http:\/\/example.com\/person{?q,fields}",
         "hydra:variableRepresentation": "BasicRepresentation",
         "hydra:mapping": [
           {

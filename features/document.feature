@@ -74,16 +74,16 @@ Feature: Responses for documents
             }
         ],
         "hydra:totalItems":201,
-        "hydra:view":{
-            "@id":"\/document?page=1",
-            "@type":"hydra:PartialCollectionView",
-            "hydra:first":"\/document?page=1",
-            "hydra:last":"\/document?page=11",
-            "hydra:next":"\/document?page=2"
+        "hydra:view": {
+            "@id": "http:\/\/example.com\/document?page=1",
+            "@type": "hydra:PartialCollectionView",
+            "hydra:first": "http:\/\/example.com\/document?page=1",
+            "hydra:last": "http:\/\/example.com\/document?page=11",
+            "hydra:next": "http:\/\/example.com\/document?page=2"
         },
-        "hydra:search":{
-            "@type":"hydra:IriTemplate",
-            "hydra:template":"\/document{?q,fields}",
+        "hydra:search": {
+            "@type": "hydra:IriTemplate",
+            "hydra:template": "http:\/\/example.com\/document{?q,fields}",
             "hydra:variableRepresentation":"BasicRepresentation",
             "hydra:mapping":[
                 {
@@ -149,16 +149,16 @@ Feature: Responses for documents
             }
         ],
         "hydra:totalItems":201,
-        "hydra:view":{
-            "@id":"\/document?q=test&fields=id%2Cname&page=1",
-            "@type":"hydra:PartialCollectionView",
-            "hydra:first":"\/document?q=test&fields=id%2Cname&page=1",
-            "hydra:last":"\/document?q=test&fields=id%2Cname&page=11",
-            "hydra:next":"\/document?q=test&fields=id%2Cname&page=2"
+        "hydra:view": {
+            "@id": "http:\/\/example.com\/document?q=test&fields=id%2Cname&page=1",
+            "@type": "hydra:PartialCollectionView",
+            "hydra:first": "http:\/\/example.com\/document?q=test&fields=id%2Cname&page=1",
+            "hydra:last": "http:\/\/example.com\/document?q=test&fields=id%2Cname&page=11",
+            "hydra:next": "http:\/\/example.com\/document?q=test&fields=id%2Cname&page=2"
         },
-        "hydra:search":{
-            "@type":"hydra:IriTemplate",
-            "hydra:template":"\/document{?q,fields}",
+        "hydra:search": {
+            "@type": "hydra:IriTemplate",
+            "hydra:template": "http:\/\/example.com\/document{?q,fields}",
             "hydra:variableRepresentation":"BasicRepresentation",
             "hydra:mapping":[
                 {

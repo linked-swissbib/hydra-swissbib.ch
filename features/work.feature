@@ -78,15 +78,15 @@ Feature: Responses for documents
       ],
       "hydra:totalItems": 2744928,
       "hydra:view": {
-        "@id": "\/work?page=1",
+        "@id": "http:\/\/example.com\/work?page=1",
         "@type": "hydra:PartialCollectionView",
-        "hydra:first": "\/work?page=1",
-        "hydra:last": "\/work?page=137247",
-        "hydra:next": "\/work?page=2"
+        "hydra:first": "http:\/\/example.com\/work?page=1",
+        "hydra:last": "http:\/\/example.com\/work?page=137247",
+        "hydra:next": "http:\/\/example.com\/work?page=2"
       },
       "hydra:search": {
         "@type": "hydra:IriTemplate",
-        "hydra:template": "\/work{?q,fields}",
+        "hydra:template": "http:\/\/example.com\/work{?q,fields}",
         "hydra:variableRepresentation": "BasicRepresentation",
         "hydra:mapping": [
           {

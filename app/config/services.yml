@@ -102,59 +102,73 @@ services:
     linked_swissbib.exception.api_exception_transformer:
         class: LinkedSwissbibBundle\Exception\ApiExceptionTransformer
 
-    linked_swissbib.listener.request.add_format:
+    linked_swissbib.api_platform.listener.request.add_format:
         class: LinkedSwissbibBundle\ApiPlatform\Listener\Request\AddFormatListener
         decorates: api_platform.listener.request.add_format
-        arguments: ['@linked_swissbib.listener.request.add_format.inner']
+        arguments: ['@linked_swissbib.api_platform.listener.request.add_format.inner']
 
-    linked_swissbib.serializer.normalizer.item:
+    linked_swissbib.api_platform.serializer.normalizer.item:
         class: LinkedSwissbibBundle\ApiPlatform\Serializer\ItemNormalizer
         decorates: api_platform.jsonld.normalizer.item
         arguments:
-            - '@linked_swissbib.serializer.normalizer.item.inner'
+            - '@linked_swissbib.api_platform.serializer.normalizer.item.inner'
             - '@api_platform.resource_class_resolver'
         tags: [ { name: 'serializer.normalizer', priority: 12 } ]
 
-    linked_swissbib.serializer.normalizer.collection:
+    linked_swissbib.api_platform.serializer.normalizer.collection:
         class: LinkedSwissbibBundle\ApiPlatform\Serializer\CollectionNormalizer
         decorates: api_platform.hydra.normalizer.collection
         arguments:
-            - '@linked_swissbib.serializer.normalizer.collection.inner'
+            - '@linked_swissbib.api_platform.serializer.normalizer.collection.inner'
             - '@api_platform.resource_class_resolver'
         tags: [ { name: 'serializer.normalizer', priority: 12 } ]
 
-    linked_swissbib.serializer.normalizer.entrypoint:
+    linked_swissbib.api_platform.serializer.normalizer.partial_collection_view:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\PartialCollectionViewNormalizer
+        decorates: api_platform.hydra.normalizer.partial_collection_view
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.partial_collection_view.inner'
+            - '@request_stack'
+
+    linked_swissbib.api_platform.serializer.normalizer.collection_filters:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\CollectionFiltersNormalizer
+        decorates: api_platform.hydra.normalizer.collection_filters
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.collection_filters.inner'
+            - '@request_stack'
+
+    linked_swissbib.api_platform.serializer.normalizer.entrypoint:
         class: LinkedSwissbibBundle\ApiPlatform\Serializer\EntrypointNormalizer
         decorates: api_platform.hydra.normalizer.entrypoint
         arguments:
-            - '@linked_swissbib.serializer.normalizer.entrypoint.inner'
+            - '@linked_swissbib.api_platform.serializer.normalizer.entrypoint.inner'
         tags: [ { name: 'serializer.normalizer', priority: 30 } ]
 
-    linked_swissbib.serializer.normalizer.error:
+    linked_swissbib.api_platform.serializer.normalizer.error:
         class: LinkedSwissbibBundle\ApiPlatform\Serializer\ErrorNormalizer
         decorates: api_platform.hydra.normalizer.error
         arguments:
-            - '@linked_swissbib.serializer.normalizer.error.inner'
+            - '@linked_swissbib.api_platform.serializer.normalizer.error.inner'
         tags: [ { name: 'serializer.normalizer', priority: 34 } ]
 
-    linked_swissbib.serializer.normalizer.constraint_violation_list:
+    linked_swissbib.api_platform.serializer.normalizer.constraint_violation_list:
         class: LinkedSwissbibBundle\ApiPlatform\Serializer\ConstraintViolationListNormalizer
         decorates: api_platform.hydra.normalizer.constraint_violation_list
         arguments:
-            - '@linked_swissbib.serializer.normalizer.constraint_violation_list.inner'
+            - '@linked_swissbib.api_platform.serializer.normalizer.constraint_violation_list.inner'
         tags: [ { name: 'serializer.normalizer', priority: 34 } ]
 
-    linked_swissbib.serializer.normalizer.documentation:
+    linked_swissbib.api_platform.serializer.normalizer.documentation:
         class: LinkedSwissbibBundle\ApiPlatform\Serializer\DocumentationNormalizer
         decorates: api_platform.hydra.normalizer.documentation
         arguments:
-            - '@linked_swissbib.serializer.normalizer.documentation.inner'
+            - '@linked_swissbib.api_platform.serializer.normalizer.documentation.inner'
         tags: [ { name: 'serializer.normalizer', priority: 34 } ]
 
-    linked_swissbib.router:
+    linked_swissbib.api_platform.router:
         class: LinkedSwissbibBundle\ApiPlatform\Routing\Router
         decorates: api_platform.router
-        arguments: ['@linked_swissbib.router.inner']
+        arguments: ['@linked_swissbib.api_platform.router.inner']
 
     api_platform.swagger.listener.ui:
         class: LinkedSwissbibBundle\ApiPlatform\Bridge\Symfony\Bundle\EventListener\SwaggerUiListener
