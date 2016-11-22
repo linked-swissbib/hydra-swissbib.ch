@@ -131,7 +131,6 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         try {
             $this->searchBuilder->setParams($params);
             $search = $this->searchBuilder->buildSearchFromTemplate($templateName);
-            $search->setSize(20); //todo fix bug
             $search->setFrom(($currentPage-1) * $search->getSize());
 
             $result = $this->adapter->search($search);

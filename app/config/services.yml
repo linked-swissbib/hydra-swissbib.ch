@@ -82,6 +82,31 @@ services:
         class: LinkedSwissbibBundle\Entity\SimpleEntityBuilder
         arguments: ['@logger']
 
+    linked_swissbib.http_client:
+        class: GuzzleHttp\Client
+
+    linked_swissbib.filter.fieldsqueryfilter:
+        class: LinkedSwissbibBundle\Filter\FieldsQueryFilter
+        tags: [ { name: 'api_platform.filter', id: 'linked_swissbib.fieldsqueryfilter' } ]
+
+    linked_swissbib.twig.linked_swissbib_extension:
+        class: LinkedSwissbibBundle\Twig\LinkedSwissbibExtension
+        tags:
+            - { name: twig.extension }
+
+    linked_swissbib.swagger.normalizer.documentation:
+        class: LinkedSwissbibBundle\Swagger\Normalizer\DocumentationNormalizer
+        arguments: ['@api_platform.swagger.normalizer.documentation', '@api_platform.router']
+        tags: [ { name: 'serializer.normalizer', priority: 24 } ]
+
+    linked_swissbib.exception.api_exception_transformer:
+        class: LinkedSwissbibBundle\Exception\ApiExceptionTransformer
+
+    linked_swissbib.listener.request.add_format:
+        class: LinkedSwissbibBundle\Listener\Request\AddFormatListener
+        decorates: api_platform.listener.request.add_format
+        arguments: ['@linked_swissbib.listener.request.add_format.inner']
+
     linked_swissbib.serializer.normalizer.item:
         class: LinkedSwissbibBundle\Serializer\ItemNormalizer
         decorates: api_platform.jsonld.normalizer.item
@@ -131,31 +156,13 @@ services:
         decorates: api_platform.router
         arguments: ['@linked_swissbib.router.inner']
 
-    linked_swissbib.http_client:
-        class: GuzzleHttp\Client
-
-    linked_swissbib.filter.fieldsqueryfilter:
-        class: LinkedSwissbibBundle\Filter\FieldsQueryFilter
-        tags: [ { name: 'api_platform.filter', id: 'linked_swissbib.fieldsqueryfilter' } ]
-
-    linked_swissbib.twig.linked_swissbib_extension:
-        class: LinkedSwissbibBundle\Twig\LinkedSwissbibExtension
-        tags:
-            - { name: twig.extension }
-
     api_platform.swagger.listener.ui:
         class: LinkedSwissbibBundle\Bridge\Symfony\Bundle\EventListener\SwaggerUiListener
         tags: [ { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' } ]
 
-    linked_swissbib.listener.request.add_format:
-        class: LinkedSwissbibBundle\Listener\Request\AddFormatListener
-        decorates: api_platform.listener.request.add_format
-        arguments: ['@linked_swissbib.listener.request.add_format.inner']
-
-    linked_swissbib.swagger.normalizer.documentation:
-        class: LinkedSwissbibBundle\Swagger\Normalizer\DocumentationNormalizer
-        arguments: ['@api_platform.swagger.normalizer.documentation', '@api_platform.router']
-        tags: [ { name: 'serializer.normalizer', priority: 24 } ]
-
-    linked_swissbib.exception.api_exception_transformer:
-        class: LinkedSwissbibBundle\Exception\ApiExceptionTransformer
+    api_platform.listener.exception:
+        class: LinkedSwissbibBundle\ApiPlatform\Core\EventListener\ExceptionListener
+        arguments:
+            - 'api_platform.action.exception'
+            - '@logger'
+        tags: [ { name: 'kernel.event_listener', event: 'kernel.exception', method: 'onKernelException', priority: '-96' }, { name: 'monolog.logger', channel: 'request' } ]

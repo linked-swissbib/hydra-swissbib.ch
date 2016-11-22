@@ -16,6 +16,7 @@ parameters:
         multi: ['fields']
     linked_swissbib.easyrdf.namespaces:
         bf: 'http://bibframe.org/vocab/'
+        hydra: 'http://www.w3.org/ns/hydra/core#'
 
 framework:
     #esi:             ~
@@ -85,6 +86,12 @@ api_platform:
     description: "Hypermedia driven REST API for linked bibliographic resources."
     version: "1.0.0"
     formats:
+        jsonld: ["application/ld+json"]
+        rdfxml: ["application/rdf+xml"]
+        turtle: ["text/turtle"]
+        ntriples: ["application/n-triples"]
+        html: ["text/html"]
+    error_formats:
         jsonld: ["application/ld+json"]
         rdfxml: ["application/rdf+xml"]
         turtle: ["text/turtle"]

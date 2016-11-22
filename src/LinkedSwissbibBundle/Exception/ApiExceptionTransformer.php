@@ -4,6 +4,7 @@ namespace LinkedSwissbibBundle\Exception;
 
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
+use Elasticsearch\Common\Exceptions\ServerErrorResponseException;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -30,6 +31,12 @@ class ApiExceptionTransformer
 
         if ($e instanceof Missing404Exception) {
             throw new NotFoundHttpException(null, $e);
+        }
+
+        if ($e instanceof ServerErrorResponseException) {
+            if (strpos($e->getMessage(), 'Result window is too large') !== false) {
+                throw new BadRequestHttpException('Pagination is only allowed up to 10000 items.', $e);
+            }
         }
 
         throw $e;
