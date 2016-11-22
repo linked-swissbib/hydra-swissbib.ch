@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkedSwissbibBundle\Routing;
+namespace LinkedSwissbibBundle\ApiPlatform\Routing;
 
 use ApiPlatform\Core\Api\UrlGeneratorInterface;
 use Symfony\Component\Routing\RequestContext;

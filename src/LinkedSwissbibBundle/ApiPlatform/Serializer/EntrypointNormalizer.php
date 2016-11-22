@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkedSwissbibBundle\Serializer;
+namespace LinkedSwissbibBundle\ApiPlatform\Serializer;
 
 use ApiPlatform\Core\Api\Entrypoint;
 use ApiPlatform\Core\Hydra\Serializer\EntrypointNormalizer as ApiPlatformEntrypointNormalizer;

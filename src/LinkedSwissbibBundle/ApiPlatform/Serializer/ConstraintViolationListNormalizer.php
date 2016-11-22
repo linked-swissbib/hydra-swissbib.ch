@@ -1,5 +1,5 @@
 <?php
-namespace LinkedSwissbibBundle\Serializer;
+namespace LinkedSwissbibBundle\ApiPlatform\Serializer;
 
 use ApiPlatform\Core\Hydra\Serializer\ConstraintViolationListNormalizer as ApiPlatformConstraintViolationListNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

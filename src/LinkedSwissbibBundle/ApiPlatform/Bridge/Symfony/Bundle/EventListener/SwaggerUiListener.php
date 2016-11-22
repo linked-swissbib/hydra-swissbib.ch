@@ -1,5 +1,5 @@
 <?php
-namespace LinkedSwissbibBundle\Bridge\Symfony\Bundle\EventListener;
+namespace LinkedSwissbibBundle\ApiPlatform\Bridge\Symfony\Bundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 

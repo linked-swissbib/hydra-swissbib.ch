@@ -1,5 +1,5 @@
 <?php
-namespace LinkedSwissbibBundle\Serializer;
+namespace LinkedSwissbibBundle\ApiPlatform\Serializer;
 
 use ApiPlatform\Core\Documentation\Documentation;
 use ApiPlatform\Core\Hydra\Serializer\DocumentationNormalizer as ApiPlatformDocumentationNormalizer;

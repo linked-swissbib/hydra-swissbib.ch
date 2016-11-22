@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkedSwissbibBundle\Listener\Request;
+namespace LinkedSwissbibBundle\ApiPlatform\Listener\Request;
 
 use ApiPlatform\Core\EventListener\AddFormatListener as ApiPlatformAddFormatListner;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;

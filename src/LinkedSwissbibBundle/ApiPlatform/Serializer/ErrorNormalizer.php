@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkedSwissbibBundle\Serializer;
+namespace LinkedSwissbibBundle\ApiPlatform\Serializer;
 
 use ApiPlatform\Core\Hydra\Serializer\ErrorNormalizer as ApiPlatformErrorNormalizer;
 use Symfony\Component\Debug\Exception\FlattenException;
