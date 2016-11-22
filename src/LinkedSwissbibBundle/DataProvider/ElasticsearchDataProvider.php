@@ -9,9 +9,11 @@ use ElasticsearchAdapter\SearchBuilder\TemplateSearchBuilder;
 use LinkedSwissbibBundle\ContextMapping\ContextMapper;
 use LinkedSwissbibBundle\Elasticsearch\ResourceNameConverter;
 use LinkedSwissbibBundle\Entity\EntityBuilder;
+use LinkedSwissbibBundle\Exception\ApiExceptionTransformer;
 use LinkedSwissbibBundle\Paginator\ElasticsearchPaginator;
 use LinkedSwissbibBundle\Params\ParamsBuilder;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Exception;
 
 /**
  * ElasticsearchDataProvider
@@ -26,6 +28,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
      * @var Adapter
      */
     protected $adapter;
+
     /**
      * @var TemplateSearchBuilder
      */
@@ -57,12 +60,21 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
     protected $paramsBuilder;
 
     /**
+     * @var ApiExceptionTransformer
+     */
+    protected $apiExceptionTransformer;
+
+    /**
      * @param Adapter $adapter
      * @param TemplateSearchBuilder $searchBuilder
      * @param EntityBuilder $entityBuilder
      * @param ContextMapper $contextMapper
+     * @param RequestStack $requestStack
+     * @param ResourceNameConverter $resourceNameConverter
+     * @param ParamsBuilder $paramsBuilder
+     * @param ApiExceptionTransformer $apiExceptionTransformer
      */
-    public function __construct(Adapter $adapter, TemplateSearchBuilder $searchBuilder, EntityBuilder $entityBuilder, ContextMapper $contextMapper, RequestStack $requestStack, ResourceNameConverter $resourceNameConverter, ParamsBuilder $paramsBuilder)
+    public function __construct(Adapter $adapter, TemplateSearchBuilder $searchBuilder, EntityBuilder $entityBuilder, ContextMapper $contextMapper, RequestStack $requestStack, ResourceNameConverter $resourceNameConverter, ParamsBuilder $paramsBuilder, ApiExceptionTransformer $apiExceptionTransformer)
     {
         $this->adapter = $adapter;
         $this->searchBuilder = $searchBuilder;
@@ -71,6 +83,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         $this->requestStack = $requestStack;
         $this->resourceNameConverter = $resourceNameConverter;
         $this->paramsBuilder = $paramsBuilder;
+        $this->apiExceptionTransformer = $apiExceptionTransformer;
     }
 
     /**
@@ -82,9 +95,13 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
 
         $this->searchBuilder->setParams($params);
 
-        $search = $this->searchBuilder->buildSearchFromTemplate('id');
-        $response = $this->adapter->search($search);
-        $mappedProperties = $this->contextMapper->fromExternalToInternal($resourceClass, $response->getHits());
+        try {
+            $search = $this->searchBuilder->buildSearchFromTemplate('id');
+            $response = $this->adapter->search($search);
+            $mappedProperties = $this->contextMapper->fromExternalToInternal($resourceClass, $response->getHits());
+        } catch (Exception $e) {
+            $this->apiExceptionTransformer->transformException($e);
+        }
 
         if (isset($mappedProperties[0])) {
             return $this->entityBuilder->build($resourceClass, $mappedProperties[0]);
@@ -104,23 +121,30 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         $templateName = 'empty';
         $entities = [];
         $currentPage = $request->query->has('page') ? $request->query->get('page') : 1;
+
         if ($params->has('q') && $params->has('fields')) {
             $templateName = 'collection_fields';
         } elseif ($params->has('q')) {
             $templateName = 'collection_' . strtolower($type);
         }
 
-        $this->searchBuilder->setParams($params);
-        $search = $this->searchBuilder->buildSearchFromTemplate($templateName);
-        $search->setSize(20); //todo fix bug
-        $search->setFrom(($currentPage-1) * $search->getSize());
-        $result = $this->adapter->search($search);
+        try {
+            $this->searchBuilder->setParams($params);
+            $search = $this->searchBuilder->buildSearchFromTemplate($templateName);
+            $search->setSize(20); //todo fix bug
+            $search->setFrom(($currentPage-1) * $search->getSize());
+
+            $result = $this->adapter->search($search);
+        } catch (Exception $e) {
+            $this->apiExceptionTransformer->transformException($e);
+        }
 
         $mappedEntities = $this->contextMapper->fromExternalToInternal($resourceClass, $result->getHits());
 
         foreach ($mappedEntities as $mappedEntity) {
             $entities[] = $this->entityBuilder->build($resourceClass, $mappedEntity);
         }
+
         return new ElasticsearchPaginator($result, $entities, $search->getSize(), $currentPage);
     }
 }

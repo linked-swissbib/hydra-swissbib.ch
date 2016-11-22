@@ -27,6 +27,7 @@ services:
           - '@request_stack'
           - '@linked_swissbib.elasticsearch_resource_name_converter'
           - '@linked_swissbib.elasticsearch_params_builder'
+          - '@linked_swissbib.exception.api_exception_transformer'
 
     linked_swissbib.elasticsearch_context_mapper:
         class: LinkedSwissbibBundle\Elasticsearch\ContextMapper
@@ -155,3 +156,6 @@ services:
         class: LinkedSwissbibBundle\Swagger\Normalizer\DocumentationNormalizer
         arguments: ['@api_platform.swagger.normalizer.documentation', '@api_platform.router']
         tags: [ { name: 'serializer.normalizer', priority: 24 } ]
+
+    linked_swissbib.exception.api_exception_transformer:
+        class: LinkedSwissbibBundle\Exception\ApiExceptionTransformer
