@@ -142,7 +142,6 @@ class ContextMapper implements ContextMapperInterface
         $remoteContext = $this->loadRemoteContext($type);
         $propertyNames = $this->propertyNameCollectionFactory->create($resourceClass);
         $remoteNamespaces = [];
-        $fullNamespaceToRemotePropertyName = [];
         $mapping = [
             'internal_to_external' => [],
             'external_to_internal' => [],
@@ -154,23 +153,17 @@ class ContextMapper implements ContextMapperInterface
             }
         }
 
-        foreach ($remoteContext['@context'] as $propertyKey => $propertyValue) {
-            if (strpos($propertyKey, ':') !== false) {
-                list($namespace, $value) = explode(':', $propertyKey);
-
-                if (isset($remoteNamespaces[$namespace])) {
-                    $fullNamespaceToRemotePropertyName[$remoteNamespaces[$namespace] . $value] = $propertyKey;
-                }
-            }
-        }
-
         foreach ($propertyNames as $propertyName) {
             $propertyMetaData = $this->propertyMetadataFactory->create($resourceClass, $propertyName);
             $iri = $propertyMetaData->getIri();
 
-            if (isset($fullNamespaceToRemotePropertyName[$iri])) {
-                $mapping['internal_to_external'][$propertyName] = $fullNamespaceToRemotePropertyName[$iri];
-                $mapping['external_to_internal'][$fullNamespaceToRemotePropertyName[$iri]] = $propertyName;
+            foreach ($remoteNamespaces as $prefix => $namespace) {
+                if (substr($iri, 0, strlen($namespace)) === $namespace) {
+                    $remoteName = $prefix . ':' . $propertyName;
+
+                    $mapping['internal_to_external'][$propertyName] = $remoteName;
+                    $mapping['external_to_internal'][$remoteName] = $propertyName;
+                }
             }
         }
 

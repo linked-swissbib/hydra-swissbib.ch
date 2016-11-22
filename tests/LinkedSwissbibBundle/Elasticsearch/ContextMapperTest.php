@@ -90,7 +90,6 @@ class ContextMapperTest extends TestCase
                     'prefixA' => 'http://example-a.com/some/path/',
                     'prefixB' => 'http://example-b.com/some/path/',
                     'prefixA:attrA' => ['@type' => '@id'],
-                    'prefixB:attrB' => ['@type' => '@id'],
                 ],
             ])
         ));
