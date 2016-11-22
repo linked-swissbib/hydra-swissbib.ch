@@ -21,7 +21,7 @@ final class SwaggerUiListener
     {
         $request = $event->getRequest();
 
-        if ('html' !== $request->getRequestFormat(null) || $request->getPathInfo() !== '/doc') {
+        if ('html' !== $request->getRequestFormat(null) || $request->getPathInfo() !== '/docs') {
             return;
         }
 

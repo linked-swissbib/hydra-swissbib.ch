@@ -13,7 +13,7 @@ Feature: Content negotiation for n-triples
     <http://example.com/document/000000051> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/ontology/bibo/document> .
     <http://example.com/document/000000051> <http://bibframe.org/vocab/local> "OCoLC/775794624"^^<http://www.w3.org/2001/XMLSchema#string> .
     <http://example.com/document/000000051> <http://bibframe.org/vocab/local> "ABN/000300043"^^<http://www.w3.org/2001/XMLSchema#string> .
-    <http://example.com/document/000000051> <http://example.com/doc.jsonld##Document/id> "000000051"^^<http://www.w3.org/2001/XMLSchema#string> .
+    <http://example.com/document/000000051> <http://example.com/docs.jsonld##Document/id> "000000051"^^<http://www.w3.org/2001/XMLSchema#string> .
     <http://example.com/document/000000051> <http://purl.org/dc/terms/contributor> <http://d-nb.info/gnd/1046905-9> .
     <http://example.com/document/000000051> <http://purl.org/dc/terms/contributor> <http://data.swissbib.ch/agent/ABN> .
     <http://example.com/document/000000051> <http://purl.org/dc/terms/issued> "2016-04-26T08:41:49.227Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .

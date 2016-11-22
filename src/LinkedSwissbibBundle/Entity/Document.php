@@ -37,7 +37,7 @@ class Document
     private $id;
 
     /**
-     * @var string|array fuu thats the description
+     * @var string|array
      *
      * @ApiProperty(iri="http://bibframe.org/vocab/local",writable=false,attributes={
      *     "jsonld_context"={

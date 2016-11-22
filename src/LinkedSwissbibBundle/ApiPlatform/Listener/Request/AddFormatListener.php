@@ -41,7 +41,7 @@ final class AddFormatListener
     {
         $request = $event->getRequest();
 
-        if ($request->getPathInfo() === '/doc.json') {
+        if ($request->getPathInfo() === '/docs.json') {
             $request->setRequestFormat('json');
         } else {
             $this->addFormatListener->onKernelRequest($event);
