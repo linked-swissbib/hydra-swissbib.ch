@@ -1,18 +1,19 @@
 parameters:
   elasticsearch_adapter.hosts: ['localhost']
-  #elasticsearch_adapter.hosts: ['sb-s2.swissbib.unibas.ch:8080']
+#  elasticsearch_adapter.hosts: ['sb-s2.swissbib.unibas.ch:8080']
   elasticsearch_adapter.templates:
-    search:
-      index: 'testsb'
-      type: 'bibliographicResource, document, item, organization, person, work'
-      query:
-        multi_match:
-          query: '{q}'
-          fields: '{fields}'
+#    search:
+#      index: 'testsb'
+#      type: 'bibliographicResource, document, item, organization, person, work'
+#      query:
+#        multi_match:
+#          query: '{q}'
+#          fields: '{fields}'
 
     empty:
       index: 'testsb'
       type: '{type}'
+      size: 20
 
     id:
       index: 'testsb'
@@ -37,7 +38,7 @@ parameters:
       query:
         multi_match:
           query: '{q}'
-          fields: 'bf:local,dct:contributor'
+          fields: 'bf:local,dct:contributor,foaf:primaryTopic'
 
     collection_bibliographicresource:
       index: 'testsb'
@@ -46,7 +47,7 @@ parameters:
       query:
         multi_match:
           query: '{q}'
-          fields: 'dct:title'
+          fields: 'dct:title,dct:language,bf:instanceOf,dc:format,bibo:edition,bibo:isbn10,bibo:isbn13,bibo:issn,dbp:originalLanguage,dct:alternative,dct:bibliographicCitation,dct:contributor,dct:hasPart,dct:isPartOf,dct:issued,dct:subject,rdfs:isDefinedBy'
 
     collection_item:
       index: 'testsb'
@@ -55,7 +56,7 @@ parameters:
       query:
         multi_match:
           query: '{q}'
-          fields: 'bf:holdingFor,foaf:page,bibo:owner,bibo:locator,bf:subLocation'
+          fields: 'bf:holdingFor,bf:subLocation,bibo:locator,bibo:owner,foaf:page'
 
     collection_organisation:
       index: 'testsb'
@@ -73,4 +74,13 @@ parameters:
       query:
         multi_match:
           query: '{q}'
-          fields: 'firstName,lastName'
+          fields: 'dbp:birthYear,dbp:deathYear,foaf:firstName,foaf:lastName,foaf:name,schema:sameAs,rdfs:label,skos:note,dbp:birthPlace,dbp:deathPlace,dbp:birthDate,dbp:deathDate,dbp:genre,dbp:movement,dbp:nationality,dbp:notableWork,dbp:occupation,dbp:thumbnail,dbp:influencedBy,dbp:partner,dbp:pseudonym,dbp:spouse,dbp:influenced,schema:alternateName,schema:familyName,schema:givenName,schema:gender,rdf:type,dbp:abstract'
+
+    collection_work:
+          index: 'testsb'
+          type: 'work'
+          size: 20
+          query:
+            multi_match:
+              query: '{q}'
+              fields: 'bf:hasInstance,dct:contributor,dct:title'
