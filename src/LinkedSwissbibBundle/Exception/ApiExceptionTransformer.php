@@ -26,11 +26,11 @@ class ApiExceptionTransformer
     public function transformException(Exception $e)
     {
         if ($e instanceof BadRequest400Exception) {
-            throw new BadRequestHttpException(null, $e);
+            throw new BadRequestHttpException('Bad Request', $e);
         }
 
         if ($e instanceof Missing404Exception) {
-            throw new NotFoundHttpException(null, $e);
+            throw new NotFoundHttpException('Not found', $e);
         }
 
         if ($e instanceof ServerErrorResponseException) {

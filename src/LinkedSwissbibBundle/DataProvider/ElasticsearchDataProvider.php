@@ -120,7 +120,7 @@ class ElasticsearchDataProvider implements ItemDataProviderInterface, Collection
         $params = $this->paramsBuilder->buildCollectionParams($request);
         $templateName = 'empty';
         $entities = [];
-        $currentPage = $request->query->has('page') ? $request->query->get('page') : 1;
+        $currentPage = $request->query->has('page') ? (int) $request->query->get('page') : 1;
 
         if ($params->has('q') && $params->has('fields')) {
             $templateName = 'collection_fields';
