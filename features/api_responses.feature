@@ -1,5 +1,15 @@
 Feature: Depending on the error, the API should be able to respond with different error codes
 
+  Scenario: Bad Request
+    And I send a "GET" request to "/document?page=0"
+    Then the response status code should be 400
+    And the header "Content-Type" should be equal to "text/html; charset=utf-8"
+
+  Scenario: Bad Request
+    And I send a "GET" request to "/document?page=10000"
+    Then the response status code should be 400
+    And the header "Content-Type" should be equal to "text/html; charset=utf-8"
+
   Scenario: Ok GET
     And I send a "GET" request to "/document"
     Then the response status code should be 200
