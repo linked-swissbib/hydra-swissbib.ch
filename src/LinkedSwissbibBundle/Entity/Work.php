@@ -7,7 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A work.
+ * Work - Resource reflecting a conceptual essence of the cataloging resource.
  *
  * @see http://bibframe.org/vocab/Work
  *

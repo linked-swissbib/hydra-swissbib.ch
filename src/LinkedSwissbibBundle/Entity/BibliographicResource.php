@@ -7,7 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A BibliographicResource.
+ * 	A book, article, or other documentary resource.
  *
  * @see http://purl.org/dc/terms/BibliographicResource Documentation on purl.org
  *

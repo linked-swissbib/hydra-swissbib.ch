@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * A person.
+ * The Person class represents people.
  *
  * @see http://xmlns.com/foaf/0.1/Person
  *

@@ -8,7 +8,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * An organization such as a school, NGO, corporation, club, etc.
+ * The Organization class represents a kind of Agent corresponding to social instititutions such as companies, societies etc.
  *
  * @see http://xmlns.com/foaf/0.1/Organization
  *

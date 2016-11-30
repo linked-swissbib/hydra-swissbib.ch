@@ -40,7 +40,12 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function getLastPage() : float
     {
-        return ceil($this->getTotalItems() / $this->itemsPerPage);
+        $last = ceil($this->getTotalItems() / $this->itemsPerPage);
+        if ($last==0) {
+            return 1;
+        } else {
+            return $last;
+        }
     }
 
     /**
@@ -99,7 +104,9 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function next()
     {
-        $this->current += 1;
+        if ($this->current != $this->getLastPage()) {
+            $this->current += 1;
+        }
     }
 
     /**
