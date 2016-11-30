@@ -104,7 +104,7 @@ class ElasticsearchPaginator implements Iterator, PaginatorInterface
      */
     public function next()
     {
-        if ($this->current != $this->getLastPage()) {
+        if ($this->current !== $this->getLastPage()) {
             $this->current += 1;
         }
     }

@@ -102,3 +102,63 @@ Feature: Responses for documents
       }
     }
     """
+
+  Scenario: 0 items of bibliographicResources
+    When I add "Accept" header equal to "application/ld+json"
+    And I send a "GET" request to "/bibliographicResource?q='nullElements'"
+    Then the response status code should be 200
+    And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
+    And the JSON should be equal to:
+    """
+    {
+      "@context": "http:\/\/example.com\/contexts\/BibliographicResource",
+      "@id": "http:\/\/example.com\/bibliographicResource",
+      "@type": "hydra:Collection",
+      "hydra:member": [
+        {
+          "@id": "http:\/\/example.com\/bibliographicResource\/000000051",
+          "@type": "http:\/\/purl.org\/dc\/terms\/BibliographicResource",
+          "id": "000000051",
+          "contributor": [
+            "http:\/\/d-nb.info\/gnd\/1046905-9",
+            "http:\/\/data.swissbib.ch\/agent\/ABN"
+          ],
+          "issued": "2016-04-26T08:41:49.227Z"
+        },
+        {
+          "@id": "http:\/\/example.com\/bibliographicResource\/000000052",
+          "@type": "http:\/\/purl.org\/dc\/terms\/BibliographicResource",
+          "id": "000000052",
+          "contributor": [
+            "http:\/\/d-nb.info\/gnd\/1046905-9",
+            "http:\/\/data.swissbib.ch\/agent\/ABN"
+          ],
+          "issued": "2016-04-26T08:41:49.227Z"
+        }
+      ],
+      "hydra:totalItems": 12,
+      "hydra:view": {
+        "@id": "http:\/\/example.com\/bibliographicResource?q=%27nullElements%27",
+        "@type": "hydra:PartialCollectionView"
+      },
+      "hydra:search": {
+        "@type": "hydra:IriTemplate",
+        "hydra:template": "http:\/\/example.com\/bibliographicResource{?q,fields}",
+        "hydra:variableRepresentation": "BasicRepresentation",
+        "hydra:mapping": [
+          {
+            "@type": "IriTemplateMapping",
+            "variable": "q",
+            "property": "_all",
+            "required": false
+          },
+          {
+            "@type": "IriTemplateMapping",
+            "variable": "fields",
+            "property": "_fields",
+            "required": false
+          }
+        ]
+      }
+    }
+    """
