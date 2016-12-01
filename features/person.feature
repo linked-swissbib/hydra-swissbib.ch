@@ -63,7 +63,6 @@ Feature: Responses for documents
           "familyName": "TestFamilyName",
           "givenName": "TestGivenName",
           "gender": "male",
-          "type": "TestType",
           "abstract": "DE"
         },
         {

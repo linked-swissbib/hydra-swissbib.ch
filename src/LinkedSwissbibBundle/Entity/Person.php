@@ -346,16 +346,6 @@ class Person
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#/type,writable=false",attributes={
-     *     "jsonld_context"={
-     *              "@type"="@id"
-     *     }
-     * })
-     */
-    private $type;
-    /**
-     * @var string|array
-     *
      * @ApiProperty(iri="http://dbpedia.org/ontology/abstract",writable=false,attributes={
      *     "jsonld_context"={
      *         "@type"="http://www.w3.org/2001/XMLSchema#string",
@@ -811,22 +801,6 @@ class Person
     public function setGender($gender)
     {
         $this->gender = $gender;
-    }
-
-    /**
-     * @return array|string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param array|string $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
     }
 
     /**
