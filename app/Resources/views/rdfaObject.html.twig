@@ -1,6 +1,6 @@
 <div class="rdfa-object"
     {% if properties['@context'] is defined %}
-        vocab="{{ properties['@context'] }}"
+        vocab="{{ properties['@context'] }}#"
     {% endif %}
     {% if properties['@id'] is defined %}
         resource="{{ properties['@id'] }}"
