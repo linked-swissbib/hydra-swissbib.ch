@@ -11,7 +11,7 @@ Feature: Content negotiation for html
     And the response should be equal to
     """
     <div class="rdfa-object"
-                vocab="http://example.com/contexts/Document"
+                vocab="http://example.com/contexts/Document#"
                     resource="http://example.com/document/000000051"
                     typeof="http://purl.org/ontology/bibo/document"
             >
