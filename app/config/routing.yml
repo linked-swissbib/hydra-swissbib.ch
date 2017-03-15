@@ -5,3 +5,11 @@ app:
 api:
     resource: '.'
     type:     'api_platform'
+
+
+root:
+    path: /bibliographicResource/{id}/about
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirectdocs
+        permanent: true
