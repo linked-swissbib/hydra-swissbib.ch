@@ -56,7 +56,7 @@ class Document
      *     }
      * })
      */
-    private $contributor;
+    //private $contributor;
 
     /**
      * @var string|array
@@ -126,18 +126,18 @@ class Document
     /**
      * @return array|string
      */
-    public function getContributor()
-    {
-        return $this->contributor;
-    }
+    //public function getContributor()
+    //{
+    //    return $this->contributor;
+    //}
 
     /**
      * @param array|string $contributor
      */
-    public function setContributor($contributor)
-    {
-        $this->contributor = $contributor;
-    }
+    //public function setContributor($contributor)
+    //{
+    //    $this->contributor = $contributor;
+    //  }
 
     /**
      * @return array|string
