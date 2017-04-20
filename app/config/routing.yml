@@ -2,6 +2,9 @@ app:
     resource: '@LinkedSwissbibBundle/Action/'
     type:     'annotation'
 
+#compare: https://api-platform.com/docs/core/getting-started
+#Register the routes of your api
+
 api:
     resource: '.'
     type:     'api_platform'
