@@ -7,9 +7,9 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    linked_swissbib.elastic_search.hosts: ["localhost"]
+    linked_swissbib.elastic_search.hosts: ["sb-ues1.swissbib.unibas.ch:8080"]
     linked_swissbib.context_mapper:
-      template_url: 'http://data.swissbib.ch/{type}/context.jsonld'
+      template_url: 'https://resources.swissbib.ch/{type}/context.jsonld'
     linked_swissbib.elasticsearch_params_builder:
       mapped_params:
         single: []
