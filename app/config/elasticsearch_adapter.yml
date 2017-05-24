@@ -3,7 +3,7 @@ parameters:
 #  elasticsearch_adapter.hosts: ['sb-s2.swissbib.unibas.ch:8080']
   elasticsearch_adapter.templates:
 #    search:
-#      index: 'lsb_20170416'
+#      index: 'lsb'
 #      type: 'bibliographicResource, document, item, organization, person, work'
 #      query:
 #        multi_match:
@@ -11,19 +11,19 @@ parameters:
 #          fields: '{fields}'
 
     empty:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: '{type}'
       size: 20
 
     id:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: '{type}'
       query:
         ids:
           values: ['{id}']
 
     collection_fields:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: '{type}'
       size: 20
       query:
@@ -32,7 +32,7 @@ parameters:
           fields: '{fields}'
 
     collection_document:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: 'document'
       size: 20
       query:
@@ -41,7 +41,7 @@ parameters:
           fields: 'bf:local,dct:contributor,foaf:primaryTopic'
 
     collection_bibliographicresource:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: 'bibliographicResource'
       size: 20
       query:
@@ -50,7 +50,7 @@ parameters:
           fields: 'dct:title,dct:language,bf:instanceOf,dc:format,bibo:edition,bibo:isbn10,bibo:isbn13,bibo:issn,dbp:originalLanguage,dct:alternative,dct:bibliographicCitation,dct:contributor,dct:hasPart,dct:isPartOf,dct:issued,dct:subject,rdfs:isDefinedBy'
 
     collection_item:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: 'item'
       size: 20
       query:
@@ -59,7 +59,7 @@ parameters:
           fields: 'bf:holdingFor,bf:subLocation,bibo:locator,bibo:owner,foaf:page'
 
     collection_organisation:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: 'organisation'
       size: 20
       query:
@@ -68,7 +68,7 @@ parameters:
           fields: 'rdfs:label'
 
     collection_person:
-      index: 'lsb_20170416'
+      index: 'lsb'
       type: 'person'
       size: 20
       query:
@@ -77,7 +77,7 @@ parameters:
           fields: 'dbp:birthYear,dbp:deathYear,foaf:firstName,foaf:lastName,foaf:name,schema:sameAs,rdfs:label,skos:note,dbp:birthPlace,dbp:deathPlace,dbp:birthDate,dbp:deathDate,dbp:genre,dbp:movement,dbp:nationality,dbp:notableWork,dbp:occupation,dbp:thumbnail,dbp:influencedBy,dbp:partner,dbp:pseudonym,dbp:spouse,dbp:influenced,schema:alternateName,schema:familyName,schema:givenName,schema:gender,rdf:type,dbp:abstract'
 
     collection_work:
-          index: 'lsb_20170416'
+          index: 'lsb'
           type: 'work'
           size: 20
           query:
