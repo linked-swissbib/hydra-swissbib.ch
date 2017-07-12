@@ -49,6 +49,19 @@ class Organisation
      */
     private $label;
 
+
+    /**
+     * @var string|array
+     *
+     * @ApiProperty(iri="http://www.w3.org/2002/07/owl#",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="@id"
+     *     }
+     * })
+     */
+    private $sameAs;
+
+
     /**
      * @param array|string $id
      */
@@ -80,4 +93,21 @@ class Organisation
     {
         return $this->label;
     }
+
+    /**
+     * @return array|string
+     */
+    public function getSameAs()
+    {
+        return $this->sameAs;
+    }
+
+    /**
+     * @param array|string $sameAs
+     */
+    public function setSameAs($sameAs)
+    {
+        $this->sameAs = $sameAs;
+    }
+
 }
