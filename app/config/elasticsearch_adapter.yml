@@ -43,6 +43,9 @@ parameters:
             multi_match:
               query: '{q}'
               fields: '{fields}'
+          must_not:
+            exists:
+              field: 'dct:rights'
 
 
     collection_document:
