@@ -63,6 +63,55 @@ class Organisation
 
 
     /**
+     * @var string|array
+     *
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="@id"
+     *     }
+     * })
+     */
+    private $homepage;
+
+
+    /**
+     * @var string|array
+     *
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="@id"
+     *     }
+     * })
+     */
+    private $phone;
+
+
+    /**
+     * @var string|array
+     *
+     * @ApiProperty(iri="http://xmlns.com/foaf/0.1/",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="@id"
+     *     }
+     * })
+     */
+    private $mbox;
+
+    /**
+     * @var string|array
+     *
+     * @ApiProperty(iri="http://www.w3.org/2006/vcard/ns#",writable=false,attributes={
+     *     "jsonld_context"={
+     *         "@type"="@id"
+     *     }
+     * })
+     */
+    private $hasRegion;
+
+
+
+
+    /**
      * @param array|string $id
      */
     public function setId($id)
@@ -109,5 +158,73 @@ class Organisation
     {
         $this->sameAs = $sameAs;
     }
+
+
+    /**
+     * @return array|string
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
+    }
+
+    /**
+     * @param array|string $sameAs
+     */
+    public function setHomepage($homepage)
+    {
+        $this->homepage = $homepage;
+    }
+
+
+    /**
+     * @return array|string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param array|string $sameAs
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return array|string
+     */
+    public function getMbox()
+    {
+        return $this->mbox;
+    }
+
+    /**
+     * @param array|string $sameAs
+     */
+    public function setMbox($mbox)
+    {
+        $this->mbox = $mbox;
+    }
+
+    /**
+     * @return array|string
+     */
+    public function getHasRegion()
+    {
+        return $this->hasRegion;
+    }
+
+    /**
+     * @param array|string $sameAs
+     */
+    public function setHasRegion($hasRegion)
+    {
+        $this->hasRegion = $hasRegion;
+    }
+
+
 
 }

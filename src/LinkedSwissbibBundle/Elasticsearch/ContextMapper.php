@@ -92,8 +92,8 @@ class ContextMapper implements ContextMapperInterface
             $entity = [];
 
             foreach ($hits['_source'] as $propertyKey => $propertyValue) {
-                if (strpos($propertyKey, '@') === false && isset($mapping['external_to_internal'][$propertyKey])) {
-                    $internalPropertyName = $mapping['external_to_internal'][$propertyKey];
+                if (strpos($propertyKey, '@') === false && isset($mapping['external_to_internal'][strtolower($propertyKey)])) {
+                    $internalPropertyName = $mapping['external_to_internal'][strtolower($propertyKey)];
                     $entity[$internalPropertyName] = $hits['_source'][$propertyKey];
                 }
             }
@@ -160,9 +160,11 @@ class ContextMapper implements ContextMapperInterface
             foreach ($remoteNamespaces as $prefix => $namespace) {
                 if (substr($iri, 0, strlen($namespace)) === $namespace) {
                     $remoteName = $prefix . ':' . $propertyName;
-
-                    $mapping['internal_to_external'][$propertyName] = $remoteName;
-                    $mapping['external_to_internal'][$remoteName] = $propertyName;
+                    //todo: evaluate possibilities for mapping
+                    //I changed some variable names in BibliographicResource entity to lower case
+                    //to implement the mapping
+                    $mapping['internal_to_external'][strtolower($propertyName)] = strtolower($remoteName);
+                    $mapping['external_to_internal'][strtolower($remoteName)] = strtolower($propertyName);
                 }
             }
         }

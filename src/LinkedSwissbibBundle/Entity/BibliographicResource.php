@@ -226,23 +226,23 @@ class BibliographicResource
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://rdaregistry.info/Elements/u/P60049",writable=false, attributes={
+     * @ApiProperty(iri="http://rdaregistry.info/Elements/u/",writable=false, attributes={
      *     "jsonld_context"={
      *         "@type"="@id"
      *     }
      * })
      */
-    private $P60049;
+    private $p60049;
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="http://rdaregistry.info/Elements/u/P60050",writable=false, attributes={
+     * @ApiProperty(iri="http://rdaregistry.info/Elements/u/",writable=false, attributes={
      *     "jsonld_context"={
      *         "@type"="@id"
      *     }
      * })
      */
-    private $P60050;
+    private $p60050;
 
     /**
      * @var string|array
@@ -253,7 +253,7 @@ class BibliographicResource
      *     }
      * })
      */
-    private $P60051;
+    private $p60051;
 
     /**
      * @var string|array
@@ -264,51 +264,51 @@ class BibliographicResource
      *     }
      * })
      */
-    private $P60163;
+    private $p60163;
 
     /**
      * @var string|array
      *
      * @ApiProperty(iri="http://rdaregistry.info/Elements/u/P60333",writable=false, attributes={
      *     "jsonld_context"={
-     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="@id"
      *     }
      * })
      */
-    private $P60333;
+    private $p60333;
 
     /**
      * @var string|array
      *
      * @ApiProperty(iri="http://rdaregistry.info/Elements/u/P60339",writable=false, attributes={
      *     "jsonld_context"={
-     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="@id"
      *     }
      * })
      */
-    private $P60339;
+    private $p60339;
 
     /**
      * @var string|array
      *
      * @ApiProperty(iri="http://rdaregistry.info/Elements/u/P60470",writable=false, attributes={
      *     "jsonld_context"={
-     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="@id"
      *     }
      * })
      */
-    private $P60470;
+    private $p60470;
 
     /**
      * @var string|array
      *
      * @ApiProperty(iri="http://rdaregistry.info/Elements/u/P60489",writable=false, attributes={
      *     "jsonld_context"={
-     *         "@type"="http://www.w3.org/2001/XMLSchema#string"
+     *         "@type"="@id"
      *     }
      * })
      */
-    private $P60489;
+    private $p60489;
 
 
     /**
@@ -615,7 +615,7 @@ class BibliographicResource
      */
     public function getP60049()
     {
-        return $this->P60049;
+        return $this->p60049;
     }
 
     /**
@@ -623,7 +623,7 @@ class BibliographicResource
      */
     public function setP60049($P60049)
     {
-        $this->P60049 = $P60049;
+        $this->p60049 = $P60049;
     }
 
     /**
@@ -631,7 +631,7 @@ class BibliographicResource
      */
     public function getP60050()
     {
-        return $this->P60050;
+        return $this->p60050;
     }
 
     /**
@@ -639,7 +639,7 @@ class BibliographicResource
      */
     public function setP60050($P60050)
     {
-        $this->P60050 = $P60050;
+        $this->p60050 = $P60050;
     }
 
     /**
@@ -647,7 +647,7 @@ class BibliographicResource
      */
     public function getP60051()
     {
-        return $this->P60051;
+        return $this->p60051;
     }
 
     /**
@@ -655,7 +655,7 @@ class BibliographicResource
      */
     public function setP60051($P60051)
     {
-        $this->P60051 = $P60051;
+        $this->p60051 = $P60051;
     }
 
     /**
@@ -663,7 +663,7 @@ class BibliographicResource
      */
     public function getP60163()
     {
-        return $this->P60163;
+        return $this->p60163;
     }
 
     /**
@@ -671,7 +671,7 @@ class BibliographicResource
      */
     public function setP60163($P60163)
     {
-        $this->P60163 = $P60163;
+        $this->p60163 = $P60163;
     }
 
     /**
@@ -679,7 +679,7 @@ class BibliographicResource
      */
     public function getP60333()
     {
-        return $this->P60333;
+        return $this->p60333;
     }
 
     /**
@@ -687,7 +687,7 @@ class BibliographicResource
      */
     public function setP60333($P60333)
     {
-        $this->P60333 = $P60333;
+        $this->p60333 = $P60333;
     }
 
     /**
@@ -695,7 +695,7 @@ class BibliographicResource
      */
     public function getP60339()
     {
-        return $this->P60339;
+        return $this->p60339;
     }
 
     /**
@@ -703,7 +703,7 @@ class BibliographicResource
      */
     public function setP60339($P60339)
     {
-        $this->P60339 = $P60339;
+        $this->p60339 = $P60339;
     }
 
     /**
@@ -711,7 +711,7 @@ class BibliographicResource
      */
     public function getP60470()
     {
-        return $this->P60470;
+        return $this->p60470;
     }
 
     /**
@@ -719,7 +719,7 @@ class BibliographicResource
      */
     public function setP60470($P60470)
     {
-        $this->P60470 = $P60470;
+        $this->p60470 = $P60470;
     }
 
     /**
@@ -727,7 +727,7 @@ class BibliographicResource
      */
     public function getP60489()
     {
-        return $this->P60489;
+        return $this->p60489;
     }
 
     /**
@@ -735,7 +735,7 @@ class BibliographicResource
      */
     public function setP60489($P60489)
     {
-        $this->P60489 = $P60489;
+        $this->p60489 = $P60489;
     }
 
     /**
