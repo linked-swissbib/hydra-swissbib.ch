@@ -99,7 +99,7 @@ class Person
     /**
      * @var string|array
      *
-     * @ApiProperty(iri="https://schema.org/sameAs",writable=false,attributes={
+     * @ApiProperty(iri="http://www.w3.org/2002/07/owl#",writable=false,attributes={
      *     "jsonld_context"={
      *         "@type"="@id"
      *     }
