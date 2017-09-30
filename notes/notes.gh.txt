@@ -1,0 +1,30 @@
+http://data.swissbib.ch/bibliographicResource/326622446
+
+
+http://data.swissbib.ch/bibliographicResource?q=Gemeinschoppe&fields=title
+(sollte ausgefiltert werden)
+
+
+
+http://data.swissbib.ch/bibliographicResource/424945010
+(kein dct:rights)
+http://data.swissbib.ch/bibliographicResource/112168426
+
+
+Benutzte Abfragen:
+curl -X GET --header 'Accept: application/ld+json' 'http://data.swissbib.ch/person?q=*:*&fields=lastName' | python -m json.tool
+
+curl -XGET 'lsb-ues1.swissbib.unibas.ch:8080/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "exists" : { "field" : "user" }
+    }
+}
+'
+
+
+curl -X GET  'http://sb-ues1.swissbib.unibas.ch:8080/_mappings' | python -m json.tool
+
+
+Beispiel für eine Abfrage mit fields und q
+curl -X GET --header 'Accept: application/ld+json' 'http://data.swissbib.ch/person?q=I*&fields=foaf%3AlastName'
