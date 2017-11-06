@@ -124,10 +124,10 @@ class ContextMapperTest extends TestCase
         $this->cacheProphecy->contains('elasticsearch_context_mapper.' . $resourceClass)->willReturn(true);
         $this->cacheProphecy->fetch("elasticsearch_context_mapper.\Entities\Dummy")->willReturn([
             "internal_to_external" => [
-                "attrA" => "prefixA:attrA",
-                "attrB" => "prefixB:attrB"
+                "attra" => "prefixa:attra",
+                "attrb" => "prefixb:attrb"
             ],
-            "external_to_internal" => ["prefixA:attrA" => "attrA", "prefixB:attrB" => "attrB"]
+            "external_to_internal" => ["prefixa:attra" => "attra", "prefixb:attrb" => "attrb"]
         ]);
         $this->resourceNameConverterProphecy->getElasticsearchTypeFromResourceClass($resourceClass)->willReturn('dummy');
         $this->propertyNameCollectionFactoryProphecy->create($resourceClass)->willReturn(new PropertyNameCollection([
@@ -156,7 +156,7 @@ class ContextMapperTest extends TestCase
         $this->initContextMapper();
 
         $this->assertEquals(
-            [['id' => 'someId', 'attrA' => 'valueA', 'attrB' => 'valueB']],
+            [['id' => 'someId', 'attra' => 'valueA', 'attrb' => 'valueB']],
             $this->contextMapper->fromExternalToInternal($resourceClass, [
                 [
                     '_id' => 'someId',
