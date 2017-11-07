@@ -15,7 +15,7 @@ Feature: entrypoint
         "document": "http:\/\/example.com\/document",
         "item": "http:\/\/example.com\/item",
         "person": "http:\/\/example.com\/person",
-        "work": "http:\/\/example.com\/work"
-        "organisation": "http:\/\/example.com\/organisation",
+        "work": "http:\/\/example.com\/work",
+        "organisation": "http:\/\/example.com\/organisation"
     }
     """
