@@ -14,8 +14,8 @@ Feature: entrypoint
         "bibliographicResource": "http:\/\/example.com\/bibliographicResource",
         "document": "http:\/\/example.com\/document",
         "item": "http:\/\/example.com\/item",
-        "organisation": "http:\/\/example.com\/organisation",
         "person": "http:\/\/example.com\/person",
         "work": "http:\/\/example.com\/work"
+        "organisation": "http:\/\/example.com\/organisation",
     }
     """
