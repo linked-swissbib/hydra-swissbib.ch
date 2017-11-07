@@ -12,7 +12,7 @@ Feature: Content negotiation for turtle
     @prefix bibo: <http://purl.org/ontology/bibo/> .
     @prefix bf: <http://bibframe.org/vocab/> .
     @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix ns0: <http://example.com/docs.jsonld##Document/> .
+    @prefix ns0: <http://example.com/docs.jsonld#Document/> .
     @prefix dc: <http://purl.org/dc/terms/> .
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 

@@ -73,9 +73,16 @@ class ContextMapperTest extends TestCase
         $resourceClass = '\\Entities\\Dummy';
 
         $this->cacheProphecy->contains('elasticsearch_context_mapper.' . $resourceClass)->willReturn(false);
-        $this->cacheProphecy->save("elasticsearch_context_mapper.\Entities\Dummy", ["internal_to_external" => ["attrA" => "prefixA:attrA", "attrB" => "prefixB:attrB"], "external_to_internal" => ["prefixA:attrA" => "attrA", "prefixB:attrB" => "attrB"]])->willReturn();
+        $this->cacheProphecy->save("elasticsearch_context_mapper.\Entities\Dummy", [
+            "internal_to_external" => ["attra" => "prefixa:attra", "attrb" => "prefixb:attrb"],
+            "external_to_internal" => ["prefixa:attra" => "attra", "prefixb:attrb" => "attrb"]
+        ])->willReturn();
+
         $this->resourceNameConverterProphecy->getElasticsearchTypeFromResourceClass($resourceClass)->willReturn('dummy');
-        $this->propertyNameCollectionFactoryProphecy->create($resourceClass)->willReturn(new PropertyNameCollection(['attrA', 'attrB']));
+        $this->propertyNameCollectionFactoryProphecy->create($resourceClass)->willReturn(new PropertyNameCollection([
+            'attrA',
+            'attrB'
+        ]));
         $this->propertyMetadataFactoryProphecy->create($resourceClass, 'attrA')->willReturn(
             new PropertyMetadata(null, null, null, null, null, null, null, null, 'http://example-a.com/some/path/attrA')
         );
@@ -97,13 +104,13 @@ class ContextMapperTest extends TestCase
         $this->initContextMapper();
 
         $this->assertEquals(
-            ['prefixA:attrA', 'prefixB:attrB', 'attrC'],
-            $this->contextMapper->fromInternalToExternal($resourceClass, ['attrA', 'attrB', 'attrC'])
+            ['prefixa:attra', 'prefixb:attrb', 'attrc'],
+            $this->contextMapper->fromInternalToExternal($resourceClass, ['attra', 'attrb', 'attrc'])
         );
 
         $this->assertEquals(
-            ['prefixA:attrA'],
-            $this->contextMapper->fromInternalToExternal($resourceClass, ['attrA'])
+            ['prefixa:attra'],
+            $this->contextMapper->fromInternalToExternal($resourceClass, ['attra'])
         );
     }
 
@@ -115,9 +122,18 @@ class ContextMapperTest extends TestCase
         $resourceClass = '\\Entities\\Dummy';
 
         $this->cacheProphecy->contains('elasticsearch_context_mapper.' . $resourceClass)->willReturn(true);
-        $this->cacheProphecy->fetch("elasticsearch_context_mapper.\Entities\Dummy")->willReturn(["internal_to_external" => ["attrA" => "prefixA:attrA", "attrB" => "prefixB:attrB"], "external_to_internal" => ["prefixA:attrA" => "attrA", "prefixB:attrB" => "attrB"]]);
+        $this->cacheProphecy->fetch("elasticsearch_context_mapper.\Entities\Dummy")->willReturn([
+            "internal_to_external" => [
+                "attra" => "prefixa:attra",
+                "attrb" => "prefixb:attrb"
+            ],
+            "external_to_internal" => ["prefixa:attra" => "attra", "prefixb:attrb" => "attrb"]
+        ]);
         $this->resourceNameConverterProphecy->getElasticsearchTypeFromResourceClass($resourceClass)->willReturn('dummy');
-        $this->propertyNameCollectionFactoryProphecy->create($resourceClass)->willReturn(new PropertyNameCollection(['attrA', 'attrB']));
+        $this->propertyNameCollectionFactoryProphecy->create($resourceClass)->willReturn(new PropertyNameCollection([
+            'attrA',
+            'attrB'
+        ]));
         $this->propertyMetadataFactoryProphecy->create($resourceClass, 'attrA')->willReturn(
             new PropertyMetadata(null, null, null, null, null, null, null, null, 'http://example-a.com/some/path/attrA')
         );
@@ -140,7 +156,7 @@ class ContextMapperTest extends TestCase
         $this->initContextMapper();
 
         $this->assertEquals(
-            [['id' => 'someId', 'attrA' => 'valueA', 'attrB' => 'valueB']],
+            [['id' => 'someId', 'attra' => 'valueA', 'attrb' => 'valueB']],
             $this->contextMapper->fromExternalToInternal($resourceClass, [
                 [
                     '_id' => 'someId',

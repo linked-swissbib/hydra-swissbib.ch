@@ -29,6 +29,7 @@
  * @link     http://www.swissbib.org
  */
 namespace LinkedSwissbibBundle\Action;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,12 +49,11 @@ class APIController extends Controller
     /**
      * @Route("/redirectdocs/{id}", name="redirectdocs")
      */
-    public function redirectdocsAction($id) {
+    public function redirectdocsAction($id)
+    {
 
         //$test = "";
 
         return $this->redirect("/document/" . $id);
     }
-
-
 }

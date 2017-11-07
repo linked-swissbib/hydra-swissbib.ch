@@ -224,7 +224,4 @@ class Organisation
     {
         $this->hasRegion = $hasRegion;
     }
-
-
-
 }

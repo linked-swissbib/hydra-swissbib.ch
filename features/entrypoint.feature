@@ -8,14 +8,14 @@ Feature: entrypoint
     And the JSON should be equal to:
     """
     {
-        "@context": "http:\/\/example.com\/contexts/Entrypoint",
+        "@context": "http:\/\/example.com\/contexts\/Entrypoint",
         "@id": "http:\/\/example.com\/",
         "@type": "Entrypoint",
         "bibliographicResource": "http:\/\/example.com\/bibliographicResource",
         "document": "http:\/\/example.com\/document",
         "item": "http:\/\/example.com\/item",
-        "organisation": "http:\/\/example.com\/organisation",
         "person": "http:\/\/example.com\/person",
-        "work": "http:\/\/example.com\/work"
+        "work": "http:\/\/example.com\/work",
+        "organisation": "http:\/\/example.com\/organisation"
     }
     """
