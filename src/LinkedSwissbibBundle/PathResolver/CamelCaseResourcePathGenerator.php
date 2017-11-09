@@ -14,9 +14,26 @@ use Doctrine\Common\Inflector\Inflector;
  */
 class CamelCaseResourcePathGenerator implements OperationPathResolverInterface
 {
+
+
+    public function resolveOperationPath(string $resourceShortName, array $operation, $operationType/*, string $operationName = null*/): string
+    {
+        //$path = '/' . lcfirst($resourceShortName);
+        $path = '/' . $resourceShortName;
+
+        if (!$operationType) {
+            $path .= '/{id}';
+        }
+
+        $path .= '.{_format}';
+
+        return $path;
+    }
+
     /**
      * @inheritdoc
      */
+    /*
     public function resolveOperationPath(string $resourceShortName, array $operation, bool $collection) : string
     {
         $path = '/' . lcfirst($resourceShortName);
@@ -28,5 +45,9 @@ class CamelCaseResourcePathGenerator implements OperationPathResolverInterface
         $path .= '.{_format}';
 
         return $path;
-    }
+
+    } */
+
+
+
 }

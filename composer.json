@@ -57,15 +57,15 @@
     ],
     "require": {
         "php": ">=7.0",
-        "symfony/symfony": "3.1.*",
-        "symfony/property-info": "3.2.*",
-        "api-platform/core": "^2.0",
+        "symfony/symfony": "3.3.*",
+        "symfony/property-info": "3.3.*",
+        "api-platform/core": "^2.1",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
-        "symfony/swiftmailer-bundle": "^2.3",
-        "symfony/monolog-bundle": "^2.8",
-        "sensio/distribution-bundle": "^5.0",
+        "symfony/swiftmailer-bundle": "^2.3.10",
+        "symfony/monolog-bundle": "^3.1.0",
+        "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "dunglas/action-bundle": "^0.3",
@@ -79,6 +79,9 @@
         "ongr/elasticsearch-dsl": "5.0.*",
         "guzzlehttp/guzzle": "~6.0",
         "easyrdf/easyrdf": "^0.9.1"
+
+
+
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -122,7 +125,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.0-dev"
+            "dev-master": "2.1-dev"
         }
     }
 }

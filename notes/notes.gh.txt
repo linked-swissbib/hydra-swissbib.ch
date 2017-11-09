@@ -1,3 +1,7 @@
+http://oro-quickies.alanstorm.com/symfonys-two-generated-php-files/index.html
+https://symfony.com/doc/current/components/routing.html
+
+
 http://data.swissbib.ch/bibliographicResource/326622446
 
 
@@ -9,6 +13,14 @@ http://data.swissbib.ch/bibliographicResource?q=Gemeinschoppe&fields=title
 http://data.swissbib.ch/bibliographicResource/424945010
 (kein dct:rights)
 http://data.swissbib.ch/bibliographicResource/112168426
+
+
+Beispiel (angereicherte) Personen nach initial load
+http://hydra.swissbib.ch/person/(DE-588)118675788
+http://data.swissbib.ch/person/(DE-588)118676407
+
+http://data.swissbib.ch/person/(DE-588)118510002  (gutes Beipiel!!!)
+
 
 
 Benutzte Abfragen:
