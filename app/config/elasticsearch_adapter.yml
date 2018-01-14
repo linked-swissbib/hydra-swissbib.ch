@@ -1,6 +1,6 @@
 parameters:
-  elasticsearch_adapter.hosts: ['sb-ues1.swissbib.unibas.ch:8080','sb-ues2.swissbib.unibas.ch:8080','sb-ues3.swissbib.unibas.ch:8080']
-#  elasticsearch_adapter.hosts: ['sb-s2.swissbib.unibas.ch:8080']
+#  elasticsearch_adapter.hosts: ['sb-ues1.swissbib.unibas.ch:8080','sb-ues2.swissbib.unibas.ch:8080','sb-ues3.swissbib.unibas.ch:8080']
+  elasticsearch_adapter.hosts: ['localhost:8080']
   elasticsearch_adapter.templates:
 #    search:
 #      index: 'lsb_20170718'

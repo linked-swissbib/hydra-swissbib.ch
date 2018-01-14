@@ -57,9 +57,9 @@
     ],
     "require": {
         "php": ">=7.0",
-        "symfony/symfony": "3.3.*",
-        "symfony/property-info": "3.3.*",
-        "api-platform/core": "^2.1",
+        "symfony/symfony": "3.4.*",
+        "symfony/property-info": "3.4.*",
+        "api-platform/core": "^2.1.4",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -73,18 +73,18 @@
         "phpdocumentor/reflection-docblock": "^3.0",
         "doctrine/data-fixtures": "^1.1",
         "hautelook/alice-bundle": "^1.2",
-        "elasticsearch/elasticsearch": "5.2.*",
+        "elasticsearch/elasticsearch": "5.3.*",
         "ml/json-ld": "^1.0",
         "linked-swissbib/adapterESdev": "dev-updateOngr2Version5",
         "ongr/elasticsearch-dsl": "5.0.*",
-        "guzzlehttp/guzzle": "~6.0",
+        "guzzlehttp/guzzle": "~6.3",
         "easyrdf/easyrdf": "^0.9.1"
 
 
 
     },
     "require-dev": {
-        "sensio/generator-bundle": "^3.0",
+        "sensio/generator-bundle": "^3.1",
         "symfony/phpunit-bridge": "^3.0",
         "behat/behat": "^3.1",
         "behat/symfony2-extension": "^2.1",
