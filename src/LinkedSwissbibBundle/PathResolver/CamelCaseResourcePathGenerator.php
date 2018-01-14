@@ -2,52 +2,28 @@
 
 namespace LinkedSwissbibBundle\PathResolver;
 
-use ApiPlatform\Core\PathResolver\OperationPathResolverInterface;
-use Doctrine\Common\Inflector\Inflector;
+use ApiPlatform\Core\Operation\PathSegmentNameGeneratorInterface;
 
 /**
  * CamelCaseResourcePathGenerator
  *
- * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>
+ * @author   Markus Mächler <markus.maechler@students.fhnw.ch>
+ * @author   Günter Hipler  <guenter.hipler@unibas.ch>
  * @license  http://opensource.org/licenses/gpl-2.0.php
  * @link     http://linked.swissbib.ch
  */
-class CamelCaseResourcePathGenerator implements OperationPathResolverInterface
+class CamelCaseResourcePathGenerator implements PathSegmentNameGeneratorInterface
 {
-
-
-    public function resolveOperationPath(string $resourceShortName, array $operation, $operationType/*, string $operationName = null*/): string
+    public function getSegmentName(string $name, bool $collection = true): string
     {
-        //$path = '/' . lcfirst($resourceShortName);
-        $path = '/' . $resourceShortName;
-
-        if (!$operationType) {
-            $path .= '/{id}';
-        }
-
-        $path .= '.{_format}';
-
-        return $path;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    /*
-    public function resolveOperationPath(string $resourceShortName, array $operation, bool $collection) : string
-    {
-        $path = '/' . lcfirst($resourceShortName);
+        $path = '/' . lcfirst($name);
 
         if (!$collection) {
             $path .= '/{id}';
         }
 
-        $path .= '.{_format}';
-
         return $path;
 
-    } */
-
-
-
+    }
 }
