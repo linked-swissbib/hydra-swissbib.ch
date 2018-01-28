@@ -17,6 +17,103 @@ use LinkedSwissbibBundle\ContextMapping\ContextMapper as ContextMapperInterface;
  */
 class ContextMapper implements ContextMapperInterface
 {
+
+    private $tempInternalToExternal = [
+        'LinkedSwissbibBundle\Entity\Item' => [
+            'holdingfor' => 'bf:holdingFor',
+            'sublocation' => 'bf:subLocation',
+            'locator'       => 'bibo:locator',
+            'owner'         => 'bibo:owner',
+            'page'          => 'foaf:page'
+
+        ],
+        'LinkedSwissbibBundle\Entity\BibliographicResource' => [
+            //"id" =>  "string",
+            "title" => "dct:title",
+            //"type"  => "string",
+            "language" => "dct:language",
+            "instanceof" => "bf:instanceOf",
+            "format"    => "dc:format",
+            "edition"   => "bibo:edition",
+            "isbn10"    => "bibo:isbn10",
+            "isbn13"    => "bibo:isbn13",
+            "issn"  =>  "bibo:issn",
+            "originallanguage"  =>  "dbp:originalLanguage",
+            "alternative"   => "dct:alternative",
+            "bibliographiccitation" => "dct:bibliographicCitation",
+            "contributor"   => "dct:contributor",
+            "haspart"   => "dct:hasPart",
+            "ispartof"  => "dct:isPartOf",
+            "issued"    => "dct:issued",
+            "subject"   => "dct:subject",
+            "p60049"    => "rdau:P60049",
+            "p60050"    =>  "rdau:P60050",
+            "p60051"    => "rdau:P60051",
+            "p60163"    => "rdau:P60163",
+            "p60333"    => "rdau:P60333",
+            "p60339"    => "rdau:P60339",
+            "p60470"    => "rdau:P60470",
+            "p60489"    => "rdau:P60489",
+            "isdefinedby"   => "rdfs:isDefinedBy"
+
+        ],
+        'LinkedSwissbibBundle\Entity\Document' => [
+            'local' => 'bf:local',
+            'contributor'   => 'dct:contributor',
+            'issued'        =>  'dct:issued',
+            'modified'      =>  'dct:modified',
+            'primarytopic'  =>  'foaf:primaryTopic'
+
+        ],
+        'LinkedSwissbibBundle\Entity\Organisation' => [
+            'label' =>  'rdfs:label',
+            'owl:sameas'    =>  'owl:sameAs',
+            'homepage'  =>  'foaf:homepage',
+            'phone' =>  'foaf:phone',
+            'mbox'  =>  'foaf:mbox',
+            'hasregion' =>  'vcard:hasAddress.vcard:hasRegion'
+
+        ],
+        'LinkedSwissbibBundle\Entity\Person' => [
+            'birthyear' =>  'dbp:birthYear',
+            'deathyear' =>  'dbp:deathDate',
+            'firstname' =>  'foaf:firstName',
+            'lastname'  =>  'foaf:lastName',
+            'name'  =>  'foaf:name',
+            'sameas'    =>  'owl:sameAs',
+            'label' =>  'rdfs:label',
+            'note'  =>  'skos:note',
+            'birthplace'    =>  'dbp:birthPlace',
+            'deathplace'    =>  'dbp:deathPlace',
+            'birthdate' =>  'dbp:birthDate',
+            'deathdate' =>  'dbp:deathDate',
+            'genre' =>  'dbp:genre',
+            'movement'  =>  'dbp:movement',
+            'natinality'    =>  'dbp:nationality',
+            'notablework'   =>  'dbp:notableWork',
+            'occupation'    =>  'dbp:occupation',
+            'thumbnail' =>  'dbp:thumbnail',
+            'influencedby'  =>  'dbp:influencedBy',
+            'partner'   =>  'dbp:partner',
+            'pseudonym' =>  'dbp:pseudonym',
+            'spouse'    =>  'dbp:spouse',
+            'influenced'    =>  'dbp:influenced:',
+            'alternatename' =>  'schema:alternateName',
+            'familyname'    =>  'schema:familyName',
+            'givenname' =>  'schema:givenName',
+            'gender'    =>  'schema:gender',
+            'abstract'  =>  'dbp:abstract'
+
+
+
+        ],
+        'LinkedSwissbibBundle\Entity\Work' => [
+
+        ]
+    ];
+
+
+
     /**
      * @var Cache
      */
@@ -74,7 +171,8 @@ class ContextMapper implements ContextMapperInterface
         $mappedValues = [];
 
         foreach ($internal as $property) {
-            $mappedValues[] = $mapping['internal_to_external'][$property] ?? $property;
+            $mappedValues[] = $this->tempInternalToExternal[$resourceClass][strtolower($property)];
+            #$mappedValues[] = $mapping['internal_to_external'][strtolower( $property)] ?? $property;
         }
 
         return $mappedValues;
@@ -93,6 +191,7 @@ class ContextMapper implements ContextMapperInterface
 
             foreach ($hits['_source'] as $propertyKey => $propertyValue) {
                 if (strpos($propertyKey, '@') === false && isset($mapping['external_to_internal'][strtolower($propertyKey)])) {
+                    //$internalPropertyName = $this->tempInternalToExternal[$resourceClass][$propertyKey];
                     $internalPropertyName = $mapping['external_to_internal'][strtolower($propertyKey)];
                     $entity[$internalPropertyName] = $hits['_source'][$propertyKey];
                 }

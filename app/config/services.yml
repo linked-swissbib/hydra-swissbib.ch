@@ -115,6 +115,19 @@ services:
             - '@api_platform.resource_class_resolver'
         tags: [ { name: 'serializer.normalizer', priority: 12 } ]
 
+
+    #linked_swissbib.api_platform.property.creator:
+    #    class: LinkedSwissbibBundle\Elasticsearch\PropertyCreator
+    #    decorates: api_platform.metadata.property.metadata_factory.cached
+    #    arguments:
+    #        - '@api_platform.metadata.property.metadata_factory.cached.inner'
+
+
+    #'linked_swissbib.api_platform.serializer.apinormalizer':
+    #    class: LinkedSwissbibBundle\ApiPlatform\Serializer\ApiSerialzer
+    #    decorates: 'api_platform.jsonld.normalizer.item'
+    #    arguments: [ '@linked_swissbib.api_platform.serializer.apinormalizer.inner' ]
+
     linked_swissbib.api_platform.serializer.normalizer.collection:
         class: LinkedSwissbibBundle\ApiPlatform\Serializer\CollectionNormalizer
         decorates: api_platform.hydra.normalizer.collection

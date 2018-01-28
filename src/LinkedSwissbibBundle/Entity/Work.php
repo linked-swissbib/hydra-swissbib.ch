@@ -11,18 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @see http://bibframe.org/vocab/Work
  *
- * @ApiResource(
- *     iri="http://bibframe.org/vocab/Work",
- *     itemOperations={
- *          "get":{"method":"GET"}
- *     },
- *     collectionOperations={
- *          "get":{"method":"GET"}
- *     },
- *     attributes={
- *          "filters"={"linked_swissbib.fieldsqueryfilter"}
- *     }
- * )
  *
  * @author   Melanie Stucki <melanie.stucki@students.fhnw.ch>, Markus Mächler <markus.maechler@students.fhnw.ch>
  * @license  http://opensource.org/licenses/gpl-2.0.php
