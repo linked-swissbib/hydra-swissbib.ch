@@ -11,6 +11,7 @@
         "symfony/lts": "^4@dev",
         "symfony/yaml": "^4.0",
 
+        "symfony/monolog-bundle": "^3.2.0",
         "elasticsearch/elasticsearch": "5.3.*",
         "ml/json-ld": "^1.0",
         "linked-swissbib/adapterESdev": "dev-updateOngr2Version5",
