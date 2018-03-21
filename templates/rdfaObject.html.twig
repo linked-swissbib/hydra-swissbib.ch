@@ -1,0 +1,32 @@
+<div class="rdfa-object"
+    {% if properties['@context'] is defined %}
+        vocab="{{ properties['@context'] }}#"
+    {% endif %}
+    {% if properties['@id'] is defined %}
+        resource="{{ properties['@id'] }}"
+    {% endif %}
+    {% if properties['@type'] is defined %}
+        typeof="{{ properties['@type'] }}"
+    {% endif %}
+    >
+    {% if properties is iterable %}
+        {% for property,value in properties %}
+            <div class="rdfa-element">
+                <div class="rdfa-property{% if property starts with '@' %} rdfa-jsonld{% endif %}">{{ property }}:&nbsp;</div>
+                <div class="rdfa-value">
+                    {% if value is iterable %}
+                        {% if value[0] is defined %}
+                            {% include 'rdfaArray.html.twig' with {'data': value, 'property': property} %}
+                        {% else %}
+                            {% include 'rdfaObject.html.twig' with {'properties': value} %}
+                        {% endif %}
+                    {% else %}
+                        {% include 'rdfaLiteral.html.twig' with {'property': property, 'value': value} %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% include 'rdfaLiteral.html.twig' with {'property': property, 'value': properties} %}
+    {% endif %}
+</div>
