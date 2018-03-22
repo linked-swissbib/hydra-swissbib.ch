@@ -5,6 +5,7 @@ namespace LinkedSwissbibBundle\Swagger\Normalizer;
 use ApiPlatform\Core\Api\UrlGeneratorInterface;
 use ApiPlatform\Core\Documentation\Documentation;
 use ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer as ApiPlatformDocumentationNormalizer;
+use ApiPlatform\Core\Swagger\Serializer\ApiGatewayNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
@@ -31,7 +32,7 @@ class DocumentationNormalizer implements NormalizerInterface
      * @param ApiPlatformDocumentationNormalizer $documentationNormalizer
      * @param UrlGeneratorInterface $urlGenerator
      */
-    public function __construct(ApiPlatformDocumentationNormalizer $documentationNormalizer, UrlGeneratorInterface $urlGenerator)
+    public function __construct(ApiGatewayNormalizer $documentationNormalizer, UrlGeneratorInterface $urlGenerator)
     {
         $this->documentationNormalizer = $documentationNormalizer;
         $this->urlGenerator = $urlGenerator;

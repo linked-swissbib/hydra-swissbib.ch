@@ -26,3 +26,195 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+
+
+    linked_swissbib.elasticsearchadapter_adapter:
+        class: ElasticsearchAdapter\Adapter
+        arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
+
+    linked_swissbib.elasticsearchadapter_templatesearchbuilder:
+        class: ElasticsearchAdapter\SearchBuilder\TemplateSearchBuilder
+        arguments: ['%elasticsearch_adapter.templates%']
+
+    linked_swissbib.elasticsearchadapter_elasticsearchclientconnector:
+        class: ElasticsearchAdapter\Connector\ElasticsearchClientConnector
+        arguments: ['%elasticsearch_adapter.hosts%']
+
+    linked_swissbib.elasticsearch_data_provider:
+        class: LinkedSwissbibBundle\DataProvider\ElasticsearchDataProvider
+        tags: [ { name: 'api_platform.item_data_provider', priority: 1 }, { name: 'api_platform.collection_data_provider', priority: 1 } ]
+        arguments:
+          - '@linked_swissbib.elasticsearchadapter_adapter'
+          - '@linked_swissbib.elasticsearchadapter_templatesearchbuilder'
+          - '@linked_swissbib.entity_simple_entity_builder'
+          - '@linked_swissbib.elasticsearch_context_mapper'
+          - '@request_stack'
+          - '@linked_swissbib.elasticsearch_resource_name_converter'
+          - '@linked_swissbib.elasticsearch_params_builder'
+          - '@linked_swissbib.exception.api_exception_transformer'
+
+    linked_swissbib.elasticsearch_context_mapper:
+        class: LinkedSwissbibBundle\Elasticsearch\ContextMapper
+        arguments:
+          - '@linked_swissbib.php_file_cache'
+          - '@linked_swissbib.http_client'
+          - '%linked_swissbib.context_mapper%'
+          - '@linked_swissbib.elasticsearch_resource_name_converter'
+          - '@api_platform.metadata.property.name_collection_factory.cached'
+          - '@api_platform.metadata.property.metadata_factory'
+
+    linked_swissbib.elasticsearch_params_builder:
+        class: LinkedSwissbibBundle\Elasticsearch\ParamsBuilder
+        arguments: ['@linked_swissbib.elasticsearch_resource_name_converter', '@linked_swissbib.elasticsearch_context_mapper', '%linked_swissbib.elasticsearch_params_builder%']
+
+    linked_swissbib.elasticsearch_resource_name_converter:
+        class: LinkedSwissbibBundle\Elasticsearch\ResourceNameConverter
+
+    linked_swissbib.operation_path_resolver.camel_case:
+        class: LinkedSwissbibBundle\PathResolver\CamelCaseResourcePathGenerator
+
+    linked_swissbib.easy_rdf_graph:
+        class: EasyRdf_Graph
+        factory: [LinkedSwissbibBundle\EasyRdf\EasyRdfFactory, createEasyRdfGraph]
+        arguments: ['%linked_swissbib.easyrdf.namespaces%']
+
+    linked_swissbib.rdfxml_encoder:
+        class: LinkedSwissbibBundle\Serializer\Encoder\RdfxmlEncoder
+        tags: [ { name: serializer.encoder } ]
+        arguments: ['@linked_swissbib.easy_rdf_graph']
+
+    linked_swissbib.turtle_encoder:
+            class: LinkedSwissbibBundle\Serializer\Encoder\TurtleEncoder
+            tags: [ { name: serializer.encoder } ]
+            arguments: ['@linked_swissbib.easy_rdf_graph']
+
+    inked_swissbib.ntriples_encoder:
+                class: LinkedSwissbibBundle\Serializer\Encoder\NTriplesEncoder
+                tags: [ { name: serializer.encoder } ]
+                arguments: ['@linked_swissbib.easy_rdf_graph']
+
+    linked_swissbib.html_encoder:
+        class: LinkedSwissbibBundle\Serializer\Encoder\HtmlEncoder
+        tags: [ { name: serializer.encoder } ]
+        arguments: ['@templating']
+
+    linked_swissbib.php_file_cache:
+        class: Doctrine\Common\Cache\PhpFileCache
+        arguments: ['%kernel.cache_dir%']
+
+    linked_swissbib.entity_simple_entity_builder:
+        class: LinkedSwissbibBundle\Entity\SimpleEntityBuilder
+        arguments: ['@logger']
+
+    linked_swissbib.http_client:
+        class: GuzzleHttp\Client
+
+    linked_swissbib.filter.fieldsqueryfilter:
+        class: LinkedSwissbibBundle\Filter\FieldsQueryFilter
+        tags: [ { name: 'api_platform.filter', id: 'linked_swissbib.fieldsqueryfilter' } ]
+
+    linked_swissbib.twig.linked_swissbib_extension:
+        class: LinkedSwissbibBundle\Twig\LinkedSwissbibExtension
+        tags:
+            - { name: twig.extension }
+
+    linked_swissbib.swagger.normalizer.documentation:
+        class: LinkedSwissbibBundle\Swagger\Normalizer\DocumentationNormalizer
+        arguments: ['@api_platform.swagger.normalizer.documentation', '@api_platform.router']
+        tags: [ { name: 'serializer.normalizer', priority: 24 } ]
+
+    linked_swissbib.exception.api_exception_transformer:
+        class: LinkedSwissbibBundle\Exception\ApiExceptionTransformer
+
+    linked_swissbib.api_platform.listener.request.add_format:
+        class: LinkedSwissbibBundle\ApiPlatform\Listener\Request\AddFormatListener
+        decorates: api_platform.listener.request.add_format
+        arguments: ['@linked_swissbib.api_platform.listener.request.add_format.inner']
+
+    linked_swissbib.api_platform.serializer.normalizer.item:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\ItemNormalizer
+        decorates: api_platform.jsonld.normalizer.item
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.item.inner'
+            - '@api_platform.resource_class_resolver'
+        tags: [ { name: 'serializer.normalizer', priority: 12 } ]
+
+
+    #linked_swissbib.api_platform.property.creator:
+    #    class: LinkedSwissbibBundle\Elasticsearch\PropertyCreator
+    #    decorates: api_platform.metadata.property.metadata_factory.cached
+    #    arguments:
+    #        - '@api_platform.metadata.property.metadata_factory.cached.inner'
+
+
+    #'linked_swissbib.api_platform.serializer.apinormalizer':
+    #    class: LinkedSwissbibBundle\ApiPlatform\Serializer\ApiSerialzer
+    #    decorates: 'api_platform.jsonld.normalizer.item'
+    #    arguments: [ '@linked_swissbib.api_platform.serializer.apinormalizer.inner' ]
+
+    linked_swissbib.api_platform.serializer.normalizer.collection:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\CollectionNormalizer
+        decorates: api_platform.hydra.normalizer.collection
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.collection.inner'
+            - '@api_platform.resource_class_resolver'
+        tags: [ { name: 'serializer.normalizer', priority: 12 } ]
+
+    linked_swissbib.api_platform.serializer.normalizer.partial_collection_view:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\PartialCollectionViewNormalizer
+        decorates: api_platform.hydra.normalizer.partial_collection_view
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.partial_collection_view.inner'
+            - '@request_stack'
+
+    linked_swissbib.api_platform.serializer.normalizer.collection_filters:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\CollectionFiltersNormalizer
+        decorates: api_platform.hydra.normalizer.collection_filters
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.collection_filters.inner'
+            - '@request_stack'
+
+    linked_swissbib.api_platform.serializer.normalizer.entrypoint:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\EntrypointNormalizer
+        decorates: api_platform.hydra.normalizer.entrypoint
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.entrypoint.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 30 } ]
+
+    linked_swissbib.api_platform.serializer.normalizer.error:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\ErrorNormalizer
+        decorates: api_platform.hydra.normalizer.error
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.error.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 34 } ]
+
+    linked_swissbib.api_platform.serializer.normalizer.constraint_violation_list:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\ConstraintViolationListNormalizer
+        decorates: api_platform.hydra.normalizer.constraint_violation_list
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.constraint_violation_list.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 34 } ]
+
+    linked_swissbib.api_platform.serializer.normalizer.documentation:
+        class: LinkedSwissbibBundle\ApiPlatform\Serializer\DocumentationNormalizer
+        decorates: api_platform.hydra.normalizer.documentation
+        arguments:
+            - '@linked_swissbib.api_platform.serializer.normalizer.documentation.inner'
+        tags: [ { name: 'serializer.normalizer', priority: 34 } ]
+
+    linked_swissbib.api_platform.router:
+        class: LinkedSwissbibBundle\ApiPlatform\Routing\Router
+        decorates: api_platform.router
+        arguments: ['@linked_swissbib.api_platform.router.inner']
+
+    api_platform.swagger.listener.ui:
+        class: LinkedSwissbibBundle\ApiPlatform\Bridge\Symfony\Bundle\EventListener\SwaggerUiListener
+        tags: [ { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' } ]
+
+    api_platform.listener.exception:
+        class: LinkedSwissbibBundle\ApiPlatform\Core\EventListener\ExceptionListener
+        arguments:
+            - 'api_platform.action.exception'
+            - '@logger'
+        tags: [ { name: 'kernel.event_listener', event: 'kernel.exception', method: 'onKernelException', priority: '-96' }, { name: 'monolog.logger', channel: 'request' } ]

@@ -1,0 +1,77 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: elasticsearch_adapter.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    linked_swissbib.elastic_search.hosts: ["sb-ues1.swissbib.unibas.ch:8080"]
+    linked_swissbib.context_mapper:
+      template_url: 'https://resources.swissbib.ch/{type}/context.jsonld'
+    linked_swissbib.elasticsearch_params_builder:
+      mapped_params:
+        single: []
+        multi: ['fields']
+    linked_swissbib.easyrdf.namespaces:
+        bf: 'http://bibframe.org/vocab/'
+        hydra: 'http://www.w3.org/ns/hydra/core#'
+
+framework:
+    #esi:             ~
+    #translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    #router:
+    #    resource: "%kernel.root_dir%/config/routing.yml"
+    #    strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    templating:
+        engines: ['twig']
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+
+# Nelmio CORS
+nelmio_cors:
+    defaults:
+        allow_origin:   ["%cors_allow_origin%"]
+        allow_methods:  ["GET"]
+        allow_headers:  ["content-type", "authorization"]
+        expose_headers: ["link"]
+        max_age:        3600
+    paths:
+        '^/': ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+#API Platform
+api_platform:
+    title: "Linked swissbib API"
+    description: "Hypermedia driven REST API for linked bibliographic resources."
+    version: "1.0.0"
+    formats:
+        jsonld: ["application/ld+json"]
+        rdfxml: ["application/rdf+xml"]
+        turtle: ["text/turtle"]
+        ntriples: ["application/n-triples"]
+        html: ["text/html"]
+    error_formats:
+        jsonld: ["application/ld+json"]
+        rdfxml: ["application/rdf+xml"]
+        turtle: ["text/turtle"]
+        ntriples: ["application/n-triples"]
+        html: ["text/html"]
+    path_segment_name_generator: 'linked_swissbib.operation_path_resolver.camel_case'
+    enable_swagger_ui: true
