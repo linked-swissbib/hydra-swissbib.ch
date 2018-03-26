@@ -11,6 +11,7 @@
         "linked-swissbib/adapterESdev": "dev-updateOngr2Version5",
         "ml/json-ld": "^1.0",
         "ongr/elasticsearch-dsl": "5.0.*",
+        "sensio/framework-extra-bundle": "^5.1",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/form": "^4.0",

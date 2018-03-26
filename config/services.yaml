@@ -119,10 +119,10 @@ services:
         tags:
             - { name: twig.extension }
 
-    linked_swissbib.swagger.normalizer.documentation:
-        class: LinkedSwissbibBundle\Swagger\Normalizer\DocumentationNormalizer
-        arguments: ['@api_platform.swagger.normalizer.documentation', '@api_platform.router']
-        tags: [ { name: 'serializer.normalizer', priority: 24 } ]
+    #linked_swissbib.swagger.normalizer.documentation:
+    #    class: LinkedSwissbibBundle\Swagger\Normalizer\DocumentationNormalizer
+    #    arguments: ['@api_platform.swagger.normalizer.documentation', '@api_platform.router']
+    #    tags: [ { name: 'serializer.normalizer', priority: 24 } ]
 
     linked_swissbib.exception.api_exception_transformer:
         class: LinkedSwissbibBundle\Exception\ApiExceptionTransformer
@@ -208,9 +208,9 @@ services:
         decorates: api_platform.router
         arguments: ['@linked_swissbib.api_platform.router.inner']
 
-    api_platform.swagger.listener.ui:
-        class: LinkedSwissbibBundle\ApiPlatform\Bridge\Symfony\Bundle\EventListener\SwaggerUiListener
-        tags: [ { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' } ]
+    #api_platform.swagger.listener.ui:
+    #    class: LinkedSwissbibBundle\ApiPlatform\Bridge\Symfony\Bundle\EventListener\SwaggerUiListener
+    #    tags: [ { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' } ]
 
     api_platform.listener.exception:
         class: LinkedSwissbibBundle\ApiPlatform\Core\EventListener\ExceptionListener

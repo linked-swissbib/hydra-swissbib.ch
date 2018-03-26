@@ -1,3 +1,9 @@
 
 Jakob Voss entdeckt Hydra
 http://lists.w3.org/Archives/Public/public-hydra/2017Dec/0007.html
+
+
+https://knpuniversity.com/tracks/symfony
+
+ bin/console debug:container | less
+  bin/console debug:autowiring | less
