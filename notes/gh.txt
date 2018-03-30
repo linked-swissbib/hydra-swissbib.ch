@@ -7,3 +7,15 @@ https://knpuniversity.com/tracks/symfony
 
  bin/console debug:container | less
   bin/console debug:autowiring | less
+
+1) php bin/console debug:container --show-private
+ warum muss ich show-private in smfony 4 angeben (in 3.4 war das nicht nötig um die eigenen services in services.yaml angezeigt zu bekommen
+
+ ich muss im service angeben:
+   linked_swissbib.elasticsearchadapter_adapter:
+        public: true
+        class: ElasticsearchAdapter\Adapter
+        arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
+
+weil ich im _defaults Abschnitt public:false angebe
+
