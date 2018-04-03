@@ -1,0 +1,57 @@
+3.4.2018
+swissbib@ub-sbhp02:/usr/local/vufind/hydra.s4$ composer update
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+
+Prefetching 27 packages 🎶
+  - Downloading (100%)
+
+Package operations: 0 installs, 41 updates, 0 removals
+  - Updating symfony/flex (v1.0.75 => v1.0.78): Loading from cache
+  - Updating guzzlehttp/guzzle (6.3.0 => 6.3.2): Loading from cache
+  - Updating symfony/console (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/inflector (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/property-access (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/options-resolver (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/intl (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/event-dispatcher (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/form (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/routing (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/http-foundation (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/debug (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/http-kernel (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/finder (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/filesystem (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/dependency-injection (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/config (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/cache (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/framework-bundle (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/templating (v4.0.6 => v4.0.7): Loading from cache
+  - Updating twig/twig (v2.4.7 => v2.4.8): Loading from cache
+  - Updating symfony/twig-bridge (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/twig-bundle (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/yaml (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/dotenv (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/serializer (v3.4.6 => v3.4.7): Loading from cache
+  - Updating symfony/property-info (v4.0.6 => v4.0.7): Loading from cache
+  - Updating api-platform/core (v2.2.4 => v2.2.5): Loading from cache
+  - Updating symfony/asset (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/expression-language (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/security (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/security-bundle (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/translation (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/validator (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/doctrine-bridge (v4.0.6 => v4.0.7): Loading from cache
+  - Updating doctrine/doctrine-cache-bundle (1.3.2 => 1.3.3): Loading from cache
+  - Updating symfony/monolog-bridge (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/stopwatch (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/var-dumper (v4.0.6 => v4.0.7): Loading from cache
+  - Updating symfony/web-profiler-bundle (v4.0.6 => v4.0.7): Loading from cache
+Writing lock file
+Generating autoload files
+
+What about running composer global require symfony/thanks && composer thanks now?
+This will spread some 💖  by sending a ★  to the GitHub repositories of your fellow package maintainers.
+
+Executing script cache:clear [OK]
+Executing script assets:install --symlink --relative public [OK]
