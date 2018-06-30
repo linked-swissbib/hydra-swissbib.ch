@@ -74,4 +74,4 @@ api_platform:
         ntriples: ["application/n-triples"]
         html: ["text/html"]
     path_segment_name_generator: 'linked_swissbib.operation_path_resolver.camel_case'
-    enable_swagger_ui: true
+    enable_swagger_ui: false 
