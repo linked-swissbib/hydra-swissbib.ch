@@ -6,7 +6,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    linked_swissbib.elastic_search.hosts: ["sb-ues1.swissbib.unibas.ch:8080"]
+    linked_swissbib.elastic_search.hosts: ["localhost:8080"]
     linked_swissbib.context_mapper:
       template_url: 'https://resources.swissbib.ch/{type}/context.jsonld'
     linked_swissbib.elasticsearch_params_builder:
@@ -74,4 +74,4 @@ api_platform:
         ntriples: ["application/n-triples"]
         html: ["text/html"]
     path_segment_name_generator: 'linked_swissbib.operation_path_resolver.camel_case'
-    enable_swagger_ui: true
+    enable_swagger_ui: false
