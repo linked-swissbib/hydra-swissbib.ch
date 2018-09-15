@@ -1,4 +1,5 @@
 
+
 Jakob Voss entdeckt Hydra
 http://lists.w3.org/Archives/Public/public-hydra/2017Dec/0007.html
 
@@ -18,4 +19,14 @@ https://knpuniversity.com/tracks/symfony
         arguments: ['@linked_swissbib.elasticsearchadapter_elasticsearchclientconnector']
 
 weil ich im _defaults Abschnitt public:false angebe
+
+
+Beispielapp von api-platform
+https://demo.api-platform.com/docs.jsonld
+
+
+
+Analyse von Graphql durch Olaf Hartig
+https://www.youtube.com/watch?v=oNDmVLRKo_M&app=desktop
+https://twitter.com/olafhartig/status/998615781842792448
 

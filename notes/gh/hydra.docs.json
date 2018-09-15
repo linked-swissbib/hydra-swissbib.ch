@@ -1,0 +1,1462 @@
+{
+    "@context": {
+        "@vocab": "http://data.swissbib.ch/docs.jsonld#",
+        "domain": {
+            "@id": "rdfs:domain",
+            "@type": "@id"
+        },
+        "expects": {
+            "@id": "hydra:expects",
+            "@type": "@id"
+        },
+        "hydra": "http://www.w3.org/ns/hydra/core#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "range": {
+            "@id": "rdfs:range",
+            "@type": "@id"
+        },
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "returns": {
+            "@id": "hydra:returns",
+            "@type": "@id"
+        },
+        "schema": "http://schema.org/",
+        "subClassOf": {
+            "@id": "rdfs:subClassOf",
+            "@type": "@id"
+        },
+        "xmls": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@id": "http://data.swissbib.ch/docs.jsonld",
+    "@type": "hydra:ApiDocumentation",
+    "hydra:description": "Hypermedia driven REST API for linked bibliographic resources.",
+    "hydra:entrypoint": "http://data.swissbib.ch/",
+    "hydra:supportedClass": [
+        {
+            "@id": "http://purl.org/ontology/bibo/document",
+            "@type": "hydra:Class",
+            "hydra:description": "A Document.",
+            "hydra:supportedOperation": [
+                {
+                    "@type": [
+                        "hydra:Operation",
+                        "schema:FindAction"
+                    ],
+                    "hydra:method": "GET",
+                    "hydra:title": "Retrieves Document resource.",
+                    "rdfs:label": "Retrieves Document resource.",
+                    "returns": "http://purl.org/ontology/bibo/document"
+                }
+            ],
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:description": "identifier of a document",
+                    "hydra:property": {
+                        "@id": "#Document/id",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/ontology/bibo/document",
+                        "range": "xmls:string",
+                        "rdfs:label": "id"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "id",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://bibframe.org/vocab/local",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/ontology/bibo/document",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "local"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "local",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/contributor",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/ontology/bibo/document",
+                        "range": "@id",
+                        "rdfs:label": "contributor"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "contributor",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/issued",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/ontology/bibo/document",
+                        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+                        "rdfs:label": "issued"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "issued",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/modified",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/ontology/bibo/document",
+                        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+                        "rdfs:label": "modified"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "modified",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/primaryTopic",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/ontology/bibo/document",
+                        "range": "@id",
+                        "rdfs:label": "primaryTopic"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "primaryTopic",
+                    "hydra:writable": true
+                }
+            ],
+            "hydra:title": "Document",
+            "rdfs:label": "Document"
+        },
+        {
+            "@id": "http://purl.org/dc/terms/BibliographicResource",
+            "@type": "hydra:Class",
+            "hydra:description": "A book, article, or other documentary resource.",
+            "hydra:supportedOperation": [
+                {
+                    "@type": [
+                        "hydra:Operation",
+                        "schema:FindAction"
+                    ],
+                    "hydra:method": "GET",
+                    "hydra:title": "Retrieves BibliographicResource resource.",
+                    "rdfs:label": "Retrieves BibliographicResource resource.",
+                    "returns": "http://purl.org/dc/terms/BibliographicResource"
+                }
+            ],
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:description": "Identifier of a bibliographic resource",
+                    "hydra:property": {
+                        "@id": "#BibliographicResource/id",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "xmls:string",
+                        "rdfs:label": "id"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "id",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:description": "Title of a bibliographic resource",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/title",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "title"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "title",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "https://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "type"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "type",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:description": "Written language of the bibliographic resource",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/language",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "language"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "language",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://bibframe.org/vocab/instanceOf",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "instanceOf"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "instanceOf",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/elements/1.1/format",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "format"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "format",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/ontology/bibo/edition",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "edition"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "edition",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/ontology/bibo/isbn10",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "isbn10"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "isbn10",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/ontology/bibo/isbn13",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "isbn13"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "isbn13",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/ontology/bibo/issn",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "issn"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "issn",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/originalLanguage",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "originalLanguage"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "originalLanguage",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/alternative",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "alternative"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "alternative",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/bibliographicCitation",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "bibliographicCitation"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "bibliographicCitation",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/contributor",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "contributor"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "contributor",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/hasPart",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "hasPart"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "hasPart",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/isPartOf",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "isPartOf"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "isPartOf",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/issued",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "issued"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "issued",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/dc/terms/subject",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "subject"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "subject",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60049"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60049",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60050"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60050",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/P60051",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60051"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60051",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/P60163",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60163"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60163",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/P60333",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60333"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60333",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/P60339",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60339"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60339",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/P60470",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60470"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60470",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://rdaregistry.info/Elements/u/P60489",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "p60489"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "p60489",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://www.w3.org/2000/01/rdf-schema#/idDefinedBy",
+                        "@type": "rdf:Property",
+                        "domain": "http://purl.org/dc/terms/BibliographicResource",
+                        "range": "@id",
+                        "rdfs:label": "isDefinedBy"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "isDefinedBy",
+                    "hydra:writable": true
+                }
+            ],
+            "hydra:title": "BibliographicResource",
+            "rdfs:label": "BibliographicResource"
+        },
+        {
+            "@id": "http://xmlns.com/foaf/0.1/Organization",
+            "@type": "hydra:Class",
+            "hydra:description": "he Organization class represents a kind of Agent corresponding to social instititutions such as companies, societies etc.",
+            "hydra:supportedOperation": [
+                {
+                    "@type": [
+                        "hydra:Operation",
+                        "schema:FindAction"
+                    ],
+                    "hydra:method": "GET",
+                    "hydra:title": "Retrieves Organisation resource.",
+                    "rdfs:label": "Retrieves Organisation resource.",
+                    "returns": "http://xmlns.com/foaf/0.1/Organization"
+                }
+            ],
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Organisation/id",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Organization",
+                        "range": "xmls:string",
+                        "rdfs:label": "id"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "id",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://www.w3.org/2000/01/rdf-schema#/label",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Organization",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "label"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "label",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://www.w3.org/2002/07/owl#",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Organization",
+                        "range": "@id",
+                        "rdfs:label": "sameAs"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "sameAs",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Organization",
+                        "range": "@id",
+                        "rdfs:label": "homepage"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "homepage",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Organization",
+                        "range": "@id",
+                        "rdfs:label": "phone"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "phone",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Organization",
+                        "range": "@id",
+                        "rdfs:label": "mbox"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "mbox",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://www.w3.org/2006/vcard/ns#",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Organization",
+                        "range": "@id",
+                        "rdfs:label": "hasRegion"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "hasRegion",
+                    "hydra:writable": true
+                }
+            ],
+            "hydra:title": "Organisation",
+            "rdfs:label": "Organisation"
+        },
+        {
+            "@id": "http://bibframe.org/vocab/HeldItem",
+            "@type": "hydra:Class",
+            "hydra:description": "Item holding information.",
+            "hydra:supportedOperation": [
+                {
+                    "@type": [
+                        "hydra:Operation",
+                        "schema:FindAction"
+                    ],
+                    "hydra:method": "GET",
+                    "hydra:title": "Retrieves Item resource.",
+                    "rdfs:label": "Retrieves Item resource.",
+                    "returns": "http://bibframe.org/vocab/HeldItem"
+                }
+            ],
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Item/id",
+                        "@type": "rdf:Property",
+                        "domain": "http://bibframe.org/vocab/HeldItem",
+                        "range": "xmls:string",
+                        "rdfs:label": "id"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "id",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://bibframe.org/vocab/holdingFor",
+                        "@type": "rdf:Property",
+                        "domain": "http://bibframe.org/vocab/HeldItem",
+                        "range": "@id",
+                        "rdfs:label": "holdingFor"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "holdingFor",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://bibframe.org/vocab/subLocation",
+                        "@type": "rdf:Property",
+                        "domain": "http://bibframe.org/vocab/HeldItem",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "subLocation"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "subLocation",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/ontology/bibo/locator",
+                        "@type": "rdf:Property",
+                        "domain": "http://bibframe.org/vocab/HeldItem",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "locator"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "locator",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://purl.org/ontology/bibo/owner",
+                        "@type": "rdf:Property",
+                        "domain": "http://bibframe.org/vocab/HeldItem",
+                        "range": "@id",
+                        "rdfs:label": "owner"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "owner",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/page",
+                        "@type": "rdf:Property",
+                        "domain": "http://bibframe.org/vocab/HeldItem",
+                        "range": "@id",
+                        "rdfs:label": "page"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "page",
+                    "hydra:writable": true
+                }
+            ],
+            "hydra:title": "Item",
+            "rdfs:label": "Item"
+        },
+        {
+            "@id": "http://xmlns.com/foaf/0.1/Person",
+            "@type": "hydra:Class",
+            "hydra:description": "The Person class represents people.",
+            "hydra:supportedOperation": [
+                {
+                    "@type": [
+                        "hydra:Operation",
+                        "schema:FindAction"
+                    ],
+                    "hydra:method": "GET",
+                    "hydra:title": "Retrieves Person resource.",
+                    "rdfs:label": "Retrieves Person resource.",
+                    "returns": "http://xmlns.com/foaf/0.1/Person"
+                }
+            ],
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Person/id",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "xmls:string",
+                        "rdfs:label": "id"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "id",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/birthYear",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#gYear",
+                        "rdfs:label": "birthYear"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "birthYear",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/deathYear",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#gYear",
+                        "rdfs:label": "deathYear"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "deathYear",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/firstName",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "firstName"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "firstName",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/lastName",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "lastName"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "lastName",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://xmlns.com/foaf/0.1/name",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "name"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "name",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://www.w3.org/2002/07/owl#",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "sameAs"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "sameAs",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://www.w3.org/2000/01/rdf-schema#/label",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "label"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "label",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://www.w3.org/2004/02/skos/core#/note",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "note"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "note",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/birthPlace",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "birthPlace"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "birthPlace",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/deathPlace",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "deathPlace"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "deathPlace",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/birthDate",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#gYear",
+                        "rdfs:label": "birthDate"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "birthDate",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/deathDate",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#gYear",
+                        "rdfs:label": "deathDate"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "deathDate",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/genre",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "genre"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "genre",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/movement",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "movement"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "movement",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/nationality",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "nationality"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "nationality",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/notableWork",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "notableWork"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "notableWork",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/occupation",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "occupation"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "occupation",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/thumbnail",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "thumbnail"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "thumbnail",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/influencedBy",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "influencedBy"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "influencedBy",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/partner",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "partner"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "partner",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/pseudonym",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "pseudonym"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "pseudonym",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/spouse",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "spouse"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "spouse",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/influenced",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "influenced"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "influenced",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "https://schema.org/alternateName",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "alternateName"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "alternateName",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "https://schema.org/familyName",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "familyName"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "familyName",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "https://schema.org/givenName",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "givenName"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "givenName",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "https://schema.org/gender",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "@id",
+                        "rdfs:label": "gender"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "gender",
+                    "hydra:writable": true
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "http://dbpedia.org/ontology/abstract",
+                        "@type": "rdf:Property",
+                        "domain": "http://xmlns.com/foaf/0.1/Person",
+                        "range": "http://www.w3.org/2001/XMLSchema#string",
+                        "rdfs:label": "abstract"
+                    },
+                    "hydra:readable": true,
+                    "hydra:required": false,
+                    "hydra:title": "abstract",
+                    "hydra:writable": true
+                }
+            ],
+            "hydra:title": "Person",
+            "rdfs:label": "Person"
+        },
+        {
+            "@id": "#Entrypoint",
+            "@type": "hydra:Class",
+            "hydra:supportedOperation": {
+                "@type": "hydra:Operation",
+                "hydra:method": "GET",
+                "rdfs:label": "The API entrypoint.",
+                "returns": "#EntryPoint"
+            },
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Entrypoint/document",
+                        "@type": "hydra:Link",
+                        "domain": "#Entrypoint",
+                        "hydra:supportedOperation": [
+                            {
+                                "@type": [
+                                    "hydra:Operation",
+                                    "schema:FindAction"
+                                ],
+                                "hydra:method": "GET",
+                                "hydra:title": "Retrieves the collection of Document resources.",
+                                "rdfs:label": "Retrieves the collection of Document resources.",
+                                "returns": "hydra:Collection"
+                            }
+                        ],
+                        "rdfs:label": "The collection of Document resources",
+                        "rdfs:range": [
+                            {
+                                "@id": "hydra:Collection"
+                            },
+                            {
+                                "owl:equivalentClass": {
+                                    "owl:allValuesFrom": {
+                                        "@id": "http://purl.org/ontology/bibo/document"
+                                    },
+                                    "owl:onProperty": {
+                                        "@id": "hydra:member"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "The collection of Document resources",
+                    "hydra:writable": false
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Entrypoint/bibliographicResource",
+                        "@type": "hydra:Link",
+                        "domain": "#Entrypoint",
+                        "hydra:supportedOperation": [
+                            {
+                                "@type": [
+                                    "hydra:Operation",
+                                    "schema:FindAction"
+                                ],
+                                "hydra:method": "GET",
+                                "hydra:title": "Retrieves the collection of BibliographicResource resources.",
+                                "rdfs:label": "Retrieves the collection of BibliographicResource resources.",
+                                "returns": "hydra:Collection"
+                            }
+                        ],
+                        "rdfs:label": "The collection of BibliographicResource resources",
+                        "rdfs:range": [
+                            {
+                                "@id": "hydra:Collection"
+                            },
+                            {
+                                "owl:equivalentClass": {
+                                    "owl:allValuesFrom": {
+                                        "@id": "http://purl.org/dc/terms/BibliographicResource"
+                                    },
+                                    "owl:onProperty": {
+                                        "@id": "hydra:member"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "The collection of BibliographicResource resources",
+                    "hydra:writable": false
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Entrypoint/organisation",
+                        "@type": "hydra:Link",
+                        "domain": "#Entrypoint",
+                        "hydra:supportedOperation": [
+                            {
+                                "@type": [
+                                    "hydra:Operation",
+                                    "schema:FindAction"
+                                ],
+                                "hydra:method": "GET",
+                                "hydra:title": "Retrieves the collection of Organisation resources.",
+                                "rdfs:label": "Retrieves the collection of Organisation resources.",
+                                "returns": "hydra:Collection"
+                            }
+                        ],
+                        "rdfs:label": "The collection of Organisation resources",
+                        "rdfs:range": [
+                            {
+                                "@id": "hydra:Collection"
+                            },
+                            {
+                                "owl:equivalentClass": {
+                                    "owl:allValuesFrom": {
+                                        "@id": "http://xmlns.com/foaf/0.1/Organization"
+                                    },
+                                    "owl:onProperty": {
+                                        "@id": "hydra:member"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "The collection of Organisation resources",
+                    "hydra:writable": false
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Entrypoint/item",
+                        "@type": "hydra:Link",
+                        "domain": "#Entrypoint",
+                        "hydra:supportedOperation": [
+                            {
+                                "@type": [
+                                    "hydra:Operation",
+                                    "schema:FindAction"
+                                ],
+                                "hydra:method": "GET",
+                                "hydra:title": "Retrieves the collection of Item resources.",
+                                "rdfs:label": "Retrieves the collection of Item resources.",
+                                "returns": "hydra:Collection"
+                            }
+                        ],
+                        "rdfs:label": "The collection of Item resources",
+                        "rdfs:range": [
+                            {
+                                "@id": "hydra:Collection"
+                            },
+                            {
+                                "owl:equivalentClass": {
+                                    "owl:allValuesFrom": {
+                                        "@id": "http://bibframe.org/vocab/HeldItem"
+                                    },
+                                    "owl:onProperty": {
+                                        "@id": "hydra:member"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "The collection of Item resources",
+                    "hydra:writable": false
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:property": {
+                        "@id": "#Entrypoint/person",
+                        "@type": "hydra:Link",
+                        "domain": "#Entrypoint",
+                        "hydra:supportedOperation": [
+                            {
+                                "@type": [
+                                    "hydra:Operation",
+                                    "schema:FindAction"
+                                ],
+                                "hydra:method": "GET",
+                                "hydra:title": "Retrieves the collection of Person resources.",
+                                "rdfs:label": "Retrieves the collection of Person resources.",
+                                "returns": "hydra:Collection"
+                            }
+                        ],
+                        "rdfs:label": "The collection of Person resources",
+                        "rdfs:range": [
+                            {
+                                "@id": "hydra:Collection"
+                            },
+                            {
+                                "owl:equivalentClass": {
+                                    "owl:allValuesFrom": {
+                                        "@id": "http://xmlns.com/foaf/0.1/Person"
+                                    },
+                                    "owl:onProperty": {
+                                        "@id": "hydra:member"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "The collection of Person resources",
+                    "hydra:writable": false
+                }
+            ],
+            "hydra:title": "The API entrypoint"
+        },
+        {
+            "@id": "#ConstraintViolation",
+            "@type": "hydra:Class",
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:description": "The property path of the violation",
+                    "hydra:property": {
+                        "@id": "#ConstraintViolation/propertyPath",
+                        "@type": "rdf:Property",
+                        "domain": "#ConstraintViolation",
+                        "range": "xmls:string",
+                        "rdfs:label": "propertyPath"
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "propertyPath",
+                    "hydra:writable": false
+                },
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:description": "The message associated with the violation",
+                    "hydra:property": {
+                        "@id": "#ConstraintViolation/message",
+                        "@type": "rdf:Property",
+                        "domain": "#ConstraintViolation",
+                        "range": "xmls:string",
+                        "rdfs:label": "message"
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "message",
+                    "hydra:writable": false
+                }
+            ],
+            "hydra:title": "A constraint violation"
+        },
+        {
+            "@id": "#ConstraintViolationList",
+            "@type": "hydra:Class",
+            "hydra:supportedProperty": [
+                {
+                    "@type": "hydra:SupportedProperty",
+                    "hydra:description": "The violations",
+                    "hydra:property": {
+                        "@id": "#ConstraintViolationList/violations",
+                        "@type": "rdf:Property",
+                        "domain": "#ConstraintViolationList",
+                        "range": "#ConstraintViolation",
+                        "rdfs:label": "violations"
+                    },
+                    "hydra:readable": true,
+                    "hydra:title": "violations",
+                    "hydra:writable": false
+                }
+            ],
+            "hydra:title": "A constraint violation list",
+            "subClassOf": "hydra:Error"
+        }
+    ],
+    "hydra:title": "Linked swissbib API"
+}
