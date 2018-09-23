@@ -30,3 +30,20 @@ Analyse von Graphql durch Olaf Hartig
 https://www.youtube.com/watch?v=oNDmVLRKo_M&app=desktop
 https://twitter.com/olafhartig/status/998615781842792448
 
+
+
+
+Quellen zu subresource
+https://github.com/api-platform/core/issues/1654
+https://github.com/api-platform/api-platform/issues/698
+
+Einträge in src/Entity/resources.yaml
+die zu Fehlern führen
+
+LinkedSwissbibBundle\Entity\Organisation:
+  properties:
+    address:
+      subresource:
+        resourceClass: 'LinkedSwissbibBundle\Entity\Address'
+        collection: false
+

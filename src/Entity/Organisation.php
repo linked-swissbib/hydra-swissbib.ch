@@ -5,7 +5,9 @@ namespace LinkedSwissbibBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\ORM\Mapping as ORM;
+use APIPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\ORM\Mapping\OneToOne;
+
 
 /**
  * he Organization class represents a kind of Agent corresponding to social instititutions such as companies, societies etc.
@@ -109,6 +111,10 @@ class Organisation
     private $hasRegion;
 
 
+    /**
+     * @var Address
+     */
+    private $address;
 
 
     /**
@@ -223,6 +229,23 @@ class Organisation
     public function setHasRegion($hasRegion)
     {
         $this->hasRegion = $hasRegion;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     *
+     */
+    public function setAddress(Address $address)
+    {
+        $this->address = $address;
     }
 
 
