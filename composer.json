@@ -8,7 +8,7 @@
         "easyrdf/easyrdf": "^0.9.1",
         "elasticsearch/elasticsearch": "5.3.*",
         "guzzlehttp/guzzle": "~6.3",
-        "linked-swissbib/adapterESdev": "dev-updateOngr2Version5",
+        "linked-swissbib/adapterESdev": "dev-data_swissbib",
         "ml/json-ld": "^1.0",
         "ongr/elasticsearch-dsl": "5.0.*",
         "sensio/framework-extra-bundle": "^5.1",
@@ -71,6 +71,23 @@
                     "url": "https://github.com/linked-swissbib/adapterElasticsearch.git",
                     "type": "git",
                     "reference": "updateOngr2Version5"
+                },
+                "autoload": {
+                    "psr-0" : {
+                        "ElasticsearchAdapter" : "src"
+                    }
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "linked-swissbib/adapterESdev",
+                "version": "dev-data_swissbib",
+                "source": {
+                    "url": "https://github.com/linked-swissbib/adapterElasticsearch.git",
+                    "type": "git",
+                    "reference": "data_swissbib"
                 },
                 "autoload": {
                     "psr-0" : {

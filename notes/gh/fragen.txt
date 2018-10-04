@@ -1,0 +1,4 @@
+http://datas4.swissbib.ch/organisation/BGR-KBG
+
+
+hier erhalte ich einen Feher bei der Abfrage

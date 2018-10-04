@@ -41,17 +41,14 @@ use Doctrine\ORM\Mapping\Entity;
  * An Address
  *@see https://www.w3.org/2006/vcard/ns#
  * @ApiResource(
- *     iri="http://purl.org/ontology/bibo/document",
- *     itemOperations={
- *          "get":{"method":"GET"}
- *     },
- *     collectionOperations={
- *          "get":{"method":"GET"}
- *     },
- *     attributes={
- *          "filters"={"linked_swissbib.fieldsqueryfilter"}
- *     }
+ *          subresourceOperations={
+ *          "organization_get_subresource"={
+ *              "method"="GET",
+ *              "path"="/organisation/{id}"
+ *          },
+ *      },
  * )
+ *
  *
  * @author   Günter Hipler <guenter.hipler@unibas.ch>>
  * @license  http://opensource.org/licenses/gpl-2.0.php

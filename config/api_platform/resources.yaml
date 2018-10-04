@@ -1,0 +1,7 @@
+LinkedSwissbibBundle\Entity\Organisation:
+  properties:
+    address:
+      subresource:
+        resourceClass: 'LinkedSwissbibBundle\Entity\Address'
+        collection: false
+        item: false
