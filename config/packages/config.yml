@@ -75,3 +75,14 @@ api_platform:
         html: ["text/html"]
     path_segment_name_generator: 'linked_swissbib.operation_path_resolver.camel_case'
     enable_swagger_ui: false
+
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity', '%kernel.project_dir%/config/api_platform']
+    graphql:
+        enabled: true
+        graphiql:
+            enabled: true
+
+    resource_class_directories:
+    - '%kernel.project_dir%/src/Entity'
+

@@ -1,4 +1,5 @@
 api_platform:
-    resource: .
+    resource:
+        - '%kernel.project_dir%/src/Entity'
     type: api_platform
     prefix: /

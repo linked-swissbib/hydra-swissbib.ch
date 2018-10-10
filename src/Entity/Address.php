@@ -40,14 +40,7 @@ use Doctrine\ORM\Mapping\Entity;
 /**
  * An Address
  *@see https://www.w3.org/2006/vcard/ns#
- * @ApiResource(
- *          subresourceOperations={
- *          "organization_get_subresource"={
- *              "method"="GET",
- *              "path"="/organisation/{id}"
- *          },
- *      },
- * )
+ * @ApiResource()
  *
  *
  * @author   Günter Hipler <guenter.hipler@unibas.ch>>

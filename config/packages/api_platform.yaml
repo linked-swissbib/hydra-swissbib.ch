@@ -5,3 +5,7 @@ api_platform:
             enabled: true
             graphiql:
                 enabled: true
+
+    resource_class_directories:
+      - '%kernel.project_dir%/src/Entity'
+
