@@ -58,6 +58,19 @@ services:
           - '@linked_swissbib.elasticsearch_params_builder'
           - '@linked_swissbib.exception.api_exception_transformer'
 
+    linked_swissbib.elasticsearch_subresource_data_provider:
+        class: LinkedSwissbibBundle\DataProvider\ElasticsearchSubresourceDataProvider
+        tags: [ { name: 'api_platform.subresource_data_provider', priority: 1 } ]
+        arguments:
+          - '@linked_swissbib.elasticsearchadapter_adapter'
+          - '@linked_swissbib.elasticsearchadapter_templatesearchbuilder'
+          - '@linked_swissbib.entity_simple_entity_builder'
+          - '@linked_swissbib.elasticsearch_context_mapper'
+          - '@request_stack'
+          - '@linked_swissbib.elasticsearch_resource_name_converter'
+          - '@linked_swissbib.elasticsearch_params_builder'
+          - '@linked_swissbib.exception.api_exception_transformer'
+
     linked_swissbib.elasticsearch_context_mapper:
         class: LinkedSwissbibBundle\Elasticsearch\ContextMapper
         arguments:

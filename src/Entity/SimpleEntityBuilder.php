@@ -27,6 +27,8 @@ class SimpleEntityBuilder implements EntityBuilder
     }
 
     /**
+     * TODO implement subresource types like Address
+     *
      * @param string $type
      * @param array $properties
      *

@@ -38,9 +38,12 @@ use Doctrine\ORM\Mapping\Entity;
 
 
 /**
+ * TODO: add correct iri
  * An Address
- *@see https://www.w3.org/2006/vcard/ns#
- * @ApiResource()
+ * @see https://www.w3.org/2006/vcard/ns#
+ * @ApiResource(
+ *     iri="http://i-do-not-know.com"
+ * )
  *
  *
  * @author   Günter Hipler <guenter.hipler@unibas.ch>>
@@ -49,7 +52,12 @@ use Doctrine\ORM\Mapping\Entity;
  */
 class Address
 {
-
+    /**
+     * @var string Identifier of a address resource
+     *
+     * @ApiProperty(identifier=true)
+     */
+    private $id;
 
     /**
      * @var string
@@ -95,6 +103,23 @@ class Address
      * })
      */
     private $region;
+
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return string
@@ -163,9 +188,4 @@ class Address
     {
         $this->region = $region;
     }
-
-
-
-
-
 }
