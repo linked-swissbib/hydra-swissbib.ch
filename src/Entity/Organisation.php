@@ -5,7 +5,7 @@ namespace LinkedSwissbibBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
-use APIPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping\OneToOne;
 
 
@@ -112,7 +112,11 @@ class Organisation
 
 
     /**
+     * Todo: define as vcard and rename to hasAddress that the property mapper can recognize this property
+     *
      * @var Address
+     *
+     * @ApiSubresource
      */
     private $address;
 
