@@ -17,13 +17,6 @@ class CamelCaseResourcePathGenerator implements PathSegmentNameGeneratorInterfac
 {
     public function getSegmentName(string $name, bool $collection = true): string
     {
-        $path = '/' . lcfirst($name);
-
-        if (!$collection) {
-            $path .= '/{id}';
-        }
-
-        return $path;
-
+        return lcfirst($name);
     }
 }
